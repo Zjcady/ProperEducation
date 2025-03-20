@@ -1,0 +1,2 @@
+# ProperEducation
+Proper education path
