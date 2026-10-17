@@ -2,7 +2,7 @@
  "_note": "One template per lab id. Fields in braces come from coach.py resume: n_problems, n_patterns, n_mastered, tier, n_mocks, mock_avg, n_chapters, n_labs, streak.",
  "C1": "Built a Python CLI on the Anthropic API with validated JSON output, retry with backoff, and per-request cost reporting",
  "C2": "Wrote an LLM document pipeline that chunks, summarizes and classifies a folder of notes and reports tokens and cost per file",
- "C3": "Designed an MCP server exposing an internal tool API to AI assistants, with scoped tokens and constant-time credential checks",
+ "C3": "Built an MCP server exposing an internal tool API to AI assistants over streamable HTTP, with bearer-token auth and scoped write access",
  "C4": "Implemented an agent loop from scratch over sandboxed tools, then rebuilt it on the SDK tool runner and documented the trade-offs",
  "C5": "Built a RAG question answerer with heading-aware chunking, tf-idf embeddings, cited answers and a measured retrieval hit rate",
  "C6": "Shipped a meeting-summarizer pipeline: structured summaries, action items, SRT subtitles and social captions from transcripts",

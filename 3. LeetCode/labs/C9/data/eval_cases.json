@@ -1,0 +1,190 @@
+[
+ {
+  "id": "case-01",
+  "transcript": "Zach: Decision: we go with the 18 by 18 by 24 glass tank, not the PVC one.\nSam: Action for me: order springtails and isopods by Friday.\nZach: Action for me: book Pepper's weight recheck for the week of the 20th.",
+  "candidate": {
+   "summary": "They picked the glass tank and split the setup work.",
+   "action_items": [
+    {
+     "owner": "Sam",
+     "task": "order springtails and isopods by Friday"
+    },
+    {
+     "owner": "Zach",
+     "task": "book Pepper's weight recheck for the week of the 20th"
+    }
+   ],
+   "decisions": [
+    "Use the 18x18x24 glass tank, not PVC"
+   ]
+  },
+  "label": "pass",
+  "seeded_failure": null
+ },
+ {
+  "id": "case-02",
+  "transcript": "Maya: The flaky login test failed twice this week.\nLeo: I'll pin the browser version and rerun it tonight.\nMaya: Decision: no merges to main until it's green.",
+  "candidate": {
+   "summary": "A flaky login test is blocking main.",
+   "action_items": [
+    {
+     "owner": "Leo",
+     "task": "pin the browser version and rerun the login test tonight"
+    }
+   ],
+   "decisions": [
+    "No merges to main until the login test is green"
+   ]
+  },
+  "label": "pass",
+  "seeded_failure": null
+ },
+ {
+  "id": "case-03",
+  "transcript": "Priya: Drone battery packs are swelling after twenty cycles.\nOmar: I'll pull the swollen packs and log their serial numbers today.\nPriya: Decision: we retire any pack over twenty cycles.",
+  "candidate": {
+   "summary": "Swelling battery packs get retired.",
+   "action_items": [
+    {
+     "owner": "Priya",
+     "task": "pull the swollen packs and log their serial numbers today"
+    }
+   ],
+   "decisions": [
+    "Retire any battery pack over twenty cycles"
+   ]
+  },
+  "label": "fail",
+  "seeded_failure": "wrong owner: Omar pulls the packs, not Priya"
+ },
+ {
+  "id": "case-04",
+  "transcript": "Sam: The UVB bulb timer is at twelve hours.\nZach: Decision: keep it at twelve hours through winter.\nSam: Action for me: buy a spare bulb this weekend.",
+  "candidate": {
+   "summary": "UVB stays at twelve hours; a spare bulb is coming.",
+   "action_items": [
+    {
+     "owner": "Sam",
+     "task": "buy a spare UVB bulb this weekend"
+    }
+   ],
+   "decisions": [
+    "Keep the UVB timer at twelve hours through winter"
+   ]
+  },
+  "label": "pass",
+  "seeded_failure": null
+ },
+ {
+  "id": "case-05",
+  "transcript": "Ana: The eval suite takes forty minutes.\nBen: I'll split it into four parallel shards by Wednesday.\nAna: Decision: the nightly run keeps the full suite, PRs run a ten-case smoke set.",
+  "candidate": {
+   "summary": "The eval suite is too slow for PRs, so it gets sharded and a smoke set.",
+   "action_items": [
+    {
+     "owner": "Ben",
+     "task": "split the eval suite into four parallel shards by Wednesday"
+    }
+   ],
+   "decisions": [
+    "Nightly runs the full suite; PRs run a ten-case smoke set"
+   ]
+  },
+  "label": "pass",
+  "seeded_failure": null
+ },
+ {
+  "id": "case-06",
+  "transcript": "Zach: Decision one: Pepper's feeding moves to every other day.\nSam: Decision two: we stop dusting with calcium at every feeding, twice a week only.\nZach: Action for me: update the feeding chart on the fridge.",
+  "candidate": {
+   "summary": "Pepper's feeding schedule changed.",
+   "action_items": [
+    {
+     "owner": "Zach",
+     "task": "update the feeding chart on the fridge"
+    }
+   ],
+   "decisions": [
+    "Feed Pepper every other day"
+   ]
+  },
+  "label": "fail",
+  "seeded_failure": "missing decision: calcium dusting drops to twice a week"
+ },
+ {
+  "id": "case-07",
+  "transcript": "Lena: The lidar driver crashes when the cable is reseated.\nRaj: I'll add a reconnect loop with a five-second backoff.\nLena: Decision: ship the reconnect fix before the field test on Monday.",
+  "candidate": {
+   "summary": "The lidar driver needs to survive a reseated cable.",
+   "action_items": [
+    {
+     "owner": "Raj",
+     "task": "add a lidar reconnect loop with a five-second backoff"
+    }
+   ],
+   "decisions": [
+    "Ship the reconnect fix before Monday's field test"
+   ]
+  },
+  "label": "pass",
+  "seeded_failure": null
+ },
+ {
+  "id": "case-08",
+  "transcript": "Kim: Our prompt caching cut cost by half.\nTom: Decision: turn caching on for the summarizer too.\nKim: Action for me: measure the hit rate for a week and report back.",
+  "candidate": {
+   "summary": "Caching worked, so it's expanding to the summarizer.",
+   "action_items": [
+    {
+     "owner": "Kim",
+     "task": "measure the cache hit rate for a week and report back"
+    }
+   ],
+   "decisions": [
+    "Turn prompt caching on for the summarizer"
+   ]
+  },
+  "label": "pass",
+  "seeded_failure": null
+ },
+ {
+  "id": "case-09",
+  "transcript": "Sam: Isopods arrived and the colony looks healthy.\nZach: Decision: we wait two more weeks before Pepper moves in.\nSam: Action for me: mist the bioactive soil every morning.",
+  "candidate": {
+   "summary": "The isopods arrived; Pepper's move waits two weeks.",
+   "action_items": [
+    {
+     "owner": "Sam",
+     "task": "mist the bioactive soil every morning"
+    },
+    {
+     "owner": "Zach",
+     "task": "order a second heat mat"
+    }
+   ],
+   "decisions": [
+    "Wait two more weeks before Pepper moves in"
+   ]
+  },
+  "label": "fail",
+  "seeded_failure": "hallucinated action item: nobody said anything about a second heat mat"
+ },
+ {
+  "id": "case-10",
+  "transcript": "Noor: The judge disagreed with humans on three cases.\nEli: I'll read those three transcripts and tighten the rubric.\nNoor: Decision: no new eval cases until judge agreement is above ninety percent.",
+  "candidate": {
+   "summary": "The LLM judge needs calibrating before the eval grows.",
+   "action_items": [
+    {
+     "owner": "Eli",
+     "task": "read the three disagreeing transcripts and tighten the rubric"
+    }
+   ],
+   "decisions": [
+    "No new eval cases until judge agreement is above 90%"
+   ]
+  },
+  "label": "pass",
+  "seeded_failure": null
+ }
+]

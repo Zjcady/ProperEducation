@@ -21,3 +21,13 @@ _(you)_
 
 ## Why constant-time comparison
 _(you)_
+
+## The token belongs on the transport
+The old version of this lab had `coach_done(item_id, token, rating)`. Why is a token in the tool's arguments a problem? (Who writes the arguments, and where do they end up?)
+_(you)_
+
+On HTTP the token is a header the SDK checks before any tool runs. What does the server answer with no token, with an unknown token, and with a read token calling `coach_done`, and why are those three different?
+_(you)_
+
+On stdio there is no header. Where do credentials come from instead, and who is trusted when you set `COACH_WRITE=1`?
+_(you)_
