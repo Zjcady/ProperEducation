@@ -29,6 +29,28 @@ def _fmt(value, limit: int = 70) -> str:
 
 
 def run(func, tests, *, stop_on_first_fail: bool = False) -> None:
+    passed, total = _run_one(func, tests, stop_on_first_fail=stop_on_first_fail)
+    print(f"\n{passed}/{total} passed")
+    if passed == total:
+        print("All green. Now run:  python3 coach.py done <id> <1|2|3>")
+    sys.exit(0 if passed == total else 1)
+
+
+def run_levels(levels) -> None:
+    """levels: [(label, func, tests), ...]. Runs each level in order; a level with
+    an unimplemented function or failures stops the run so you work one level at a time."""
+    for label, func, tests in levels:
+        print("=" * len(label)); print(label); print("=" * len(label))
+        passed, total = _run_one(func, tests)
+        print(f"{passed}/{total} passed\n")
+        if passed < total:
+            print("Pass this level before moving on. Next:  python3 coach.py hint <id> 1")
+            sys.exit(1)
+    print("All levels green. Now run:  python3 coach.py done <id>")
+    sys.exit(0)
+
+
+def _run_one(func, tests, *, stop_on_first_fail: bool = False):
     passed = 0
     started = time.perf_counter()
     for index, test in enumerate(tests, 1):
@@ -66,12 +88,7 @@ def run(func, tests, *, stop_on_first_fail: bool = False) -> None:
             if stop_on_first_fail:
                 break
 
-    elapsed_ms = (time.perf_counter() - started) * 1000
-    total = len(tests)
-    print(f"\n{passed}/{total} passed  ({elapsed_ms:.0f} ms)")
-    if passed == total:
-        print("All green. Now run:  python3 coach.py done <id> <1|2|3>")
-    sys.exit(0 if passed == total else 1)
+    return passed, len(tests)
 
 
 # ---- helpers for linked lists and trees (import these in solution.py) ----

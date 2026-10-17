@@ -751,5 +751,225 @@
    "pattern": "bits",
    "url": "https://leetcode.com/problems/sum-of-two-integers/"
   }
+ ],
+ "tracks": [
+  {
+   "id": "leetcode",
+   "name": "LeetCode"
+  },
+  {
+   "id": "foundations",
+   "name": "Python foundations"
+  },
+  {
+   "id": "genai",
+   "name": "GenAI engineering"
+  },
+  {
+   "id": "autonomy",
+   "name": "Autonomy"
+  }
+ ],
+ "build": [
+  {
+   "id": "A01",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Values, types, variables, f-strings",
+   "folder": "foundations/01-A01",
+   "steps": 1
+  },
+  {
+   "id": "A02",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Conditionals and loops",
+   "folder": "foundations/02-A02",
+   "steps": 1
+  },
+  {
+   "id": "A03",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Functions, scope, default args",
+   "folder": "foundations/03-A03",
+   "steps": 1
+  },
+  {
+   "id": "A04",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Strings and slicing",
+   "folder": "foundations/04-A04",
+   "steps": 1
+  },
+  {
+   "id": "A05",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Lists, tuples, iteration patterns",
+   "folder": "foundations/05-A05",
+   "steps": 1
+  },
+  {
+   "id": "A06",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Dicts and sets",
+   "folder": "foundations/06-A06",
+   "steps": 1
+  },
+  {
+   "id": "A07",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Files, with-blocks, exceptions",
+   "folder": "foundations/07-A07",
+   "steps": 1
+  },
+  {
+   "id": "A08",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Classes and dataclasses",
+   "folder": "foundations/08-A08",
+   "steps": 1
+  },
+  {
+   "id": "A09",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Modules, packages, virtual environments",
+   "folder": "foundations/09-A09",
+   "steps": 1
+  },
+  {
+   "id": "A10",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Testing with pytest, reading a traceback",
+   "folder": "foundations/10-A10",
+   "steps": 1
+  },
+  {
+   "id": "A11",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Type hints, iterators, generators, comprehensions",
+   "folder": "foundations/11-A11",
+   "steps": 1
+  },
+  {
+   "id": "A12",
+   "track": "foundations",
+   "kind": "chapter",
+   "title": "Big-O in plain words, the standard library you'll use",
+   "folder": "foundations/12-A12",
+   "steps": 1
+  },
+  {
+   "id": "C1",
+   "track": "genai",
+   "kind": "lab",
+   "title": "First LLM call",
+   "folder": "labs/C1",
+   "steps": 3
+  },
+  {
+   "id": "C2",
+   "track": "genai",
+   "kind": "lab",
+   "title": "Prompt in a workflow",
+   "folder": "labs/C2",
+   "steps": 3
+  },
+  {
+   "id": "C3",
+   "track": "genai",
+   "kind": "lab",
+   "title": "MCP server with a protected tool",
+   "folder": "labs/C3",
+   "steps": 4
+  },
+  {
+   "id": "C4",
+   "track": "genai",
+   "kind": "lab",
+   "title": "Agent loop, then a framework",
+   "folder": "labs/C4",
+   "steps": 4
+  },
+  {
+   "id": "C5",
+   "track": "genai",
+   "kind": "lab",
+   "title": "Document processing and RAG",
+   "folder": "labs/C5",
+   "steps": 4
+  },
+  {
+   "id": "C6",
+   "track": "genai",
+   "kind": "lab",
+   "title": "Meeting summarizer, then the gecko pipeline",
+   "folder": "labs/C6",
+   "steps": 4
+  },
+  {
+   "id": "C7",
+   "track": "genai",
+   "kind": "lab",
+   "title": "AI dev accelerators write-up",
+   "folder": "labs/C7",
+   "steps": 2
+  },
+  {
+   "id": "C8",
+   "track": "genai",
+   "kind": "lab",
+   "title": "AWS deployment",
+   "folder": "labs/C8",
+   "steps": 3
+  },
+  {
+   "id": "D1",
+   "track": "autonomy",
+   "kind": "lab",
+   "title": "State machines: a mission as tasks",
+   "folder": "labs/D1",
+   "steps": 2
+  },
+  {
+   "id": "D2",
+   "track": "autonomy",
+   "kind": "lab",
+   "title": "Path planning: BFS then A*",
+   "folder": "labs/D2",
+   "steps": 2
+  },
+  {
+   "id": "D3",
+   "track": "autonomy",
+   "kind": "lab",
+   "title": "PID controller in simulation",
+   "folder": "labs/D3",
+   "steps": 2
+  },
+  {
+   "id": "D4",
+   "track": "autonomy",
+   "kind": "lab",
+   "title": "Perception basics with OpenCV",
+   "folder": "labs/D4",
+   "steps": 2
+  },
+  {
+   "id": "D5",
+   "track": "autonomy",
+   "kind": "lab",
+   "title": "A tiny human-machine interface",
+   "folder": "labs/D5",
+   "steps": 2
+  }
  ]
 }

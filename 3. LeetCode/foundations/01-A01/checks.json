@@ -1,0 +1,10 @@
+{
+ "questions": [
+  {"q": "What does `type(3.0)` print?", "type": "choice", "options": ["<class 'int'>", "<class 'float'>", "<class 'str'>", "<class 'number'>"], "answer": 1, "why": "A decimal point makes it a float, even if the fraction is zero."},
+  {"q": "What is `7 // 2`?", "type": "text", "answers": ["3"], "why": "Floor division drops the remainder. `7 / 2` would be 3.5."},
+  {"q": "What is `7 % 3`?", "type": "text", "answers": ["1"], "why": "The remainder after dividing 7 by 3. 3 goes in twice, 1 left over."},
+  {"q": "Which line crashes?", "type": "choice", "options": ["x = \"5\" + \"3\"", "x = 5 + 3", "x = \"5\" + 3", "x = str(5) + \"3\""], "answer": 2, "why": "str plus int is a TypeError. The others are str+str or int+int."},
+  {"q": "`f\"{2.5:.1f}\"` gives what text?", "type": "text", "answers": ["2.5"], "why": ":.1f means one decimal place. `{2.5:.2f}` would give 2.50."},
+  {"q": "Which symbol asks whether two values are the same?", "type": "choice", "options": ["=", "==", "=>", "is same"], "answer": 1, "why": "= sticks a name on a value. == asks a yes/no question."}
+ ]
+}

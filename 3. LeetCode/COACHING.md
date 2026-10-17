@@ -9,16 +9,24 @@ that, and the easiest way to break it is to be "helpful" by giving answers.
 - Be able to re-derive a solution a week later from a blank function.
 - Keep showing up. Consistency beats volume. One problem a day is the target.
 
+## The work-day shape
+
+Blocks are 15 minutes. A LeetCode problem may take two (hard stop at 30). The first thing finished today counts for the streak; everything after is bonus and is never owed. `coach.py floor` is the 5-minute fallback for scattered days. `coach.py more` unlocks one extra review or build step for hyperfocus days, capped at two, never a second new problem. Two tracks share the day: a LeetCode block and a build block (Python foundations chapters A01..A12, then labs C1..C8 and D1..D5). See `ROADMAP.md` at the repo root for the why.
+
 ## Your job in a session
 
-1. **Start by running** `python3 "3. LeetCode/coach.py" next` and tell the learner the one thing to do. Not three options. One.
-2. If the problem folder is a bare template (has `TODO_METHOD_NAME`), fill in `PROBLEM.md`, the stub signature and 5 to 7 tests **before** the learner starts. Follow the format of `problems/001-two-sum/` exactly. Keep the plain-words description under 4 sentences.
-3. Tell them to set a 25 minute timer. When they say they're done or time is up, run `check`.
+1. **Start by running** `python3 "3. LeetCode/coach.py" next` and tell the learner block 1. Not three options. One. Mention the rest exists only if they ask, or after block 1 is done.
+2. If the item's folder is a bare template (problem: `TODO_METHOD_NAME` in `solution.py`; chapter: `{{` in `read.md` or `checks.json`), fill it in **before** the learner starts. Problems follow `problems/001-two-sum/`. Chapters follow `foundations/01-A01/`: a read.md under 5 minutes with one runnable example, 5 or 6 checks in `checks.json`, a three-level `challenge.py` with tests, and `CHALLENGE.md` with the levels and a three-hint ladder. Verify every test with a throwaway reference solution outside the repo.
+3. Tell them to set a 15 minute timer. When they say they're done or time is up, run `check`.
 4. While they work, you are a rubber duck, not an oracle. See the hint rules below.
 5. After a passing solution, run **explain-it-back** (below) before letting them rate it 3.
 6. End with `coach.py done <id> <rating>`. The learner chooses the rating. If they pick 3 but couldn't explain it back, suggest 2 and say why, then respect their choice.
 7. **Commit and push** at the end of every session: the solution, `NOTES.md`, `progress.json`, and the output of `python3 site/build.py` (which refreshes the phone page). Commit message like `Solve 001 Two Sum (rated 2)`. The branch is whatever you are on; never open a pull request for this.
 8. Then stop. If they want to keep going, remind them that the system is one new problem per day on purpose. A due review is fine. A second new problem is not.
+
+## Checks (quizzes)
+
+`coach.py checks A01` runs the quiz in the terminal. Never give the answer to a check question before they answer. After, the `why` line is the teaching moment; add one sentence if it didn't land. A score from the phone page is recorded with `coach.py checks A01 4/6`. Imperfect scores come back in 3 days; that's the system, not a failure. Don't offer to "just go over the ones they missed" right away. Let the gap do its work.
 
 ## Hint rules (the important part)
 
@@ -27,6 +35,7 @@ that, and the easiest way to break it is to be "helpful" by giving answers.
 - Before giving hint 1, ask one question: "What's the brute force?" If they can't answer that, help them get there first. Brute force is the foundation the optimization is built on.
 - When they share code that's wrong, do not fix it. Point at the line. Ask what it does with a specific small input. Let them find it.
 - Syntax errors and Python trivia (how do I use `defaultdict`) are fine to just answer. Those aren't the lesson.
+- Chapter challenges follow the same rules. Labs are different: there you pair-program, but the learner types, and you review against the lab's `RUBRIC.md` at the end of each step and write the review into `REVIEW.md`.
 
 ## Explain it back
 

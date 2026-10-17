@@ -1,11 +1,17 @@
 {
- "generated_at": "2026-10-17T01:31",
+ "generated_at": "2026-10-17T01:58",
  "today": "2026-10-17",
  "streak": 0,
- "timebox_minutes": 25,
+ "counted_today": false,
+ "bonus_used": 0,
+ "bonus_cap": 2,
+ "block_minutes": 15,
+ "leetcode_bell": 30,
+ "floor": "Take the checks for A01 Values, types, variables, f-strings below. About 5 minutes.",
  "plan": [
   {
    "kind": "new",
+   "type": "problem",
    "id": "001",
    "title": "Two Sum",
    "slug": "two-sum",
@@ -14,7 +20,6 @@
    "pattern": "Arrays & Hashing",
    "pattern_md": "# Arrays & Hashing\n\n**Reach for it when you see**\n- \"find a pair / duplicate / count of something\"\n- \"have I seen this before?\"\n- a nested loop that only exists to *look something up*\n\n**The move**\nTrade memory for time. One pass, and a `dict` or `set` remembers what you've already seen so you never rescan.\n\n**Template**\n```python\nseen = {}                      # value -> index, or value -> count\nfor i, x in enumerate(nums):\n    if x in seen:              # O(1) lookup replaces an inner loop\n        ...\n    seen[x] = i\n```\n\n**Gotchas**\n- Check the dict *before* inserting the current item, or you'll match an item with itself.\n- `collections.Counter(s)` is a dict of counts in one line.\n- Sorting is O(n log n). Hashing is O(n). If you only need \"same letters\", a sorted string or a count tuple is a fine dict key.\n",
    "problem_md": "# 001 \u00b7 Two Sum  (easy)\n\nPattern: **Arrays & Hashing** \u2192 read `patterns/01-arrays-hashing.md` first if it's new to you.\nLeetCode: https://leetcode.com/problems/two-sum/\n\n## The problem, in plain words\n\nYou get a list of numbers and a target. Exactly one pair of numbers in the list adds up to the target. Return the two **positions** (indices) of that pair, in any order. You can't use the same position twice.\n\n## Example\n\n```\ninput:  nums = [2, 7, 11, 15], target = 9\noutput: [0, 1]\nwhy:    nums[0] + nums[1] = 2 + 7 = 9\n```\n\n## Before you code (30 seconds, out loud or in NOTES.md)\n\n- Brute force: try every pair. That's two nested loops, O(n\u00b2). Say that out loud, it's fine.\n- Which pattern signal do you see? \"Have I seen the number I need before?\"\n\n## Hints (open one at a time, only after 5 real minutes of being stuck)\n\n<details>\n<summary>Hint 1 \u00b7 a nudge</summary>\n\nWhen you're standing on the number 7 and the target is 9, you already know exactly which number you're looking for. You don't need to search for it. You need to *remember* whether you've passed it.\n\n</details>\n\n<details>\n<summary>Hint 2 \u00b7 the idea</summary>\n\nWalk the list once. Keep a dict of `number -> index` for everything you've already walked past. At each number, compute `need = target - x` and ask the dict if `need` is in it.\n\n</details>\n\n<details>\n<summary>Hint 3 \u00b7 the skeleton</summary>\n\n```\nseen = {}\nfor i, x in enumerate(nums):\n    need = target - x\n    if need in seen:\n        return [________, i]\n    seen[x] = i\n```\n\nFill in the blank. And notice the order: check first, insert after. Why does that matter?\n\n</details>\n\n## Explain it back (required before rating 3)\n\n1. In one sentence, what is the trick?\n2. Why is this O(n) instead of O(n\u00b2)?\n3. What goes wrong if you insert into the dict *before* checking it? Try `nums=[3, 3], target=6` and `nums=[3, 2, 4], target=6`.\n",
-   "notes_md": "# Notes \u00b7 001 Two Sum\n\n## Explain it back\n_(Write these yourself, in your own words. This is the part that makes it stick.)_\n\n1. The trick in one sentence:\n2. Why the complexity is what it is:\n3. An input that breaks the naive version:\n\n## What I got wrong / what I want to remember\n\n-\n\n## Attempt log\n_(coach.py appends a row each time you run `done`. Add a word or two in the last column.)_\n\n| date | kind | rating | minutes | note |\n|------|------|--------|---------|------|\n",
    "scaffolded": true,
    "state": {
     "status": "new",
@@ -24,7 +29,93 @@
     "last_done": null,
     "reps": null
    },
-   "started_at": null
+   "started_at": null,
+   "bell": 30
+  },
+  {
+   "kind": "build",
+   "type": "build",
+   "id": "A01",
+   "title": "Values, types, variables, f-strings",
+   "track": "Python foundations",
+   "item_kind": "chapter",
+   "folder": "foundations/01-A01",
+   "steps": 1,
+   "step": 0,
+   "scaffolded": true,
+   "state": {
+    "status": "new",
+    "checks_score": null,
+    "checks_due": null,
+    "checks_last": null,
+    "last_done": null
+   },
+   "started_at": null,
+   "bell": 15,
+   "read_md": "# A01 \u00b7 Values, types, variables, f-strings\n\n**Why it exists.** Every program is values moving through names. Get these four things straight and the next eleven chapters are just combinations of them.\n\n## The idea\n\nA **value** is a piece of data. Every value has a **type**, which decides what you can do with it.\n\n```python\n42          # int    whole number\n3.5         # float  decimal number\n\"hi\"        # str    text, in quotes\nTrue        # bool   True or False, capital letter\n```\n\nA **variable** is a name stuck to a value. `=` means \"stick this name on this value\", not \"equals\".\n\n```python\nprice = 3.5\nprice = price * 2     # the name now points at 7.0\n```\n\nAsk a value its type with `type(x)`. Convert with `int(\"42\")`, `float(\"3.5\")`, `str(42)`.\n\nAn **f-string** builds text from values. Put `f` before the quote and `{}` around anything you want inserted. A colon inside the braces formats it.\n\n```python\nname, total = \"Zach\", 7.5\nprint(f\"{name} owes ${total:.2f}\")      # Zach owes $7.50\nprint(f\"{3:02d}:{7:02d}\")                # 03:07\n```\n\n`:.2f` means \"float, 2 decimals\". `:02d` means \"integer, pad to width 2 with zeros\".\n\nInteger tricks you'll use constantly: `7 // 2` is `3` (floor division, drops the remainder). `7 % 2` is `1` (the remainder). `2 ** 10` is `1024`.\n\n## The two things people get wrong\n\n1. `\"5\" + 3` crashes. A str and an int don't add. Convert first: `int(\"5\") + 3`.\n2. `=` assigns, `==` compares. `if x = 5` is a syntax error. `if x == 5` is a question.\n\nRun the examples. Change a number. Break something on purpose and read the error.\n",
+   "challenge_md": "# A01 challenge \u00b7 Values, types, variables, f-strings\n\nThree levels in `challenge.py`. Each adds one constraint. Pass level 1 before reading level 2.\n\n## Level 1 \u00b7 `kind(value)`\nReturn the type name of a value as a string: `\"int\"`, `\"float\"`, `\"str\"`, or `\"bool\"`.\n`kind(3)` is `\"int\"`. `kind(True)` is `\"bool\"`.\n\n## Level 2 \u00b7 `receipt_line(item, price, qty)`\nReturn one line of a receipt, exactly like `\"3 x Apple @ $0.50 = $1.50\"`. Price and total always show two decimals.\n\n## Level 3 \u00b7 `clock(seconds)`\nTurn a number of seconds into `\"h:mm:ss\"`. `clock(3669)` is `\"1:01:09\"`. Minutes and seconds are always two digits, hours are not padded. Use `//` and `%`, no loops, no `if`.\n\n## Hints (one at a time, after 5 real minutes)\n\n<details>\n<summary>Hint 1 \u00b7 a nudge</summary>\n\nLevel 1: `type(x)` gives you a type object. Type objects have a `.__name__`. Level 2: everything you need is in the f-string section of read.md. Level 3: how many seconds in an hour? In a minute? `//` tells you how many fit, `%` tells you what's left over.\n\n</details>\n\n<details>\n<summary>Hint 2 \u00b7 the idea</summary>\n\nLevel 3: `hours = seconds // 3600`. What's left after removing the hours is `seconds % 3600`. Do the same split again for minutes. Format with `:02d`.\n\n</details>\n\n<details>\n<summary>Hint 3 \u00b7 the skeleton</summary>\n\n```\nh = seconds // 3600\nrest = seconds % 3600\nm = rest // ____\ns = rest % ____\nreturn f\"{h}:{m:02d}:{s:02d}\"\n```\n\n</details>\n",
+   "checks": [
+    {
+     "q": "What does `type(3.0)` print?",
+     "type": "choice",
+     "options": [
+      "<class 'int'>",
+      "<class 'float'>",
+      "<class 'str'>",
+      "<class 'number'>"
+     ],
+     "answer": 1,
+     "why": "A decimal point makes it a float, even if the fraction is zero."
+    },
+    {
+     "q": "What is `7 // 2`?",
+     "type": "text",
+     "answers": [
+      "3"
+     ],
+     "why": "Floor division drops the remainder. `7 / 2` would be 3.5."
+    },
+    {
+     "q": "What is `7 % 3`?",
+     "type": "text",
+     "answers": [
+      "1"
+     ],
+     "why": "The remainder after dividing 7 by 3. 3 goes in twice, 1 left over."
+    },
+    {
+     "q": "Which line crashes?",
+     "type": "choice",
+     "options": [
+      "x = \"5\" + \"3\"",
+      "x = 5 + 3",
+      "x = \"5\" + 3",
+      "x = str(5) + \"3\""
+     ],
+     "answer": 2,
+     "why": "str plus int is a TypeError. The others are str+str or int+int."
+    },
+    {
+     "q": "`f\"{2.5:.1f}\"` gives what text?",
+     "type": "text",
+     "answers": [
+      "2.5"
+     ],
+     "why": ":.1f means one decimal place. `{2.5:.2f}` would give 2.50."
+    },
+    {
+     "q": "Which symbol asks whether two values are the same?",
+     "type": "choice",
+     "options": [
+      "=",
+      "==",
+      "=>",
+      "is same"
+     ],
+     "answer": 1,
+     "why": "= sticks a name on a value. == asks a yes/no question."
+    }
+   ]
   }
  ],
  "counts": {
@@ -33,688 +124,754 @@
   "review": 0,
   "mastered": 0
  },
- "due_today": 0,
  "patterns": [
   {
-   "id": "arrays-hashing",
    "name": "Arrays & Hashing",
    "problems": [
     {
      "id": "001",
      "title": "Two Sum",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/two-sum/"
     },
     {
      "id": "002",
      "title": "Contains Duplicate",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/contains-duplicate/"
     },
     {
      "id": "003",
      "title": "Valid Anagram",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/valid-anagram/"
     },
     {
      "id": "004",
      "title": "Group Anagrams",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/group-anagrams/"
     },
     {
      "id": "005",
      "title": "Top K Frequent Elements",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/top-k-frequent-elements/"
     },
     {
      "id": "006",
      "title": "Product of Array Except Self",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/product-of-array-except-self/"
     },
     {
      "id": "007",
      "title": "Valid Sudoku",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/valid-sudoku/"
     },
     {
      "id": "008",
      "title": "Longest Consecutive Sequence",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/longest-consecutive-sequence/"
     }
    ]
   },
   {
-   "id": "two-pointers",
    "name": "Two Pointers",
    "problems": [
     {
      "id": "009",
      "title": "Valid Palindrome",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/valid-palindrome/"
     },
     {
      "id": "010",
      "title": "Two Sum II - Input Array Is Sorted",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"
     },
     {
      "id": "011",
      "title": "3Sum",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/3sum/"
     },
     {
      "id": "012",
      "title": "Container With Most Water",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/container-with-most-water/"
     }
    ]
   },
   {
-   "id": "sliding-window",
    "name": "Sliding Window",
    "problems": [
     {
      "id": "013",
      "title": "Best Time to Buy and Sell Stock",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
     },
     {
      "id": "014",
      "title": "Longest Substring Without Repeating Characters",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
     },
     {
      "id": "015",
      "title": "Longest Repeating Character Replacement",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/longest-repeating-character-replacement/"
     },
     {
      "id": "016",
      "title": "Minimum Window Substring",
-     "difficulty": "hard",
      "status": "new",
      "url": "https://leetcode.com/problems/minimum-window-substring/"
     }
    ]
   },
   {
-   "id": "stack",
    "name": "Stack",
    "problems": [
     {
      "id": "017",
      "title": "Valid Parentheses",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/valid-parentheses/"
     },
     {
      "id": "018",
      "title": "Min Stack",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/min-stack/"
     },
     {
      "id": "019",
      "title": "Evaluate Reverse Polish Notation",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/"
     },
     {
      "id": "020",
      "title": "Daily Temperatures",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/daily-temperatures/"
     }
    ]
   },
   {
-   "id": "binary-search",
    "name": "Binary Search",
    "problems": [
     {
      "id": "021",
      "title": "Binary Search",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/binary-search/"
     },
     {
      "id": "022",
      "title": "Koko Eating Bananas",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/koko-eating-bananas/"
     },
     {
      "id": "023",
      "title": "Find Minimum in Rotated Sorted Array",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/"
     },
     {
      "id": "024",
      "title": "Search in Rotated Sorted Array",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/"
     }
    ]
   },
   {
-   "id": "linked-list",
    "name": "Linked List",
    "problems": [
     {
      "id": "025",
      "title": "Reverse Linked List",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/reverse-linked-list/"
     },
     {
      "id": "026",
      "title": "Merge Two Sorted Lists",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/merge-two-sorted-lists/"
     },
     {
      "id": "027",
      "title": "Linked List Cycle",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/linked-list-cycle/"
     },
     {
      "id": "028",
      "title": "Reorder List",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/reorder-list/"
     },
     {
      "id": "029",
      "title": "Remove Nth Node From End of List",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
     },
     {
      "id": "030",
      "title": "Merge k Sorted Lists",
-     "difficulty": "hard",
      "status": "new",
      "url": "https://leetcode.com/problems/merge-k-sorted-lists/"
     }
    ]
   },
   {
-   "id": "trees",
    "name": "Trees",
    "problems": [
     {
      "id": "031",
      "title": "Invert Binary Tree",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/invert-binary-tree/"
     },
     {
      "id": "032",
      "title": "Maximum Depth of Binary Tree",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
     },
     {
      "id": "033",
      "title": "Same Tree",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/same-tree/"
     },
     {
      "id": "034",
      "title": "Subtree of Another Tree",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/subtree-of-another-tree/"
     },
     {
      "id": "035",
      "title": "Lowest Common Ancestor of a BST",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
     },
     {
      "id": "036",
      "title": "Binary Tree Level Order Traversal",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
     },
     {
      "id": "037",
      "title": "Validate Binary Search Tree",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/validate-binary-search-tree/"
     },
     {
      "id": "038",
      "title": "Kth Smallest Element in a BST",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/"
     },
     {
      "id": "039",
      "title": "Construct Binary Tree from Preorder and Inorder",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
     },
     {
      "id": "040",
      "title": "Binary Tree Maximum Path Sum",
-     "difficulty": "hard",
      "status": "new",
      "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/"
     },
     {
      "id": "041",
      "title": "Serialize and Deserialize Binary Tree",
-     "difficulty": "hard",
      "status": "new",
      "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"
     }
    ]
   },
   {
-   "id": "tries",
    "name": "Tries",
    "problems": [
     {
      "id": "042",
      "title": "Implement Trie (Prefix Tree)",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/implement-trie-prefix-tree/"
     },
     {
      "id": "043",
      "title": "Design Add and Search Words",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/"
     },
     {
      "id": "044",
      "title": "Word Search II",
-     "difficulty": "hard",
      "status": "new",
      "url": "https://leetcode.com/problems/word-search-ii/"
     }
    ]
   },
   {
-   "id": "heap",
    "name": "Heap / Priority Queue",
    "problems": [
     {
      "id": "045",
      "title": "Kth Largest Element in a Stream",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/"
     },
     {
      "id": "046",
      "title": "K Closest Points to Origin",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/k-closest-points-to-origin/"
     },
     {
      "id": "047",
      "title": "Find Median from Data Stream",
-     "difficulty": "hard",
      "status": "new",
      "url": "https://leetcode.com/problems/find-median-from-data-stream/"
     }
    ]
   },
   {
-   "id": "backtracking",
    "name": "Backtracking",
    "problems": [
     {
      "id": "048",
      "title": "Subsets",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/subsets/"
     },
     {
      "id": "049",
      "title": "Permutations",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/permutations/"
     },
     {
      "id": "050",
      "title": "Combination Sum",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/combination-sum/"
     },
     {
      "id": "051",
      "title": "Word Search",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/word-search/"
     }
    ]
   },
   {
-   "id": "graphs",
    "name": "Graphs",
    "problems": [
     {
      "id": "052",
      "title": "Number of Islands",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/number-of-islands/"
     },
     {
      "id": "053",
      "title": "Max Area of Island",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/max-area-of-island/"
     },
     {
      "id": "054",
      "title": "Clone Graph",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/clone-graph/"
     },
     {
      "id": "055",
      "title": "Rotting Oranges",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/rotting-oranges/"
     },
     {
      "id": "056",
      "title": "Pacific Atlantic Water Flow",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/"
     },
     {
      "id": "057",
      "title": "Course Schedule",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/course-schedule/"
     },
     {
      "id": "058",
      "title": "Network Delay Time",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/network-delay-time/"
     }
    ]
   },
   {
-   "id": "dp-1d",
    "name": "1-D Dynamic Programming",
    "problems": [
     {
      "id": "059",
      "title": "Climbing Stairs",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/climbing-stairs/"
     },
     {
      "id": "060",
      "title": "House Robber",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/house-robber/"
     },
     {
      "id": "061",
      "title": "House Robber II",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/house-robber-ii/"
     },
     {
      "id": "062",
      "title": "Longest Palindromic Substring",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/longest-palindromic-substring/"
     },
     {
      "id": "063",
      "title": "Palindromic Substrings",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/palindromic-substrings/"
     },
     {
      "id": "064",
      "title": "Decode Ways",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/decode-ways/"
     },
     {
      "id": "065",
      "title": "Coin Change",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/coin-change/"
     },
     {
      "id": "066",
      "title": "Maximum Product Subarray",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/maximum-product-subarray/"
     },
     {
      "id": "067",
      "title": "Word Break",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/word-break/"
     },
     {
      "id": "068",
      "title": "Longest Increasing Subsequence",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/longest-increasing-subsequence/"
     }
    ]
   },
   {
-   "id": "dp-2d",
    "name": "2-D Dynamic Programming",
    "problems": [
     {
      "id": "069",
      "title": "Unique Paths",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/unique-paths/"
     },
     {
      "id": "070",
      "title": "Longest Common Subsequence",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/longest-common-subsequence/"
     }
    ]
   },
   {
-   "id": "greedy",
    "name": "Greedy",
    "problems": [
     {
      "id": "071",
      "title": "Maximum Subarray",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/maximum-subarray/"
     },
     {
      "id": "072",
      "title": "Jump Game",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/jump-game/"
     }
    ]
   },
   {
-   "id": "intervals",
    "name": "Intervals",
    "problems": [
     {
      "id": "073",
      "title": "Insert Interval",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/insert-interval/"
     },
     {
      "id": "074",
      "title": "Merge Intervals",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/merge-intervals/"
     },
     {
      "id": "075",
      "title": "Non-overlapping Intervals",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/non-overlapping-intervals/"
     }
    ]
   },
   {
-   "id": "math-geometry",
    "name": "Math & Geometry",
    "problems": [
     {
      "id": "076",
      "title": "Rotate Image",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/rotate-image/"
     },
     {
      "id": "077",
      "title": "Spiral Matrix",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/spiral-matrix/"
     },
     {
      "id": "078",
      "title": "Set Matrix Zeroes",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/set-matrix-zeroes/"
     }
    ]
   },
   {
-   "id": "bits",
    "name": "Bit Manipulation",
    "problems": [
     {
      "id": "079",
      "title": "Number of 1 Bits",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/number-of-1-bits/"
     },
     {
      "id": "080",
      "title": "Counting Bits",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/counting-bits/"
     },
     {
      "id": "081",
      "title": "Reverse Bits",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/reverse-bits/"
     },
     {
      "id": "082",
      "title": "Missing Number",
-     "difficulty": "easy",
      "status": "new",
      "url": "https://leetcode.com/problems/missing-number/"
     },
     {
      "id": "083",
      "title": "Sum of Two Integers",
-     "difficulty": "medium",
      "status": "new",
      "url": "https://leetcode.com/problems/sum-of-two-integers/"
+    }
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "name": "Python foundations",
+   "items": [
+    {
+     "id": "A01",
+     "title": "Values, types, variables, f-strings",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A02",
+     "title": "Conditionals and loops",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A03",
+     "title": "Functions, scope, default args",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A04",
+     "title": "Strings and slicing",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A05",
+     "title": "Lists, tuples, iteration patterns",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A06",
+     "title": "Dicts and sets",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A07",
+     "title": "Files, with-blocks, exceptions",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A08",
+     "title": "Classes and dataclasses",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A09",
+     "title": "Modules, packages, virtual environments",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A10",
+     "title": "Testing with pytest, reading a traceback",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A11",
+     "title": "Type hints, iterators, generators, comprehensions",
+     "status": "new",
+     "kind": "chapter"
+    },
+    {
+     "id": "A12",
+     "title": "Big-O in plain words, the standard library you'll use",
+     "status": "new",
+     "kind": "chapter"
+    }
+   ]
+  },
+  {
+   "name": "GenAI engineering",
+   "items": [
+    {
+     "id": "C1",
+     "title": "First LLM call",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "C2",
+     "title": "Prompt in a workflow",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "C3",
+     "title": "MCP server with a protected tool",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "C4",
+     "title": "Agent loop, then a framework",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "C5",
+     "title": "Document processing and RAG",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "C6",
+     "title": "Meeting summarizer, then the gecko pipeline",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "C7",
+     "title": "AI dev accelerators write-up",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "C8",
+     "title": "AWS deployment",
+     "status": "new",
+     "kind": "lab"
+    }
+   ]
+  },
+  {
+   "name": "Autonomy",
+   "items": [
+    {
+     "id": "D1",
+     "title": "State machines: a mission as tasks",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "D2",
+     "title": "Path planning: BFS then A*",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "D3",
+     "title": "PID controller in simulation",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "D4",
+     "title": "Perception basics with OpenCV",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "D5",
+     "title": "A tiny human-machine interface",
+     "status": "new",
+     "kind": "lab"
     }
    ]
   }

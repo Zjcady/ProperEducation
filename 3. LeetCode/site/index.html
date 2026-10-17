@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>LeetCode Coach</title>
+<title>Study Coach</title>
 <style>
   :root {
     --bg: #f6f7f9; --card: #ffffff; --text: #16181d; --muted: #6b7280; --line: #e3e6ea;
@@ -76,6 +76,22 @@
   footer { color: var(--muted); font-size: .8rem; text-align: center; margin-top: 18px; }
   .rating { background: var(--bg); border-radius: 10px; padding: 10px 14px; font-size: .92rem; margin-top: 10px; }
   .rating b { display: inline-block; width: 1.2em; }
+  .block-label { color: var(--muted); font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 6px 2px; }
+  .block-label b { color: var(--text); }
+  .floor { background: var(--accent-soft); border-radius: 10px; padding: 10px 14px; font-size: .92rem; margin-bottom: 14px; }
+  .counted { background: color-mix(in srgb, var(--mastered) 14%, transparent); border-radius: 10px; padding: 10px 14px; font-size: .92rem; margin-bottom: 14px; }
+  .quiz .q { padding: 10px 0; border-top: 1px solid var(--line); }
+  .quiz .q:first-child { border-top: 0; }
+  .quiz .q p { margin: 0 0 8px; font-weight: 600; }
+  .quiz button { display: block; width: 100%; text-align: left; margin: 4px 0; padding: 10px 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit; min-height: 44px; cursor: pointer; }
+  .quiz button.right { border-color: var(--mastered); } .quiz button.wrong { border-color: var(--hard); }
+  .quiz input { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit; min-height: 44px; }
+  .quiz .why { color: var(--muted); font-size: .9rem; margin-top: 6px; }
+  .quiz .result { margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: var(--bg); font-weight: 600; }
+  .quiz .result code { font-weight: 400; }
+  .cell.in_progress { background: var(--learning); } .cell.done { background: var(--mastered); } .cell.skipped { background: var(--line); }
+  .cell.lab { border-radius: 50%; }
 </style>
 </head>
 <body>
@@ -126,34 +142,33 @@ function md(src){
 }
 
 // --- page
-const KIND_LABEL = { new: "New problem", review: "Review · re-solve from blank", continue: "In progress" };
+const KIND_LABEL = { new: "New problem", review: "Review · re-solve from blank", continue: "In progress",
+                     build: "Build", checks: "Checks review · 5 min" };
 
 function minutesSince(iso){ return iso ? Math.floor((Date.now() - new Date(iso).getTime())/60000) : null; }
+function stripHead(mdText){ return mdText.replace(/^# .*\n/, "").replace(/^Pattern:.*\n/m,"").replace(/^LeetCode:.*\n/m,""); }
+function split(mdText, marker){ const i = mdText.indexOf(marker); return i < 0 ? [mdText, ""] : [mdText.slice(0,i), mdText.slice(i)]; }
 
 function problemCard(p, d){
-  const topMd = p.problem_md.split(/\n## Hints/)[0];
-  const hintsAndAfter = p.problem_md.includes("\n## Hints") ? "## Hints" + p.problem_md.split(/\n## Hints/)[1] : "";
-  const explainIdx = hintsAndAfter.indexOf("\n## Explain it back");
-  const hintsMd = explainIdx >= 0 ? hintsAndAfter.slice(0, explainIdx) : hintsAndAfter;
-  const explainMd = explainIdx >= 0 ? hintsAndAfter.slice(explainIdx) : "";
+  const [top, rest] = split(p.problem_md, "\n## Hints");
+  const [hintsMd, explainMd] = split(rest, "\n## Explain it back");
   const elapsed = minutesSince(p.started_at);
   return `
   <section class="card">
     <span class="kind ${p.kind}">${KIND_LABEL[p.kind]}</span>
     <h2>${p.id} · ${esc(p.title)}</h2>
     <div class="meta">
-      <span class="diff ${p.difficulty}">${p.difficulty}</span>
-      <span>${esc(p.pattern)}</span>
+      <span class="diff ${p.difficulty}">${p.difficulty}</span><span>${esc(p.pattern)}</span>
       ${p.kind === "review" ? `<span>last rated ${p.state.last_rating} on ${p.state.last_done}</span>` : ""}
-      ${elapsed !== null ? `<span>${elapsed} min on the clock${elapsed >= d.timebox_minutes ? " · past the bell, wrap up" : ""}</span>` : ""}
+      ${elapsed !== null ? `<span>${elapsed} min on the clock${elapsed >= p.bell ? " · past the bell, wrap up" : ""}</span>` : ""}
     </div>
     <div class="actions">
       <a class="btn" href="${p.url}" target="_blank" rel="noopener">Open on LeetCode</a>
       <a class="btn ghost" href="https://claude.ai/code" target="_blank" rel="noopener">Solve with Claude</a>
     </div>
-    ${p.scaffolded ? "" : `<p class="hint-warning">This problem's folder hasn't been filled in yet. Open a Claude session and say "leetcode"; it will scaffold it first.</p>`}
+    ${p.scaffolded ? "" : `<p class="hint-warning">Folder not filled in yet. Open a Claude session and say "leetcode"; it scaffolds first.</p>`}
     <div class="ritual">
-      Set a <b>${d.timebox_minutes} minute</b> timer. Then, in a Claude session on the repo:
+      ${d.block_minutes} min timer, one more block allowed, hard stop at ${p.bell}. In a Claude session:
       <ol>
         <li><code>python3 coach.py start ${p.id}</code></li>
         <li>code in <code>problems/${p.id}-${p.slug}/solution.py</code></li>
@@ -162,40 +177,120 @@ function problemCard(p, d){
       </ol>
     </div>
     ${p.scaffolded ? `
-    <details open><summary>The problem</summary><div class="md">${md(topMd.replace(/^# .*\n/, "").replace(/^Pattern:.*\n/m,"").replace(/^LeetCode:.*\n/m,""))}</div></details>
+    <details open><summary>The problem</summary><div class="md">${md(stripHead(top))}</div></details>
     <details><summary>Pattern: ${esc(p.pattern)}</summary><div class="md">${md(p.pattern_md)}</div></details>
-    <details><summary>Hints</summary>
-      <p class="hint-warning">Open one at a time, only after 5 real minutes of being stuck.</p>
-      <div class="md">${md(hintsMd.replace(/^## Hints.*\n/, ""))}</div></details>
+    <details><summary>Hints</summary><p class="hint-warning">Open one at a time, only after 5 real minutes of being stuck.</p>
+      <div class="md">${md(hintsMd.replace(/^\n?## Hints.*\n/, ""))}</div></details>
     <details><summary>Explain it back</summary><div class="md">${md(explainMd.replace(/^\n?## Explain it back.*\n/, ""))}</div></details>
     ` : `<details><summary>Pattern: ${esc(p.pattern)}</summary><div class="md">${md(p.pattern_md)}</div></details>`}
     <div class="rating">Rate it when done: <b>1</b> struggled or peeked · <b>2</b> solved with hints · <b>3</b> clean and explained back</div>
   </section>`;
 }
 
+function quizHtml(b){
+  if (!b.checks || !b.checks.length) return "";
+  const qs = b.checks.map((q, i) => {
+    const body = (q.type || "choice") === "choice"
+      ? q.options.map((o, j) => `<button data-q="${i}" data-j="${j}">${esc(o)}</button>`).join("")
+      : `<input data-q="${i}" placeholder="type the answer, then Enter" autocomplete="off" autocapitalize="off">`;
+    return `<div class="q" id="q-${b.id}-${i}"><p>${i+1}. ${inline(q.q)}</p>${body}<div class="why"></div></div>`;
+  }).join("");
+  return `<details><summary>Checks (${b.checks.length} quick questions)</summary>
+    <p class="hint-warning">Practice here any time. To make it count, tell Claude your score, or take it in a session.</p>
+    <div class="quiz" data-id="${b.id}">${qs}<div class="result" hidden></div></div></details>`;
+}
+
+function buildCard(b, d){
+  const elapsed = minutesSince(b.started_at);
+  const isChapter = b.item_kind === "chapter";
+  const stepTxt = b.steps > 1 ? ` · step ${b.step + 1} of ${b.steps}` : "";
+  const label = b.kind === "checks" ? KIND_LABEL.checks : (b.kind === "continue" ? "In progress" : (isChapter ? "Chapter" : "Lab"));
+  const [chalTop, chalHints] = split(b.challenge_md || "", "\n## Hints");
+  return `
+  <section class="card">
+    <span class="kind ${b.kind}">${label}</span>
+    <h2>${b.id} · ${esc(b.title)}</h2>
+    <div class="meta"><span>${esc(b.track)}</span><span>${stepTxt.replace(" · ","")}</span>
+      ${b.state.checks_score ? `<span>checks ${b.state.checks_score}</span>` : ""}
+      ${elapsed !== null ? `<span>${elapsed} min on the clock${elapsed >= b.bell ? " · past the bell" : ""}</span>` : ""}
+    </div>
+    ${b.scaffolded ? "" : `<p class="hint-warning">Not written yet. Open a Claude session and say "leetcode"; it fills this in first.</p>`}
+    ${b.kind === "checks" ? quizHtml(b) : isChapter ? `
+    <div class="ritual">${d.block_minutes} min timer. Read, checks, challenge. In a session:
+      <ol><li><code>python3 coach.py start ${b.id}</code></li><li><code>python3 coach.py checks ${b.id}</code></li>
+      <li>code in <code>${b.folder}/challenge.py</code>, then <code>python3 coach.py check ${b.id}</code></li>
+      <li><code>python3 coach.py done ${b.id}</code></li></ol></div>
+    ${b.scaffolded ? `<details open><summary>Read (5 min)</summary><div class="md">${md(b.read_md.replace(/^# .*\n/, ""))}</div></details>
+    ${quizHtml(b)}
+    <details><summary>Challenge</summary><div class="md">${md(chalTop.replace(/^# .*\n/, ""))}</div></details>
+    <details><summary>Challenge hints</summary><p class="hint-warning">One at a time, after 5 real minutes.</p><div class="md">${md(chalHints.replace(/^\n?## Hints.*\n/, ""))}</div></details>` : ""}
+    ` : `
+    <div class="ritual">${d.block_minutes} min timer. Follow the step in README.md. In a session: <code>python3 coach.py start ${b.id}</code>, build, <code>python3 coach.py done ${b.id}</code>.</div>
+    ${b.scaffolded ? `<details open><summary>Lab</summary><div class="md">${md(b.readme_md)}</div></details>` : ""}`}
+  </section>`;
+}
+
+function wireQuizzes(d){
+  document.querySelectorAll(".quiz").forEach(quiz => {
+    const id = quiz.dataset.id;
+    const block = d.plan.find(b => b.id === id && b.checks);
+    const answered = {};
+    const finish = () => {
+      if (Object.keys(answered).length < block.checks.length) return;
+      const score = Object.values(answered).filter(Boolean).length;
+      const r = quiz.querySelector(".result"); r.hidden = false;
+      r.innerHTML = `Score ${score}/${block.checks.length}. To record it, tell Claude: <code>checks ${id} ${score}/${block.checks.length}</code>`;
+      try { localStorage.setItem("checks-"+id, JSON.stringify({score, total: block.checks.length, at: new Date().toISOString()})); } catch (e) {}
+    };
+    const show = (i, ok) => { const q = quiz.querySelector(`#q-${id}-${i} .why`); const c = block.checks[i];
+      const ans = (c.type||"choice")==="choice" ? c.options[c.answer] : c.answers[0];
+      q.textContent = (ok ? "Right. " : `Not quite. Answer: ${ans}. `) + (c.why || ""); };
+    quiz.querySelectorAll("button").forEach(btn => btn.addEventListener("click", () => {
+      const i = +btn.dataset.q; if (i in answered) return;
+      const ok = +btn.dataset.j === block.checks[i].answer; answered[i] = ok;
+      btn.classList.add(ok ? "right" : "wrong");
+      if (!ok) quiz.querySelector(`#q-${id}-${i} button:nth-of-type(${block.checks[i].answer+1})`).classList.add("right");
+      show(i, ok); finish();
+    }));
+    quiz.querySelectorAll("input").forEach(inp => inp.addEventListener("keydown", e => {
+      if (e.key !== "Enter") return; const i = +inp.dataset.q; if (i in answered) return;
+      const ok = block.checks[i].answers.map(a => a.toLowerCase().trim()).includes(inp.value.toLowerCase().trim());
+      answered[i] = ok; inp.classList.add(ok ? "right" : "wrong"); inp.disabled = true; show(i, ok); finish();
+    }));
+  });
+}
+
 function render(d){
   const app = document.getElementById("app");
-  let html = `<header><h1>LeetCode Coach</h1><span class="streak">${d.today} · streak ${d.streak}</span></header>`;
+  let html = `<header><h1>Coach</h1><span class="streak">${d.today} · streak ${d.streak}</span></header>`;
+  if (d.counted_today) html += `<div class="counted">Today already counts. Everything below is bonus. Stopping is a fine choice.</div>`;
   if (!d.plan.length){
-    html += `<section class="card done-state"><h2>Done for today.</h2><p class="dim">Nothing due and today's new problem is finished. Tomorrow has its own.</p></section>`;
+    html += `<section class="card done-state"><h2>Done for today.</h2><p class="dim">Nothing left. Tomorrow has its own.</p></section>`;
   } else {
-    if (d.plan.length > 1) html += `<p class="hint-warning">${d.plan.length} things today, in this order. Reviews first.</p>`;
-    html += d.plan.map(p => problemCard(p, d)).join("");
+    d.plan.forEach((b, i) => {
+      const tag = (i === 0 && !d.counted_today) ? "<b>counts for today</b>" : "bonus";
+      const mins = b.kind === "checks" ? 5 : (b.type === "problem" ? `${d.block_minutes}, up to ${b.bell}` : d.block_minutes);
+      html += `<p class="block-label">Block ${i+1} · ${mins} min · ${tag}</p>`;
+      html += b.type === "problem" ? problemCard(b, d) : buildCard(b, d);
+    });
   }
+  html += `<div class="floor"><b>Bad day?</b> ${esc(d.floor)} Five minutes still counts.</div>`;
   html += `<section class="card">
-    <div class="counts">
-      ${["new","learning","review","mastered"].map(k=>`<div class="count"><b>${d.counts[k]}</b><span>${k}</span></div>`).join("")}
-    </div>
+    <div class="counts">${["new","learning","review","mastered"].map(k=>`<div class="count"><b>${d.counts[k]}</b><span>${k}</span></div>`).join("")}</div>
     <div class="grid">${d.patterns.map(p=>`<div class="pat"><span>${esc(p.name)}</span><div class="cells">${p.problems.map(q=>`<a class="cell ${q.status}" href="${q.url}" title="${q.id} ${esc(q.title)} (${q.status})" target="_blank" rel="noopener"></a>`).join("")}</div></div>`).join("")}</div>
     <div class="legend"><span>not started</span><span class="l">learning</span><span class="r">in review rotation</span><span class="m">mastered</span></div>
   </section>`;
-  if (d.upcoming.length){
-    html += `<section class="card"><details><summary>Upcoming reviews</summary><ul class="list">${d.upcoming.map(u=>`<li><span>${u.id} ${esc(u.title)}</span><span class="dim">${u.due}</span></li>`).join("")}</ul></details>`;
-    if (d.recent.length) html += `<details><summary>Recent</summary><ul class="list">${d.recent.map(r=>`<li><span>${r.day} · ${esc(r.title)}</span><span class="dim">${r.kind} · rated ${r.rating}${r.minutes!=null?" · "+r.minutes+" min":""}</span></li>`).join("")}</ul></details>`;
+  html += `<section class="card"><div class="grid">${d.tracks.map(t=>`<div class="pat"><span>${esc(t.name)}</span><div class="cells">${t.items.map(q=>`<span class="cell ${q.status} ${q.kind}" title="${q.id} ${esc(q.title)} (${q.status})"></span>`).join("")}</div></div>`).join("")}</div>
+    <div class="legend"><span>not started</span><span class="l">in progress</span><span class="m">done</span><span>&#9675; labs are round</span></div></section>`;
+  if (d.upcoming.length || d.recent.length){
+    html += `<section class="card">`;
+    if (d.upcoming.length) html += `<details><summary>Upcoming</summary><ul class="list">${d.upcoming.map(u=>`<li><span>${u.id} ${esc(u.title)} · ${u.what}</span><span class="dim">${u.due}</span></li>`).join("")}</ul></details>`;
+    if (d.recent.length) html += `<details><summary>Recent</summary><ul class="list">${d.recent.map(r=>`<li><span>${r.day} · ${esc(r.title||"")}</span><span class="dim">${r.kind}${r.rating?" · rated "+r.rating:""}${r.score!=null?" · "+r.score+"/"+r.total:""}${r.minutes!=null?" · "+r.minutes+" min":""}</span></li>`).join("")}</ul></details>`;
     html += `</section>`;
   }
   html += `<footer>as of ${d.generated_at.replace("T"," ")} · regenerates each morning and after each session</footer>`;
   app.innerHTML = html;
+  wireQuizzes(d);
 }
 
 fetch("data.json", {cache: "no-store"}).then(r => r.json()).then(render).catch(e => {

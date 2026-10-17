@@ -1,0 +1,7 @@
+{
+ "_note": "{{ID}} checks. Claude fills in 5 questions. type 'choice' uses options + answer (0-based index). type 'text' uses answers (list of accepted strings, case-insensitive). 'why' is shown after answering either way.",
+ "questions": [
+  {"q": "{{Claude: question}}", "type": "choice", "options": ["a", "b", "c", "d"], "answer": 0, "why": ""},
+  {"q": "{{Claude: question}}", "type": "text", "answers": ["x"], "why": ""}
+ ]
+}
