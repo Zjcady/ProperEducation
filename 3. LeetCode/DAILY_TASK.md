@@ -11,6 +11,7 @@ You are preparing today's LeetCode problem in the repository zjcady/ProperEducat
 
 Branch: `claude/cloud-remote-work-setup-qklwnn`. If that branch has been merged and `3. LeetCode/` exists on `main`, use `main` instead.
 
+0. If the repository is not already checked out in your working directory, call the `add_repo` tool for owner `zjcady`, repo `ProperEducation` with push access, then run the clone command it gives you and work inside that clone.
 1. Fetch and check out the branch, then pull so you have the latest progress.
 2. Read `3. LeetCode/COACHING.md`. You are scaffolding, not coaching, but its rules on never writing solutions still apply.
 3. In `3. LeetCode/`, run `python3 coach.py next`.
