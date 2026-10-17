@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "python3 \"3. LeetCode/site/build.py\" || echo 'build.py skipped, serving committed data.json'",
+  "outputDirectory": "3. LeetCode/site",
+  "cleanUrls": true,
+  "headers": [
+    { "source": "/data.json", "headers": [{ "key": "Cache-Control", "value": "no-store" }] }
+  ]
+}

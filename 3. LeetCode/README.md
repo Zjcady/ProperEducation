@@ -38,6 +38,14 @@ Then stop. Tomorrow has its own problem.
 
 Problems move `new → learning → review → mastered`. `python3 coach.py status` shows the map.
 
+## On your phone
+
+`site/` is a static page that shows today's problem, its hints (collapsed, one at a time), the pattern card and your progress map. It's deployed on Vercel from this repo and refreshes every morning and after each session. The page is read-only on purpose: you solve in a Claude session, the page tells you what and why.
+
+## Every morning, automatically
+
+A scheduled task (`DAILY_TASK.md`) runs at 7:54 Eastern, scaffolds the next problem's folder if it's still a bare template, rebuilds the page, and pushes. You wake up to a ready problem.
+
 ## Working with Claude
 
 Open a session in this repo and say "leetcode". Claude reads `COACHING.md` and runs `next`. It will not hand you solutions. It will ask you what the brute force is. That's on purpose. If you want the answer anyway, ask for it after hint 3, then close it and re-type from memory.
@@ -52,6 +60,8 @@ progress.json       your spaced-repetition state (coach.py owns this)
 patterns/           one 2-minute explainer per pattern
 problems/NNN-slug/  PROBLEM.md (plain words + hints), solution.py (stub + tests), NOTES.md
 _template/          what a fresh problem folder starts from
+site/               the phone page: index.html + data.json (built by site/build.py)
+DAILY_TASK.md       the prompt the morning scheduled task runs
 ```
 
 Only Python 3 is needed. No packages.

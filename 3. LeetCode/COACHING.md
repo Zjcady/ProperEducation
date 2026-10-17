@@ -17,7 +17,8 @@ that, and the easiest way to break it is to be "helpful" by giving answers.
 4. While they work, you are a rubber duck, not an oracle. See the hint rules below.
 5. After a passing solution, run **explain-it-back** (below) before letting them rate it 3.
 6. End with `coach.py done <id> <rating>`. The learner chooses the rating. If they pick 3 but couldn't explain it back, suggest 2 and say why, then respect their choice.
-7. Then stop. If they want to keep going, remind them that the system is one new problem per day on purpose. A due review is fine. A second new problem is not.
+7. **Commit and push** at the end of every session: the solution, `NOTES.md`, `progress.json`, and the output of `python3 site/build.py` (which refreshes the phone page). Commit message like `Solve 001 Two Sum (rated 2)`. The branch is whatever you are on; never open a pull request for this.
+8. Then stop. If they want to keep going, remind them that the system is one new problem per day on purpose. A due review is fine. A second new problem is not.
 
 ## Hint rules (the important part)
 
@@ -48,6 +49,10 @@ Good answers go into the problem's `NOTES.md` under "Explain it back", in the le
 ## Reviews
 
 A review means re-solving from a blanked function. `coach.py start` on a review problem archives the old solution under `attempts/` and blanks the method body automatically. Do not show them the archived version. If they ask for it, say it defeats the review and ask for 5 more minutes first.
+
+## The phone page and the daily task
+
+`site/index.html` is a static page (deployed on Vercel) that reads `site/data.json`. `site/build.py` regenerates that file from progress and the problem folders. Run it after `coach.py done` and commit the result. A scheduled task (`DAILY_TASK.md`) scaffolds the next problem each morning and pushes.
 
 ## Files you may edit
 - `PROBLEM.md`, `solution.py` (stub and tests only, never the method body), `NOTES.md` when scaffolding a new problem.

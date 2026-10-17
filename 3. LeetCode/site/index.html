@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>LeetCode Coach</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --text: #16181d; --muted: #6b7280; --line: #e3e6ea;
+    --accent: #2563eb; --accent-soft: #e8efff;
+    --new: #cbd5e1; --learning: #f59e0b; --review: #3b82f6; --mastered: #16a34a;
+    --easy: #15803d; --medium: #b45309; --hard: #b91c1c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115; --card: #181b22; --text: #e6e8ee; --muted: #9aa1ad; --line: #272b34;
+      --accent: #7aa2ff; --accent-soft: #1c2740;
+      --new: #3a4150; --learning: #d9962b; --review: #5b8def; --mastered: #3fb562;
+      --easy: #4ade80; --medium: #fbbf24; --hard: #f87171;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 16px 16px calc(32px + env(safe-area-inset-bottom)); }
+  header { display: flex; justify-content: space-between; align-items: baseline; margin: 8px 0 16px; }
+  header h1 { font-size: 1.25rem; margin: 0; }
+  .streak { color: var(--muted); font-size: .95rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin-bottom: 14px; }
+  .kind { display: inline-block; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .kind.review { background: color-mix(in srgb, var(--review) 18%, transparent); color: var(--review); }
+  .kind.continue { background: color-mix(in srgb, var(--learning) 18%, transparent); color: var(--learning); }
+  h2 { font-size: 1.35rem; margin: 8px 0 2px; line-height: 1.25; }
+  .meta { color: var(--muted); font-size: .92rem; display: flex; gap: 10px; flex-wrap: wrap; }
+  .diff { font-weight: 600; text-transform: capitalize; }
+  .diff.easy { color: var(--easy); } .diff.medium { color: var(--medium); } .diff.hard { color: var(--hard); }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; }
+  .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; text-decoration: none; font-weight: 600;
+    background: var(--accent); color: #fff; min-height: 44px; line-height: 24px; }
+  .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+  .ritual { margin: 12px 0 0; padding: 12px 14px; background: var(--bg); border-radius: 10px; font-size: .95rem; }
+  .ritual code { font-size: .88rem; }
+  .ritual ol { margin: 6px 0 0 18px; padding: 0; } .ritual li { margin: 3px 0; }
+  details { border-top: 1px solid var(--line); padding: 10px 0; }
+  details > summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; min-height: 32px; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 1.3rem; }
+  details[open] > summary::after { content: "–"; }
+  .md h1 { font-size: 1.15rem; margin: 6px 0; } .md h2 { font-size: 1.02rem; margin: 16px 0 4px; }
+  .md p, .md ul, .md ol { margin: 6px 0; } .md ul, .md ol { padding-left: 22px; }
+  .md pre { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; overflow-x: auto; font-size: .86rem; line-height: 1.45; }
+  .md code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9em; background: var(--bg); padding: 1px 5px; border-radius: 4px; }
+  .md pre code { background: none; padding: 0; }
+  .md details { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin: 8px 0; }
+  .md details > summary { font-weight: 600; }
+  .md a { color: var(--accent); }
+  .md table { border-collapse: collapse; font-size: .9rem; } .md td, .md th { border: 1px solid var(--line); padding: 4px 8px; }
+  .hint-warning { color: var(--muted); font-size: .88rem; margin: 4px 0 8px; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .pat { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: center; font-size: .92rem; }
+  .cells { display: flex; gap: 4px; flex-wrap: wrap; }
+  .cell { width: 16px; height: 16px; border-radius: 4px; background: var(--new); }
+  .cell.learning { background: var(--learning); } .cell.review { background: var(--review); } .cell.mastered { background: var(--mastered); }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: .85rem; margin-top: 10px; }
+  .legend span::before { content: ""; display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; background: var(--new); }
+  .legend .l::before { background: var(--learning); } .legend .r::before { background: var(--review); } .legend .m::before { background: var(--mastered); }
+  .counts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+  .count { text-align: center; padding: 10px 4px; border-radius: 10px; background: var(--bg); }
+  .count b { display: block; font-size: 1.4rem; line-height: 1.1; } .count span { color: var(--muted); font-size: .78rem; }
+  .list { margin: 0; padding: 0; list-style: none; } .list li { display: flex; justify-content: space-between; padding: 7px 0; border-top: 1px solid var(--line); font-size: .95rem; }
+  .list li:first-child { border-top: 0; } .list .dim { color: var(--muted); }
+  .done-state { text-align: center; padding: 28px 10px; }
+  .done-state h2 { font-size: 1.4rem; }
+  footer { color: var(--muted); font-size: .8rem; text-align: center; margin-top: 18px; }
+  .rating { background: var(--bg); border-radius: 10px; padding: 10px 14px; font-size: .92rem; margin-top: 10px; }
+  .rating b { display: inline-block; width: 1.2em; }
+</style>
+</head>
+<body>
+<main id="app"><div class="card">Loading…</div></main>
+<script>
+// --- a tiny markdown renderer: headings, fences, inline code, bold/italic, links, lists, tables, raw <details> blocks.
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function inline(s){
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g, (_,c)=>"<code>"+c+"</code>");
+  s = s.replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+  s = s.replace(/(^|[\s(])_([^_]+)_(?=[\s).,;:!?]|$)/g, "$1<i>$2</i>");
+  s = s.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  s = s.replace(/(^|\s)(https?:\/\/[^\s<]+)/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+  s = s.replace(/→/g, "&rarr;");
+  return s;
+}
+function md(src){
+  const lines = src.replace(/\r/g,"").split("\n");
+  let out = [], i = 0, list = null, para = [];
+  const flushP = () => { if (para.length){ out.push("<p>"+inline(para.join(" "))+"</p>"); para = []; } };
+  const closeList = () => { if (list){ out.push("</"+list+">"); list = null; } };
+  while (i < lines.length){
+    const l = lines[i];
+    if (/^```/.test(l)){ flushP(); closeList(); let buf=[]; i++;
+      while (i<lines.length && !/^```/.test(lines[i])) buf.push(lines[i++]);
+      out.push("<pre><code>"+esc(buf.join("\n"))+"</code></pre>"); i++; continue; }
+    if (/^<details>/.test(l.trim())){ flushP(); closeList();
+      const sm = (lines[i+1]||"").match(/<summary>(.*?)<\/summary>/);
+      let buf=[]; i += sm ? 2 : 1;
+      while (i<lines.length && !/^<\/details>/.test(lines[i].trim())) buf.push(lines[i++]);
+      out.push("<details><summary>"+inline(sm?sm[1]:"More")+"</summary><div>"+md(buf.join("\n"))+"</div></details>"); i++; continue; }
+    const h = l.match(/^(#{1,6})\s+(.*)/);
+    if (h){ flushP(); closeList(); out.push("<h"+h[1].length+">"+inline(h[2])+"</h"+h[1].length+">"); i++; continue; }
+    if (/^\|/.test(l)){ flushP(); closeList(); let rows=[];
+      while (i<lines.length && /^\|/.test(lines[i])) rows.push(lines[i++]);
+      rows = rows.filter(r=>!/^\|[\s:-|]+\|$/.test(r));
+      out.push("<table>"+rows.map((r,ri)=>"<tr>"+r.replace(/^\||\|$/g,"").split("|").map(c=>(ri?"<td>":"<th>")+inline(c.trim())+(ri?"</td>":"</th>")).join("")+"</tr>").join("")+"</table>"); continue; }
+    const li = l.match(/^\s*([-*]|\d+\.)\s+(.*)/);
+    if (li){ flushP(); const kind = /\d/.test(li[1]) ? "ol" : "ul";
+      if (list !== kind){ closeList(); list = kind; out.push("<"+kind+">"); }
+      out.push("<li>"+inline(li[2])+"</li>"); i++; continue; }
+    if (!l.trim()){ flushP(); closeList(); i++; continue; }
+    para.push(l.trim()); i++;
+  }
+  flushP(); closeList();
+  return out.join("\n");
+}
+
+// --- page
+const KIND_LABEL = { new: "New problem", review: "Review · re-solve from blank", continue: "In progress" };
+
+function minutesSince(iso){ return iso ? Math.floor((Date.now() - new Date(iso).getTime())/60000) : null; }
+
+function problemCard(p, d){
+  const topMd = p.problem_md.split(/\n## Hints/)[0];
+  const hintsAndAfter = p.problem_md.includes("\n## Hints") ? "## Hints" + p.problem_md.split(/\n## Hints/)[1] : "";
+  const explainIdx = hintsAndAfter.indexOf("\n## Explain it back");
+  const hintsMd = explainIdx >= 0 ? hintsAndAfter.slice(0, explainIdx) : hintsAndAfter;
+  const explainMd = explainIdx >= 0 ? hintsAndAfter.slice(explainIdx) : "";
+  const elapsed = minutesSince(p.started_at);
+  return `
+  <section class="card">
+    <span class="kind ${p.kind}">${KIND_LABEL[p.kind]}</span>
+    <h2>${p.id} · ${esc(p.title)}</h2>
+    <div class="meta">
+      <span class="diff ${p.difficulty}">${p.difficulty}</span>
+      <span>${esc(p.pattern)}</span>
+      ${p.kind === "review" ? `<span>last rated ${p.state.last_rating} on ${p.state.last_done}</span>` : ""}
+      ${elapsed !== null ? `<span>${elapsed} min on the clock${elapsed >= d.timebox_minutes ? " · past the bell, wrap up" : ""}</span>` : ""}
+    </div>
+    <div class="actions">
+      <a class="btn" href="${p.url}" target="_blank" rel="noopener">Open on LeetCode</a>
+      <a class="btn ghost" href="https://claude.ai/code" target="_blank" rel="noopener">Solve with Claude</a>
+    </div>
+    ${p.scaffolded ? "" : `<p class="hint-warning">This problem's folder hasn't been filled in yet. Open a Claude session and say "leetcode"; it will scaffold it first.</p>`}
+    <div class="ritual">
+      Set a <b>${d.timebox_minutes} minute</b> timer. Then, in a Claude session on the repo:
+      <ol>
+        <li><code>python3 coach.py start ${p.id}</code></li>
+        <li>code in <code>problems/${p.id}-${p.slug}/solution.py</code></li>
+        <li><code>python3 coach.py check ${p.id}</code></li>
+        <li><code>python3 coach.py done ${p.id} &lt;1|2|3&gt;</code></li>
+      </ol>
+    </div>
+    ${p.scaffolded ? `
+    <details open><summary>The problem</summary><div class="md">${md(topMd.replace(/^# .*\n/, "").replace(/^Pattern:.*\n/m,"").replace(/^LeetCode:.*\n/m,""))}</div></details>
+    <details><summary>Pattern: ${esc(p.pattern)}</summary><div class="md">${md(p.pattern_md)}</div></details>
+    <details><summary>Hints</summary>
+      <p class="hint-warning">Open one at a time, only after 5 real minutes of being stuck.</p>
+      <div class="md">${md(hintsMd.replace(/^## Hints.*\n/, ""))}</div></details>
+    <details><summary>Explain it back</summary><div class="md">${md(explainMd.replace(/^\n?## Explain it back.*\n/, ""))}</div></details>
+    ` : `<details><summary>Pattern: ${esc(p.pattern)}</summary><div class="md">${md(p.pattern_md)}</div></details>`}
+    <div class="rating">Rate it when done: <b>1</b> struggled or peeked · <b>2</b> solved with hints · <b>3</b> clean and explained back</div>
+  </section>`;
+}
+
+function render(d){
+  const app = document.getElementById("app");
+  let html = `<header><h1>LeetCode Coach</h1><span class="streak">${d.today} · streak ${d.streak}</span></header>`;
+  if (!d.plan.length){
+    html += `<section class="card done-state"><h2>Done for today.</h2><p class="dim">Nothing due and today's new problem is finished. Tomorrow has its own.</p></section>`;
+  } else {
+    if (d.plan.length > 1) html += `<p class="hint-warning">${d.plan.length} things today, in this order. Reviews first.</p>`;
+    html += d.plan.map(p => problemCard(p, d)).join("");
+  }
+  html += `<section class="card">
+    <div class="counts">
+      ${["new","learning","review","mastered"].map(k=>`<div class="count"><b>${d.counts[k]}</b><span>${k}</span></div>`).join("")}
+    </div>
+    <div class="grid">${d.patterns.map(p=>`<div class="pat"><span>${esc(p.name)}</span><div class="cells">${p.problems.map(q=>`<a class="cell ${q.status}" href="${q.url}" title="${q.id} ${esc(q.title)} (${q.status})" target="_blank" rel="noopener"></a>`).join("")}</div></div>`).join("")}</div>
+    <div class="legend"><span>not started</span><span class="l">learning</span><span class="r">in review rotation</span><span class="m">mastered</span></div>
+  </section>`;
+  if (d.upcoming.length){
+    html += `<section class="card"><details><summary>Upcoming reviews</summary><ul class="list">${d.upcoming.map(u=>`<li><span>${u.id} ${esc(u.title)}</span><span class="dim">${u.due}</span></li>`).join("")}</ul></details>`;
+    if (d.recent.length) html += `<details><summary>Recent</summary><ul class="list">${d.recent.map(r=>`<li><span>${r.day} · ${esc(r.title)}</span><span class="dim">${r.kind} · rated ${r.rating}${r.minutes!=null?" · "+r.minutes+" min":""}</span></li>`).join("")}</ul></details>`;
+    html += `</section>`;
+  }
+  html += `<footer>as of ${d.generated_at.replace("T"," ")} · regenerates each morning and after each session</footer>`;
+  app.innerHTML = html;
+}
+
+fetch("data.json", {cache: "no-store"}).then(r => r.json()).then(render).catch(e => {
+  document.getElementById("app").innerHTML = `<div class="card">Couldn't load data.json. ${esc(String(e))}</div>`;
+});
+</script>
+</body>
+</html>
