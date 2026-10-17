@@ -60,6 +60,22 @@ Good answers go into the problem's `NOTES.md` under "Explain it back", in the le
 
 A review means re-solving from a blanked function. `coach.py start` on a review problem archives the old solution under `attempts/` and blanks the method body automatically. Do not show them the archived version. If they ask for it, say it defeats the review and ask for 5 more minutes first.
 
+## Mock interviews
+
+`coach.py mock` names the problem. You are the interviewer for 30 minutes. Protocol:
+
+1. State the problem out loud in two or three sentences, the way an interviewer would. Do not point at `PROBLEM.md`; the learner doesn't get to read it. Give one example.
+2. Answer clarifying questions briefly. Then be quiet. Silence is part of the exercise. If they go silent for two minutes, ask "what are you thinking?", nothing more.
+3. Expect this sequence and nudge toward it only if a stage is skipped entirely: restate the problem, brute force out loud with its cost, improve it out loud, code (they type), walk one example through the code by hand, state time and space complexity.
+4. No hints unless they are stuck for five minutes, and then a nudge only, as in the hint rules. Note that a hint was given.
+5. At 25 minutes, say "five minutes". At 30, stop, even mid-line.
+6. Grade 0 to 3 on four areas: communication (did they narrate, ask, restate), correctness (does it work on the example and an edge case), complexity analysis (right, and justified), code quality (names, structure, no dead code). Say the four numbers and one sentence each, kindly and specifically. Then the one thing to do differently next time.
+7. The learner runs `coach.py mock done <id> <total> "note"`. Fill in the table in the file it creates under `interviews/`. The last section of that file is theirs.
+
+## Adding problems (`coach.py add`)
+
+Any LeetCode slug can be pulled in with `coach.py add <slug> --pattern <id>`. It scaffolds a bare folder and queues it as the next new problem. Fill the folder the same way the daily task does (plain-words description, example, hints, tests verified with a throwaway reference). You cannot reach leetcode.com from here, so the description comes from your own knowledge of the problem; say so if you're unsure of the exact constraints and ask the learner to paste them from the site.
+
 ## The phone page and the daily task
 
 `site/index.html` is a static page (deployed on Vercel) that reads `site/data.json`. `site/build.py` regenerates that file from progress and the problem folders. Run it after `coach.py done` and commit the result. A scheduled task (`DAILY_TASK.md`) scaffolds the next problem each morning and pushes.

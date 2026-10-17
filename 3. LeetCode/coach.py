@@ -28,8 +28,12 @@ Commands:
   python3 coach.py touch [note]     "I did 5 minutes." Counts for today.
   python3 coach.py more             unlock one extra review or build step today (hyperfocus)
   python3 coach.py skip <id>        mark a chapter as already known (placement)
+  python3 coach.py add <slug> [--pattern <id>] [--difficulty easy|medium|hard] [--title "..."]
+                                    pull any LeetCode problem into the queue (tier 4, next up)
+  python3 coach.py mock             this week's mock interview (Saturdays, once you've solved 5)
+  python3 coach.py mock done <id> <score 0-12> [note]
   python3 coach.py status           streak, maps, what is due
-  python3 coach.py list [track]     the curriculum
+  python3 coach.py list [track|tier N]   the curriculum
 """
 from __future__ import annotations
 
@@ -56,6 +60,10 @@ MAX_REVIEWS_PER_DAY = 2
 MAX_NEW_PER_DAY = 1
 MAX_BUILD_STEPS_PER_DAY = 1
 BONUS_CAP = 2                     # `more` can be used this many times a day
+MOCK_WEEKDAY = 5                  # Saturday. One mock interview a week, once 5 problems are solved.
+MOCK_MIN_SOLVED = 5
+MOCK_MINUTES = 30
+INTERVIEWS = ROOT / "interviews"
 
 # Spaced repetition for problems. Rating -> interval (days).
 FIRST_INTERVAL = 3
@@ -95,6 +103,7 @@ def progress():
     data.setdefault("streak", {"count": 0, "last_day": None})
     data.setdefault("history", [])
     data.setdefault("bonus", {"day": None, "count": 0})
+    data.setdefault("queue", [])
     return data
 
 
@@ -224,10 +233,36 @@ def problem_in_progress(prog) -> dict | None:
 
 
 def next_new_problem(prog) -> dict | None:
-    for p in curriculum()["problems"]:
+    by_id = {p["id"]: p for p in curriculum()["problems"]}
+    for pid in prog.get("queue", []):                 # things you pulled in with `add` go first
+        if pid in by_id and pid not in prog["problems"]:
+            return by_id[pid]
+    for p in curriculum()["problems"]:                # then tier 1, then 2, then 3, in order
         if p["id"] not in prog["problems"]:
             return p
     return None
+
+
+def solved_problems(prog) -> list[dict]:
+    return [p for p in curriculum()["problems"] if prog["problems"].get(p["id"], {}).get("reps", 0) > 0]
+
+
+def mock_pick(prog) -> dict | None:
+    """Deterministic per day so `next` and `mock` agree."""
+    pool = solved_problems(prog)
+    if len(pool) < MOCK_MIN_SOLVED:
+        return None
+    return random.Random(iso(today())).choice(pool)
+
+
+def mock_done_this_week(prog) -> bool:
+    year, week, _ = today().isocalendar()
+    for h in prog["history"]:
+        if h["kind"] == "mock" and h.get("event") == "done":
+            y, w, _ = parse_day(h["day"]).isocalendar()
+            if (y, w) == (year, week):
+                return True
+    return False
 
 
 def new_started_today(prog) -> int:
@@ -298,6 +333,12 @@ def plan(prog) -> list[dict]:
     # Checks reviews (the 5-minute items)
     for b in checks_due(prog):
         items.append({"kind": "checks", "type": "build", "item": b})
+
+    # Weekly mock interview
+    if today().weekday() == MOCK_WEEKDAY and not mock_done_this_week(prog):
+        pick = mock_pick(prog)
+        if pick:
+            items.append({"kind": "mock", "type": "mock", "item": pick})
     return items
 
 
@@ -321,6 +362,11 @@ def timer_text(started_iso: str, bell: int) -> str:
 
 def describe(entry: dict, prog) -> None:
     kind, item = entry["kind"], entry["item"]
+    if entry["type"] == "mock":
+        print(f"[MOCK INTERVIEW · {MOCK_MINUTES} min]  {item['id']}  {item['title']}  ({item['difficulty']})")
+        print(f"  Claude plays interviewer. You talk the whole time. Rubric in COACHING.md.")
+        print(f"  run:  python3 coach.py mock")
+        return
     if entry["type"] == "problem":
         st = state_of(item, prog)
         label = {"continue": "IN PROGRESS", "review": "REVIEW (re-solve from blank)", "new": "NEW"}[kind]
@@ -365,6 +411,7 @@ def cmd_next(_args) -> None:
     for i, entry in enumerate(items, 1):
         tag = "counts for today" if (i == 1 and not counted_today(prog)) else "bonus"
         mins = (f"{BLOCK_MINUTES}, up to {LEETCODE_BELL_MINUTES}" if entry["type"] == "problem"
+                else str(MOCK_MINUTES) if entry["type"] == "mock"
                 else "5" if entry["kind"] == "checks" else str(BLOCK_MINUTES))
         print(f"Block {i} · {mins} min · {tag}")
         describe(entry, prog)
@@ -451,6 +498,10 @@ def cmd_start(args) -> None:
         print(f"Created problems/{folder.name}/ from the template.")
         print(f"Timer not started. Run `start {p['id']}` again once the folder is filled in.")
         return
+    if not is_scaffolded("problem", p):
+        print(f"problems/{folder.name}/ is still a bare template. Ask Claude to fill it in first")
+        print(f"(see COACHING.md). Timer not started.")
+        return
 
     if not first_time and not st.get("started_at"):
         if blank_solution(folder / "solution.py"):
@@ -463,6 +514,7 @@ def cmd_start(args) -> None:
         if first_time:
             st["status"] = "learning"
             prog["history"].append({"day": iso(today()), "kind": "new", "id": p["id"], "event": "start"})
+            prog["queue"] = [q for q in prog.get("queue", []) if q != p["id"]]
         save_json(PROGRESS, prog)
 
     banner(f"Started {p['id']} {p['title']}")
@@ -489,6 +541,9 @@ def start_build(b: dict) -> None:
             (folder / "README.md").write_text(f"# {b['id']} · {b['title']}\n\n_(Lab not written yet. Ask Claude to build it per ROADMAP.md.)_\n")
             print(f"Created {b['folder']}/ placeholder.")
         print(f"Timer not started. Run `start {b['id']}` again once it's filled in.")
+        return
+    if not is_scaffolded("build", b):
+        print(f"{b['folder']}/ is still a bare template. Ask Claude to fill it in first. Timer not started.")
         return
     if not st.get("started_at") and build_steps_today(prog) >= MAX_BUILD_STEPS_PER_DAY + bonus_today(prog):
         print("You've done today's build step. Run `more` if you genuinely want another, or stop.")
@@ -787,6 +842,94 @@ def cmd_skip(args) -> None:
     print(f"Skipped {item['id']} {item['title']} as already known. Its checks can still be taken any time.")
 
 
+def cmd_add(args) -> None:
+    """Pull any LeetCode problem into the queue. It becomes the next new problem."""
+    if not args or args[0].startswith("--"):
+        sys.exit('usage: python3 coach.py add <leetcode-slug> [--pattern <id>] [--difficulty easy|medium|hard] [--title "..."]\n'
+                 "       the slug is the last part of the LeetCode URL, e.g. two-sum")
+    slug = args[0].strip().lower().strip("/").split("/")[-1]
+    opts = {}
+    i = 1
+    while i < len(args):
+        if args[i].startswith("--") and i + 1 < len(args):
+            opts[args[i][2:]] = args[i + 1]
+            i += 2
+        else:
+            i += 1
+    cur = curriculum()
+    prog = progress()
+    existing = next((p for p in cur["problems"] if p["slug"] == slug), None)
+    if existing:
+        p = existing
+        if p["id"] in prog["problems"]:
+            print(f"{p['id']} {p['title']} is already in your rotation (status {prog['problems'][p['id']]['status']}).")
+            return
+        print(f"{p['id']} {p['title']} is already in the curriculum (tier {p.get('tier', 1)}). Moving it to the front.")
+    else:
+        pattern_ids = {pat["id"] for pat in cur["patterns"]}
+        pattern = opts.get("pattern", "")
+        if pattern and pattern not in pattern_ids:
+            sys.exit(f"unknown pattern {pattern!r}. One of: {', '.join(sorted(pattern_ids))}")
+        p = {"id": f"{len(cur['problems']) + 1:03d}", "slug": slug,
+             "title": opts.get("title") or title_from_slug(slug),
+             "difficulty": opts.get("difficulty", "medium"), "pattern": pattern or "drill",
+             "url": f"https://leetcode.com/problems/{slug}/", "tier": 4}
+        cur["problems"].append(p)
+        save_json(CURRICULUM, cur)
+        print(f"Added {p['id']} {p['title']} ({p['difficulty']}, tier 4 drill"
+              + (f", pattern {pattern_name(pattern)}" if pattern else ", no pattern yet") + ").")
+    prog["queue"] = [q for q in prog.get("queue", []) if q != p["id"]] + [p["id"]]
+    save_json(PROGRESS, prog)
+    folder = folder_for(p)
+    if not folder.exists():
+        scaffold_problem(p, folder)
+    print(f"Queued as your next new problem. Folder: problems/{folder.name}/")
+    if not pattern_file(p["pattern"]):
+        print("Tip: pass --pattern so the pattern card shows up, e.g. --pattern stack")
+
+
+def title_from_slug(slug: str) -> str:
+    words = []
+    for w in slug.split("-"):
+        words.append(w.upper() if w in ("ii", "iii", "iv", "v", "vi", "k", "n", "lru", "ipo", "bst", "xor") else w.capitalize())
+    return " ".join(words)
+
+
+def cmd_mock(args) -> None:
+    prog = progress()
+    if args and args[0] == "done":
+        if len(args) < 3 or not args[2].isdigit() or not 0 <= int(args[2]) <= 12:
+            sys.exit('usage: python3 coach.py mock done <id> <score 0-12> ["note"]')
+        p = find_problem(args[1])
+        score = int(args[2])
+        note = " ".join(args[3:])
+        prog["history"].append({"day": iso(today()), "kind": "mock", "event": "done", "id": p["id"],
+                                "score": score, "note": note})
+        bump_streak(prog)
+        save_json(PROGRESS, prog)
+        INTERVIEWS.mkdir(exist_ok=True)
+        path = INTERVIEWS / f"{iso(today())}-{p['id']}-{p['slug']}.md"
+        if not path.exists():
+            path.write_text(f"# Mock · {iso(today())} · {p['id']} {p['title']}\n\nScore: {score}/12\n\n"
+                            f"| area | 0-3 | note |\n|---|---|---|\n| communication |  |  |\n| correctness |  |  |\n"
+                            f"| complexity analysis |  |  |\n| code quality |  |  |\n\n## What to do differently next time\n\n{note}\n")
+        banner(f"Mock logged: {p['id']} {p['title']} scored {score}/12")
+        print(f"Notes: interviews/{path.name}  (Claude fills in the table, you write the last section)")
+        print(f"Today counts. Streak: {prog['streak']['count']} day(s).")
+        return
+    pick = find_problem(args[0]) if args else mock_pick(prog)
+    if not pick:
+        print(f"Mocks unlock after {MOCK_MIN_SOLVED} solved problems. You have {len(solved_problems(prog))}.")
+        return
+    banner(f"Mock interview · {pick['id']} {pick['title']} ({pick['difficulty']})")
+    print(f"{MOCK_MINUTES} minutes. Claude is the interviewer and follows the mock protocol in COACHING.md.")
+    print("You: restate the problem, brute force out loud, optimize out loud, code, test with one example, state complexity.")
+    print("Claude: states the problem verbally, answers clarifying questions, stays quiet otherwise, grades at the end.")
+    print(f"\nWhen it's over:  python3 coach.py mock done {pick['id']} <score 0-12> \"one-line note\"")
+    if today().weekday() != MOCK_WEEKDAY:
+        print("(Not mock day. Doing one anyway is fine; it still counts.)")
+
+
 def log_attempt(notes: Path, kind: str, rating, minutes) -> None:
     if not notes.exists():
         return
@@ -813,14 +956,26 @@ def cmd_status(_args) -> None:
     cur = curriculum()
     banner(f"Status  {iso(today())}   streak {prog['streak']['count']} day(s)" +
            ("   today counts" if counted_today(prog) else ""))
-    counts = {"new": 0, "learning": 0, "review": 0, "mastered": 0}
-    for p in cur["problems"]:
-        counts[state_of(p, prog)["status"]] += 1
-    print("  LeetCode  " + "   ".join(f"{k}: {v}" for k, v in counts.items()) +
-          f"   due today: {len(due_reviews(prog))}")
+    print(f"  LeetCode   due today: {len(due_reviews(prog))}   solved ever: {len(solved_problems(prog))}")
+    current_tier = None
+    for t in cur.get("tiers", [{"tier": 1, "name": "Patterns"}]):
+        ps = [p for p in cur["problems"] if p.get("tier", 1) == t["tier"]]
+        if not ps:
+            continue
+        counts = {"new": 0, "learning": 0, "review": 0, "mastered": 0}
+        for p in ps:
+            counts[state_of(p, prog)["status"]] += 1
+        print(f"    tier {t['tier']} {t['name']:<10} {len(ps):>3}   " + "   ".join(f"{k} {v}" for k, v in counts.items()))
+        if current_tier is None and counts["new"]:
+            current_tier = t["tier"]
+    print(f"  map of tier {current_tier or 1}:")
     for pat in cur["patterns"]:
-        marks = "".join(MARK[state_of(p, prog)["status"]] for p in cur["problems"] if p["pattern"] == pat["id"])
-        print(f"    {pat['name']:<28} {marks}")
+        marks = "".join(MARK[state_of(p, prog)["status"]] for p in cur["problems"]
+                        if p["pattern"] == pat["id"] and p.get("tier", 1) == (current_tier or 1))
+        if marks:
+            print(f"    {pat['name']:<28} {marks}")
+    if prog.get("queue"):
+        print(f"  queued next: {', '.join(prog['queue'])}")
     print()
     for t in cur["tracks"]:
         if t["id"] == "leetcode":
@@ -838,12 +993,17 @@ def cmd_list(args) -> None:
     prog = progress()
     cur = curriculum()
     want = args[0].lower() if args else None
+    tier = int(args[1]) if want == "tier" and len(args) > 1 else (1 if want in (None, "leetcode") else None)
+    if want == "tier":
+        want = "leetcode"
     if want in (None, "leetcode"):
-        for pat in cur["patterns"]:
+        print(f"\nLeetCode tier {tier}. Other tiers: python3 coach.py list tier 2|3|4")
+        for pat in cur["patterns"] + [{"id": "drill", "name": "Drill (no pattern)", "file": ""}]:
+            rows = [p for p in cur["problems"] if p["pattern"] == pat["id"] and p.get("tier", 1) == tier]
+            if not rows:
+                continue
             banner(f"{pat['name']}   ({pat['file']})")
-            for p in cur["problems"]:
-                if p["pattern"] != pat["id"]:
-                    continue
+            for p in rows:
                 st = state_of(p, prog)
                 extra = "" if st["status"] == "new" else f"  [{st['status']}, due {st.get('due')}]"
                 print(f"  {p['id']}  {p['title']:<52} {p['difficulty']:<7}{extra}")
@@ -861,7 +1021,7 @@ def cmd_list(args) -> None:
 
 COMMANDS = {"next": cmd_next, "floor": cmd_floor, "start": cmd_start, "check": cmd_check, "hint": cmd_hint,
             "checks": cmd_checks, "done": cmd_done, "touch": cmd_touch, "more": cmd_more, "skip": cmd_skip,
-            "status": cmd_status, "list": cmd_list}
+            "add": cmd_add, "mock": cmd_mock, "status": cmd_status, "list": cmd_list}
 
 
 def main(argv: list[str]) -> None:

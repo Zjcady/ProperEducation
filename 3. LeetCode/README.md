@@ -1,6 +1,6 @@
 # Study coach, built for a brain that forgets
 
-LeetCode (83 problems, 17 patterns, growing) plus a build track (Python foundations, then GenAI labs). 15-minute blocks. Spaced repetition so it sticks. See `../ROADMAP.md` for where this goes.
+LeetCode in tiers (83 pattern problems, then the standard 150, then 300 with depth, then anything you add) plus a build track (Python foundations, then GenAI labs). 15-minute blocks. Spaced repetition so it sticks. Weekly mock interviews. See `../ROADMAP.md` for where this goes.
 
 ## The ritual (15 to 45 minutes, in blocks)
 
@@ -21,6 +21,10 @@ python3 coach.py floor            # bad day? the 5-minute thing that still count
 python3 coach.py touch "note"     # "I did 5 minutes." Counts.
 python3 coach.py more             # hyperfocus? one extra review or build step. Never a 2nd new problem.
 python3 coach.py skip A03         # placement: already know a chapter? skip it.
+
+python3 coach.py add valid-palindrome-iii --pattern two-pointers   # any LeetCode slug, queued as next
+python3 coach.py mock             # Saturdays, after 5 solves: a 30-minute mock with Claude as interviewer
+python3 coach.py list tier 2      # see the other tiers
 ```
 
 Block 1 done means today counts. Stopping there is correct. Tomorrow has its own.
@@ -38,6 +42,17 @@ Block 1 done means today counts. Stopping there is correct. Tomorrow has its own
 | Hints in order, one at a time | Each hint you *don't* need is a thing you figured out yourself, which is the thing you'll remember. |
 | Explain it back before rating 3 | If you can't say the trick in one sentence, you'll lose it by Thursday. |
 | Missed days don't pile up | At most 2 reviews a day. No backlog, no guilt. Just run `next`. |
+
+## The LeetCode tiers
+
+| tier | what | how many |
+|---|---|---|
+| 1 | one curated set per pattern | 83 |
+| 2 | the rest of the standard 150 interview set, minus premium | 60 |
+| 3 | depth: 8 to 16 more per pattern, more hards | 188 |
+| 4 | drill: anything you pull in with `coach.py add` | unlimited |
+
+New problems come in tier order; `add` jumps the queue. "All of LeetCode" means: own the patterns, then drill whatever a job's list throws at you.
 
 ## How the spacing works
 
@@ -66,7 +81,8 @@ Open a session in this repo and say "leetcode". Claude reads `COACHING.md` and r
 ```
 coach.py            the brain: next / floor / start / check / hint / checks / done / touch / more / skip / status / list
 harness.py          tiny test runner + ListNode/TreeNode helpers + run_levels for chapters
-curriculum.json     83 problems pattern-ordered, plus build items (A01..A12 chapters, C1..C8 and D1..D5 labs)
+curriculum.json     331 problems in 4 tiers, plus build items (A01..A12 chapters, C1..C8 and D1..D5 labs)
+interviews/         one file per mock interview
 foundations/NN-Axx/ a chapter: read.md, checks.json, CHALLENGE.md, challenge.py, NOTES.md
 labs/C1..C8         GenAI labs: README.md (one step per block), starter with TODO(you) functions, tests/, RUBRIC.md
 labs/D1..D5         autonomy labs (not written yet)

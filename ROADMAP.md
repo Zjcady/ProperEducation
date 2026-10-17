@@ -77,9 +77,9 @@ all of them" is: own the patterns, then drill without limit.
 | Tier | Problems | What it is | Status |
 |---|---|---|---|
 | 1 | 83 | 17 patterns, one curated set | **built** |
-| 2 | +67 = 150 | The rest of the standard 150 interview set | curriculum entries to add |
-| 3 | +150 = 300 | Depth: 8 to 10 more per pattern, more hards | curriculum entries to add |
-| 4 | any | `coach.py add <leetcode-slug>` scaffolds any problem on demand, same hints and tests format, enters the same review rotation | command to build |
+| 2 | +60 = 143 | The rest of the standard 150 interview set, minus premium | **built** |
+| 3 | +188 = 331 | Depth: 8 to 16 more per pattern, more hards | **built** |
+| 4 | any | `coach.py add <leetcode-slug>` scaffolds any problem on demand, same hints and tests format, enters the same review rotation, jumps the queue | **built** |
 
 Tier 4 is what makes "all of LeetCode" true: any problem you meet in a mock
 interview or a company's tagged list can be pulled in and drilled.
@@ -156,7 +156,7 @@ asks for. Dates slip. That's fine. The system never builds a backlog.
 | 1 | Tracks in `coach.py`: the daily plan holds a LeetCode item and a build item. `checks` command for quizzes. Phone page shows both blocks and runs checks. | **done** (work-day shape: 15-minute blocks, first one counts, floor, more) |
 | 2 | Track A, chapters 1 to 12, generated one chapter ahead by the daily task, same as problems | 2 sessions + daily |
 | 3 | Track C lab folders C1 to C8 with starters, tests, rubrics. C3 doubles as the coach's own MCP server. | **done** |
-| 4 | Track B tiers 2 and 3 entries, `coach.py add <slug>`, mock interview mode | 1 to 2 sessions |
+| 4 | Track B tiers 2 and 3 entries, `coach.py add <slug>`, mock interview mode | **done** |
 | 5 | Track D and Track E | 2 sessions |
 | 6 | Phone page polish: quizzes, lab progress, streak calendar | 1 session |
 

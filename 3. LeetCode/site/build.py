@@ -84,7 +84,24 @@ def main() -> None:
 
     plan = []
     for entry in coach.plan(prog):
-        plan.append(problem_payload(entry, prog) if entry["type"] == "problem" else build_payload(entry, prog))
+        if entry["type"] == "mock":
+            p = entry["item"]
+            plan.append({"kind": "mock", "type": "mock", "id": p["id"], "title": p["title"],
+                         "difficulty": p["difficulty"], "url": p["url"], "pattern": coach.pattern_name(p["pattern"]),
+                         "bell": coach.MOCK_MINUTES})
+        else:
+            plan.append(problem_payload(entry, prog) if entry["type"] == "problem" else build_payload(entry, prog))
+
+    tiers = []
+    for t in cur.get("tiers", []):
+        ps = [p for p in cur["problems"] if p.get("tier", 1) == t["tier"]]
+        if not ps:
+            continue
+        tc = {"new": 0, "learning": 0, "review": 0, "mastered": 0}
+        for p in ps:
+            tc[coach.state_of(p, prog)["status"]] += 1
+        tiers.append({"tier": t["tier"], "name": t["name"], "total": len(ps), "counts": tc})
+    current_tier = next((t["tier"] for t in tiers if t["counts"]["new"]), 1)
 
     counts = {"new": 0, "learning": 0, "review": 0, "mastered": 0}
     patterns = []
@@ -95,8 +112,10 @@ def main() -> None:
                 continue
             status = coach.state_of(p, prog)["status"]
             counts[status] += 1
-            cells.append({"id": p["id"], "title": p["title"], "status": status, "url": p["url"]})
-        patterns.append({"name": pat["name"], "problems": cells})
+            if p.get("tier", 1) == current_tier:
+                cells.append({"id": p["id"], "title": p["title"], "status": status, "url": p["url"]})
+        if cells:
+            patterns.append({"name": pat["name"], "problems": cells})
 
     tracks = []
     for t in cur["tracks"]:
@@ -134,6 +153,8 @@ def main() -> None:
         "floor": floor_text(prog),
         "plan": plan,
         "counts": counts, "patterns": patterns, "tracks": tracks,
+        "tiers": tiers, "current_tier": current_tier, "queue": prog.get("queue", []),
+        "solved_ever": len(coach.solved_problems(prog)),
         "upcoming": upcoming[:10], "recent": list(reversed(recent))[:10],
     }
     out = HERE / "data.json"

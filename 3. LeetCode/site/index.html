@@ -32,6 +32,7 @@
     padding: 3px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
   .kind.review { background: color-mix(in srgb, var(--review) 18%, transparent); color: var(--review); }
   .kind.continue { background: color-mix(in srgb, var(--learning) 18%, transparent); color: var(--learning); }
+  .kind.mock { background: color-mix(in srgb, var(--hard) 14%, transparent); color: var(--hard); }
   h2 { font-size: 1.35rem; margin: 8px 0 2px; line-height: 1.25; }
   .meta { color: var(--muted); font-size: .92rem; display: flex; gap: 10px; flex-wrap: wrap; }
   .diff { font-weight: 600; text-transform: capitalize; }
@@ -143,7 +144,19 @@ function md(src){
 
 // --- page
 const KIND_LABEL = { new: "New problem", review: "Review · re-solve from blank", continue: "In progress",
-                     build: "Build", checks: "Checks review · 5 min" };
+                     build: "Build", checks: "Checks review · 5 min", mock: "Mock interview" };
+
+function mockCard(m, d){
+  return `
+  <section class="card">
+    <span class="kind mock">${KIND_LABEL.mock} · ${m.bell} min</span>
+    <h2>${m.id} · ${esc(m.title)}</h2>
+    <div class="meta"><span class="diff ${m.difficulty}">${m.difficulty}</span><span>${esc(m.pattern)}</span></div>
+    <div class="ritual">Claude is the interviewer. You talk the whole time: restate, brute force out loud, optimize out loud, code, test one example, state complexity.
+      <ol><li>in a session: <code>python3 coach.py mock</code></li><li>afterwards: <code>python3 coach.py mock done ${m.id} &lt;0-12&gt;</code></li></ol></div>
+    <div class="rating">Graded 0 to 3 on communication, correctness, complexity analysis, code quality.</div>
+  </section>`;
+}
 
 function minutesSince(iso){ return iso ? Math.floor((Date.now() - new Date(iso).getTime())/60000) : null; }
 function stripHead(mdText){ return mdText.replace(/^# .*\n/, "").replace(/^Pattern:.*\n/m,"").replace(/^LeetCode:.*\n/m,""); }
@@ -269,14 +282,17 @@ function render(d){
   } else {
     d.plan.forEach((b, i) => {
       const tag = (i === 0 && !d.counted_today) ? "<b>counts for today</b>" : "bonus";
-      const mins = b.kind === "checks" ? 5 : (b.type === "problem" ? `${d.block_minutes}, up to ${b.bell}` : d.block_minutes);
+      const mins = b.kind === "checks" ? 5 : b.type === "mock" ? b.bell : (b.type === "problem" ? `${d.block_minutes}, up to ${b.bell}` : d.block_minutes);
       html += `<p class="block-label">Block ${i+1} · ${mins} min · ${tag}</p>`;
-      html += b.type === "problem" ? problemCard(b, d) : buildCard(b, d);
+      html += b.type === "problem" ? problemCard(b, d) : b.type === "mock" ? mockCard(b, d) : buildCard(b, d);
     });
   }
   html += `<div class="floor"><b>Bad day?</b> ${esc(d.floor)} Five minutes still counts.</div>`;
   html += `<section class="card">
     <div class="counts">${["new","learning","review","mastered"].map(k=>`<div class="count"><b>${d.counts[k]}</b><span>${k}</span></div>`).join("")}</div>
+    ${(d.tiers||[]).length ? `<ul class="list">${d.tiers.map(t=>`<li><span>tier ${t.tier} · ${esc(t.name)}${t.tier===d.current_tier?" · <b>current</b>":""}</span><span class="dim">${t.total - t.counts.new} / ${t.total}</span></li>`).join("")}</ul>` : ""}
+    ${(d.queue||[]).length ? `<p class="hint-warning">queued next: ${d.queue.join(", ")}</p>` : ""}
+    <p class="hint-warning">map of tier ${d.current_tier||1}</p>
     <div class="grid">${d.patterns.map(p=>`<div class="pat"><span>${esc(p.name)}</span><div class="cells">${p.problems.map(q=>`<a class="cell ${q.status}" href="${q.url}" title="${q.id} ${esc(q.title)} (${q.status})" target="_blank" rel="noopener"></a>`).join("")}</div></div>`).join("")}</div>
     <div class="legend"><span>not started</span><span class="l">learning</span><span class="r">in review rotation</span><span class="m">mastered</span></div>
   </section>`;

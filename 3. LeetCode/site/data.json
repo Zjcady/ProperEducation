@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T02:17",
+ "generated_at": "2026-10-17T02:25",
  "today": "2026-10-17",
  "streak": 0,
  "counted_today": false,
@@ -119,7 +119,7 @@
   }
  ],
  "counts": {
-  "new": 83,
+  "new": 331,
   "learning": 0,
   "review": 0,
   "mastered": 0
@@ -876,6 +876,44 @@
    ]
   }
  ],
+ "tiers": [
+  {
+   "tier": 1,
+   "name": "Patterns",
+   "total": 83,
+   "counts": {
+    "new": 83,
+    "learning": 0,
+    "review": 0,
+    "mastered": 0
+   }
+  },
+  {
+   "tier": 2,
+   "name": "The 150",
+   "total": 60,
+   "counts": {
+    "new": 60,
+    "learning": 0,
+    "review": 0,
+    "mastered": 0
+   }
+  },
+  {
+   "tier": 3,
+   "name": "Depth",
+   "total": 188,
+   "counts": {
+    "new": 188,
+    "learning": 0,
+    "review": 0,
+    "mastered": 0
+   }
+  }
+ ],
+ "current_tier": 1,
+ "queue": [],
+ "solved_ever": 0,
  "upcoming": [],
  "recent": []
 }
