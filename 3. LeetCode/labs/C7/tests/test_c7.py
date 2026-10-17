@@ -78,5 +78,5 @@ def test_step2_settings_register_the_hook():
 
 def test_step2_writeup_is_filled_in():
     text = (LAB / "WRITEUP.md").read_text()
-    assert "_(you)_" not in text
+    assert "_(you" not in text, "fill in every _(you...)_ placeholder in WRITEUP.md"
     assert len(text) > 900

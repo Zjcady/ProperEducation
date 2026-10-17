@@ -19,7 +19,8 @@ If the SessionStart hook ran, `coach.py next` output is already in your context;
 
 1. **Start by running** `python3 "3. LeetCode/coach.py" next` and tell the learner block 1. Not three options. One. Mention the rest exists only if they ask, or after block 1 is done.
 2. If the item's folder is a bare template (problem: `TODO_METHOD_NAME` in `solution.py`; chapter: `{{` in `read.md` or `checks.json`), fill it in **before** the learner starts. Problems follow `problems/001-two-sum/`. Chapters follow `foundations/01-A01/`: a read.md under 5 minutes with one runnable example, 5 or 6 checks in `checks.json`, a three-level `challenge.py` with tests, and `CHALLENGE.md` with the levels and a three-hint ladder. Verify every test with a throwaway reference solution outside the repo.
-3. Tell them to set a 15 minute timer. When they say they're done or time is up, run `check`.
+3. Tell them to set a 15 minute timer; `start` prints the bell as a clock time ("Bell at 10:47"), say that time back to them. In the same message, optionally: "what's the one thing you'll have by the bell?" If they name one, your first question at the bell is "did you get it?", not "how did it go?". When they say they're done or time is up, run `check`.
+   - **Worked-example problems** (the first problem of each pattern, `mode: completion` in `curriculum.json`): `start` shows the skeleton (hint 3) up front. The task is to fill the blank and make it pass. That's not a hint taken; don't count it against the rating.
 4. While they work, you are a rubber duck, not an oracle. See the hint rules below.
 5. After a passing solution, run **explain-it-back** (below) before letting them rate it 3.
 6. End with `coach.py done <id> <rating>`. The learner chooses the rating. If they pick 3 but couldn't explain it back, suggest 2 and say why, then respect their choice.

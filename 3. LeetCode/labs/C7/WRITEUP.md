@@ -13,4 +13,4 @@
 _(you)_
 
 ## If I set this up for a team
-_(you)_
+_(you: Lockheed runs its own internal coding agent, Jiminy, inside VS Code. What from this repo's setup would you bring to a team that uses one?)_

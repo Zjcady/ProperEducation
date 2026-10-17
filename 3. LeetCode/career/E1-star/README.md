@@ -1,13 +1,13 @@
 # E1 · STAR stories from your own labs
 
 **Maps to:** every behavioral question in the interview. Each story also points at a line in the posting.
-**You'll have at the end:** five written stories in `STORIES.md`, three of them rehearsed and graded.
+**You'll have at the end:** six written stories in `STORIES.md`, each tagged with one of Lockheed's leadership imperatives, three of them rehearsed and graded. Story 6, "why defense, why this company", is always one of the three.
 
 STAR is Situation, Task, Action, Result. Two minutes spoken. The Action is the part they're hiring; make it the longest.
 
 ## Step 1 · Pick  (15 min)
 
-Open `STORIES.md`. Five slots, each tied to a posting line and a suggested source in this repo. For each slot write only the first two headings (Situation, Task) in two sentences each. Pick the three slots that feel strongest and mark them `rehearse: yes`. Then `python3 coach.py check E1`.
+Open `STORIES.md`. Six slots, each tied to a posting line, a leadership imperative and a suggested source. For each slot write only the first two headings (Situation, Task) in two sentences each. Mark Story 6 and the two other strongest slots `rehearse: yes`. Then `python3 coach.py check E1`.
 
 ## Step 2 · Write  (15 min)
 

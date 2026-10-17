@@ -37,6 +37,7 @@ def problem_payload(entry: dict, prog) -> dict:
         "state": {k: st.get(k) for k in ("status", "interval", "due", "last_rating", "last_done", "reps")},
         "started_at": st.get("started_at"),
         "bell": coach.LEETCODE_BELL_MINUTES,
+        "mode": p.get("mode"),
     }
 
 
@@ -144,9 +145,10 @@ def main() -> None:
             recent.append({**h, "title": titles.get(h.get("id", ""), h.get("note", ""))})
 
     data = {
-        "generated_at": datetime.now().isoformat(timespec="minutes"),
+        "generated_at": coach.now().isoformat(timespec="minutes"),
         "today": coach.iso(coach.today()),
         "streak": prog["streak"]["count"],
+        "active_7": coach.active_last_7(prog),
         "counted_today": coach.counted_today(prog),
         "bonus_used": coach.bonus_today(prog), "bonus_cap": coach.BONUS_CAP,
         "block_minutes": coach.BLOCK_MINUTES, "leetcode_bell": coach.LEETCODE_BELL_MINUTES,

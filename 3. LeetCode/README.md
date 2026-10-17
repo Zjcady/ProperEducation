@@ -30,6 +30,10 @@ python3 coach.py resume           # resume bullets and numbers from what you've 
 
 Block 1 done means today counts. Stopping there is correct. Tomorrow has its own.
 
+**Streaks forgive.** Weekends never break a streak. Every 7 days of streak banks one freeze that covers a single missed weekday. `next` also shows "active N of last 7", so one missed day reads as 6 of 7, not as zero. Days follow Eastern time, not the cloud container's UTC (set `COACH_TZ` to change it).
+
+**Worked examples first.** The first problem of each pattern starts with the skeleton shown. Fill the blank, make it pass. After that, hints go back to one at a time.
+
 ## The rules, and why
 
 | Rule | Why |
@@ -75,6 +79,9 @@ New problems interleave: each pattern's first two come back to back, then new pr
 Problems move `new → learning → review → mastered`. Chapter checks come back in 3 days if you missed any, once at 7 days if perfect, then clear. `python3 coach.py status` shows the maps.
 
 ## On your phone
+
+The page installs like an app: on iPhone, Share, then Add to Home Screen. It opens full-screen and shows the last copy when you're offline.
+
 
 `site/` is a static page that shows today's problem, its hints (collapsed, one at a time), the pattern card and your progress map. It's deployed on Vercel from this repo and refreshes every morning and after each session. The page is read-only on purpose: you solve in a Claude session, the page tells you what and why.
 

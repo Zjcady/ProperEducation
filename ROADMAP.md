@@ -21,7 +21,7 @@ an early-career **GenAI integration** role.
 | Desired: agentic frameworks | An agent loop with tools, then a framework | One agent that does a multi-step task |
 | Desired: document processing for LLMs | Chunking, embeddings, retrieval (RAG) | A RAG demo over a real document set |
 | Desired: meeting summarizers, AWS | Transcription + summary; S3, Lambda, Bedrock basics | The summarizer deployed as a Lambda |
-| LM Navigator, Genesis | Internal Lockheed tools | Not learnable outside. Ignore. |
+| LM Navigator, Genesis | Lockheed's internal GenAI platforms: Navigator is secure chat over multiple LLMs with uploads and agents (75,000 employees); Genesis is a no-code, on-prem agent builder with no-code RAG (16,000+ agents built in 2025); Jiminy is an internal VS Code coding agent | Not usable outside, but the labs map onto them: C3/C4 (tools and agents) ↔ Genesis, C5 (RAG) ↔ Genesis no-code RAG, C1/C2 ↔ Navigator, C7 ↔ Jiminy. Name the mapping in interviews. Sources in `3. LeetCode/career/E1-star/STORIES.md`, Story 6. |
 
 **What this means for LeetCode**: it gets you through the coding screen. It does
 not get you the job. The portfolio projects do. So the plan runs both in

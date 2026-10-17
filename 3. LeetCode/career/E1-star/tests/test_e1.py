@@ -23,16 +23,18 @@ def words(text):
     return 0 if "_(you)_" in text else len(text.split())
 
 
-def test_step1_situation_and_task_written_for_all_five():
+def test_step1_situation_and_task_written_for_all_six():
     s = stories()
-    assert len(s) == 5
+    assert len(s) == 6
     for story in s:
         assert words(story["Situation"]) >= 15, "two sentences of Situation per story"
         assert words(story["Task"]) >= 10, "two sentences of Task per story"
 
 
 def test_step1_three_stories_marked_for_rehearsal():
-    assert sum(1 for st in stories() if st["rehearse"] == "yes") == 3
+    s = stories()
+    assert sum(1 for st in s if st["rehearse"] == "yes") == 3
+    assert s[5]["rehearse"] == "yes", "Story 6 (why defense, why this company) is always one of the three"
 
 
 def test_step2_action_and_result_written_for_the_three():
@@ -50,4 +52,5 @@ def test_step3_rehearsal_log_has_three_rows():
     assert len(rows) >= 3
     for row in rows:
         cells = [c.strip() for c in row.strip("|").split("|")]
-        assert len(cells) >= 6 and cells[2].isdigit() and int(cells[2]) <= 150, "time in seconds, under 150"
+        assert len(cells) >= 7 and cells[3].isdigit() and int(cells[3]) <= 150, "time in seconds, under 150"
+        assert cells[2], "name the imperative the story showed"

@@ -1,7 +1,8 @@
 {
- "generated_at": "2026-10-17T12:44",
+ "generated_at": "2026-10-17T09:20",
  "today": "2026-10-17",
  "streak": 0,
+ "active_7": 0,
  "counted_today": false,
  "bonus_used": 0,
  "bonus_cap": 2,
@@ -30,7 +31,8 @@
     "reps": null
    },
    "started_at": null,
-   "bell": 30
+   "bell": 30,
+   "mode": "completion"
   },
   {
    "kind": "build",

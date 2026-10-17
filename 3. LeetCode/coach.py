@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import ast
 import json
+import os
 import random
 import re
 import shutil
@@ -47,6 +48,16 @@ import subprocess
 import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
+
+# Cloud containers run on UTC. Days, timers and bell times follow the learner's clock instead.
+# Override with COACH_TZ=Area/City.
+LEARNER_TZ = ZoneInfo(os.environ.get("COACH_TZ", "America/New_York"))
+
+
+def now() -> datetime:
+    """Learner-local wall time, naive (stored timestamps are naive learner-local)."""
+    return datetime.now(LEARNER_TZ).replace(tzinfo=None)
 
 ROOT = Path(__file__).resolve().parent
 CURRICULUM = ROOT / "curriculum.json"
@@ -115,7 +126,7 @@ def progress():
 
 
 def today() -> date:
-    return date.today()
+    return now().date()
 
 
 def iso(d: date) -> str:
@@ -127,7 +138,7 @@ def parse_day(text: str | None) -> date | None:
 
 
 def now_iso() -> str:
-    return datetime.now().isoformat(timespec="seconds")
+    return now().isoformat(timespec="seconds")
 
 
 # ---------------------------------------------------------------- lookups
@@ -400,14 +411,25 @@ def banner(text: str) -> None:
 
 
 def elapsed_minutes(started_iso: str) -> int:
-    return int((datetime.now() - datetime.fromisoformat(started_iso)).total_seconds() // 60)
+    return int((now() - datetime.fromisoformat(started_iso)).total_seconds() // 60)
+
+
+def bell_line(started_iso: str, bell: int, hard_stop: int | None = None) -> str:
+    """Wall-clock times beat durations: 'Bell at 10:47' needs no arithmetic mid-block."""
+    start = datetime.fromisoformat(started_iso)
+    text = f"Bell at {(start + timedelta(minutes=bell)).strftime('%H:%M')}."
+    if hard_stop:
+        text += f" Hard stop {(start + timedelta(minutes=hard_stop)).strftime('%H:%M')}."
+    return text
 
 
 def timer_text(started_iso: str, bell: int) -> str:
     mins = elapsed_minutes(started_iso)
+    if bell == LEETCODE_BELL_MINUTES and mins < BLOCK_MINUTES:
+        return f"{mins} min, {BLOCK_MINUTES - mins} to the bell (hard stop at {bell})"
     if mins >= bell:
         return f"{mins} min  <-- past the {bell} min bell. Wrap up, rate it, stop."
-    return f"{mins} min of {bell}"
+    return f"{mins} min, {bell - mins} to the bell"
 
 
 def describe(entry: dict, prog) -> None:
@@ -457,7 +479,11 @@ def describe(entry: dict, prog) -> None:
 def cmd_next(_args) -> None:
     prog = progress()
     items = plan(prog)
-    banner(f"Today: {iso(today())}   streak: {prog['streak']['count']} day(s)")
+    st = prog["streak"]
+    freeze = "   freeze banked" if st.get("freezes") else ""
+    banner(f"Today: {iso(today())}   streak: {st['count']} day(s)   active {active_last_7(prog)} of last 7{freeze}")
+    if st.get("used_freeze") == iso(today()):
+        print("(Your banked freeze covered the missed weekday. Streak intact.)")
     if counted_today(prog):
         print("Today already counts. Everything below is bonus. Stopping is a fine choice.\n")
     if not items:
@@ -573,8 +599,15 @@ def cmd_start(args) -> None:
         save_json(PROGRESS, prog)
 
     banner(f"Started {p['id']} {p['title']}")
+    print(bell_line(st["started_at"], BLOCK_MINUTES, LEETCODE_BELL_MINUTES))
     print(f"Set a {BLOCK_MINUTES} minute timer. If it rings mid-thought, one more block is allowed.")
     print(f"At {LEETCODE_BELL_MINUTES} minutes you stop, solved or not. Partial work gets rated too.\n")
+    if p.get("mode") == "completion" and first_time:
+        hints = re.findall(r"<details>\s*<summary>(.*?)</summary>(.*?)</details>", (folder / "PROBLEM.md").read_text(), re.S)
+        if len(hints) >= 3:
+            print("First problem of a new pattern: you get the skeleton up front. Fill in the blank,")
+            print("then make it pass. Learning a pattern from a worked shape beats staring at a blank page.\n")
+            print(hints[2][1].strip() + "\n")
     print(f"  1. Read   problems/{folder.name}/PROBLEM.md  (top part, not the hints)")
     print(f"  2. Skim   {pattern_file(p['pattern'])}  if the pattern is new to you")
     print(f"  3. Code   problems/{folder.name}/solution.py")
@@ -608,6 +641,7 @@ def start_build(b: dict) -> None:
         st["status"] = "in_progress"
         save_json(PROGRESS, prog)
     banner(f"Started {b['id']} {b['title']}")
+    print(bell_line(st["started_at"], BLOCK_MINUTES))
     print(f"Set a {BLOCK_MINUTES} minute timer. Stop at the bell, mark what you finished.\n")
     if b["kind"] == "chapter":
         print(f"  1. Read    {b['folder']}/read.md          (5 min, one idea)")
@@ -671,7 +705,7 @@ def blank_solution(path: Path) -> bool:
         return False
     attempts = path.parent / "attempts"
     attempts.mkdir(exist_ok=True)
-    shutil.copy(path, attempts / f"{datetime.now().strftime('%Y-%m-%d')}-before-review.py")
+    shutil.copy(path, attempts / f"{now().strftime('%Y-%m-%d')}-before-review.py")
     for start, end, replacement in sorted(edits, reverse=True):
         lines[start:end] = [replacement]
     path.write_text("".join(lines))
@@ -1136,12 +1170,34 @@ def log_attempt(notes: Path, kind: str, rating, minutes) -> None:
 
 
 def bump_streak(prog) -> None:
+    """Weekends are optional (ROADMAP), so a gap of only Saturdays and Sundays never breaks the
+    streak. One missed weekday is covered by a banked freeze, earned every 7 days of streak
+    (at most one banked). Anything longer starts over at 1."""
     streak = prog["streak"]
+    streak.setdefault("freezes", 0)
     last = parse_day(streak.get("last_day"))
     if last == today():
         return
-    streak["count"] = streak["count"] + 1 if last == today() - timedelta(days=1) else 1
+    missed = [last + timedelta(days=i) for i in range(1, (today() - last).days)] if last else None
+    weekdays_missed = [d for d in missed if d.weekday() < 5] if missed is not None else None
+    if weekdays_missed == []:
+        streak["count"] += 1
+    elif weekdays_missed is not None and len(weekdays_missed) == 1 and streak["freezes"] > 0:
+        streak["freezes"] -= 1
+        streak["count"] += 1
+        streak["used_freeze"] = iso(today())
+    else:
+        streak["count"] = 1
+    if streak["count"] % 7 == 0 and streak["freezes"] < 1:
+        streak["freezes"] = 1
     streak["last_day"] = iso(today())
+
+
+def active_last_7(prog) -> int:
+    """How many of the last 7 days had something that counted. Shown next to the streak so one
+    missed day reads as 6 of 7, not as zero."""
+    counted = {h["day"] for h in prog["history"] if h.get("event") in ("done", "checks", "touch")}
+    return sum(1 for i in range(7) if iso(today() - timedelta(days=i)) in counted)
 
 
 MARK = {"new": ".", "learning": "o", "review": "O", "mastered": "#",

@@ -17,7 +17,7 @@ _(you)_
 _(you)_
 
 ### Questions I expect, with answers (1 min)
-_(you)_
+_(you: include "how is this like Genesis?", Lockheed's no-code agent builder with AD-group access control, and your answer.)_
 
 ### Rehearsal log
 | date | time (min) | follow-ups answered 0-3 | clarity 0-3 | one fix |

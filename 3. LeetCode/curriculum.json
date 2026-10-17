@@ -95,7 +95,8 @@
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/two-sum/",
    "tier": 1,
-   "lc": 1
+   "lc": 1,
+   "mode": "completion"
   },
   {
    "id": "002",
@@ -175,7 +176,8 @@
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/valid-palindrome/",
    "tier": 1,
-   "lc": 125
+   "lc": 125,
+   "mode": "completion"
   },
   {
    "id": "010",
@@ -215,7 +217,8 @@
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
    "tier": 1,
-   "lc": 121
+   "lc": 121,
+   "mode": "completion"
   },
   {
    "id": "014",
@@ -255,7 +258,8 @@
    "pattern": "stack",
    "url": "https://leetcode.com/problems/valid-parentheses/",
    "tier": 1,
-   "lc": 20
+   "lc": 20,
+   "mode": "completion"
   },
   {
    "id": "018",
@@ -295,7 +299,8 @@
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/binary-search/",
    "tier": 1,
-   "lc": 792
+   "lc": 792,
+   "mode": "completion"
   },
   {
    "id": "022",
@@ -335,7 +340,8 @@
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/reverse-linked-list/",
    "tier": 1,
-   "lc": 206
+   "lc": 206,
+   "mode": "completion"
   },
   {
    "id": "026",
@@ -395,7 +401,8 @@
    "pattern": "trees",
    "url": "https://leetcode.com/problems/invert-binary-tree/",
    "tier": 1,
-   "lc": 226
+   "lc": 226,
+   "mode": "completion"
   },
   {
    "id": "032",
@@ -505,7 +512,8 @@
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/number-of-islands/",
    "tier": 1,
-   "lc": 200
+   "lc": 200,
+   "mode": "completion"
   },
   {
    "id": "053",
@@ -575,7 +583,8 @@
    "pattern": "tries",
    "url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
    "tier": 1,
-   "lc": 208
+   "lc": 208,
+   "mode": "completion"
   },
   {
    "id": "043",
@@ -605,7 +614,8 @@
    "pattern": "heap",
    "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
    "tier": 1,
-   "lc": 789
+   "lc": 789,
+   "mode": "completion"
   },
   {
    "id": "046",
@@ -635,7 +645,8 @@
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/subsets/",
    "tier": 1,
-   "lc": 78
+   "lc": 78,
+   "mode": "completion"
   },
   {
    "id": "049",
@@ -675,7 +686,8 @@
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/climbing-stairs/",
    "tier": 1,
-   "lc": 70
+   "lc": 70,
+   "mode": "completion"
   },
   {
    "id": "060",
@@ -775,7 +787,8 @@
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/unique-paths/",
    "tier": 1,
-   "lc": 62
+   "lc": 62,
+   "mode": "completion"
   },
   {
    "id": "070",
@@ -795,7 +808,8 @@
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/maximum-subarray/",
    "tier": 1,
-   "lc": 53
+   "lc": 53,
+   "mode": "completion"
   },
   {
    "id": "072",
@@ -815,7 +829,8 @@
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/insert-interval/",
    "tier": 1,
-   "lc": 57
+   "lc": 57,
+   "mode": "completion"
   },
   {
    "id": "074",
@@ -845,7 +860,8 @@
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/rotate-image/",
    "tier": 1,
-   "lc": 48
+   "lc": 48,
+   "mode": "completion"
   },
   {
    "id": "077",
@@ -875,7 +891,8 @@
    "pattern": "bits",
    "url": "https://leetcode.com/problems/number-of-1-bits/",
    "tier": 1,
-   "lc": 191
+   "lc": 191,
+   "mode": "completion"
   },
   {
    "id": "080",

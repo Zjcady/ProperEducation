@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>Study Coach</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#2563eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Coach">
 <style>
   :root {
     --bg: #f6f7f9; --card: #ffffff; --text: #16181d; --muted: #6b7280; --line: #e3e6ea;
@@ -120,11 +126,11 @@ function md(src){
     if (/^```/.test(l)){ flushP(); closeList(); let buf=[]; i++;
       while (i<lines.length && !/^```/.test(lines[i])) buf.push(lines[i++]);
       out.push("<pre><code>"+esc(buf.join("\n"))+"</code></pre>"); i++; continue; }
-    if (/^<details>/.test(l.trim())){ flushP(); closeList();
+    if (/^<details( open)?>/.test(l.trim())){ flushP(); closeList(); const isOpen = /open/.test(l);
       const sm = (lines[i+1]||"").match(/<summary>(.*?)<\/summary>/);
       let buf=[]; i += sm ? 2 : 1;
       while (i<lines.length && !/^<\/details>/.test(lines[i].trim())) buf.push(lines[i++]);
-      out.push("<details><summary>"+inline(sm?sm[1]:"More")+"</summary><div>"+md(buf.join("\n"))+"</div></details>"); i++; continue; }
+      out.push("<details"+(isOpen?" open":"")+"><summary>"+inline(sm?sm[1]:"More")+"</summary><div>"+md(buf.join("\n"))+"</div></details>"); i++; continue; }
     const h = l.match(/^(#{1,6})\s+(.*)/);
     if (h){ flushP(); closeList(); out.push("<h"+h[1].length+">"+inline(h[2])+"</h"+h[1].length+">"); i++; continue; }
     if (/^\|/.test(l)){ flushP(); closeList(); let rows=[];
@@ -164,7 +170,9 @@ function split(mdText, marker){ const i = mdText.indexOf(marker); return i < 0 ?
 
 function problemCard(p, d){
   const [top, rest] = split(p.problem_md, "\n## Hints");
-  const [hintsMd, explainMd] = split(rest, "\n## Explain it back");
+  let [hintsMd, explainMd] = split(rest, "\n## Explain it back");
+  const worked = p.mode === "completion" && p.kind === "new";
+  if (worked) { let n = 0; hintsMd = hintsMd.replace(/<details>/g, m => (++n === 3 ? "<details open>" : m)); }
   const elapsed = minutesSince(p.started_at);
   return `
   <section class="card">
@@ -192,7 +200,8 @@ function problemCard(p, d){
     ${p.scaffolded ? `
     <details open><summary>The problem</summary><div class="md">${md(stripHead(top))}</div></details>
     <details><summary>Pattern: ${esc(p.pattern)}</summary><div class="md">${md(p.pattern_md)}</div></details>
-    <details><summary>Hints</summary><p class="hint-warning">Open one at a time, only after 5 real minutes of being stuck.</p>
+    ${p.mode === "completion" && p.kind === "new" ? `<p class="hint-warning"><b>First problem of a new pattern:</b> the skeleton (hint 3) is open on purpose. Fill in the blank, then make it pass.</p>` : ""}
+    <details${worked ? " open" : ""}><summary>Hints</summary><p class="hint-warning">Open one at a time, only after 5 real minutes of being stuck.</p>
       <div class="md">${md(hintsMd.replace(/^\n?## Hints.*\n/, ""))}</div></details>
     <details><summary>Explain it back</summary><div class="md">${md(explainMd.replace(/^\n?## Explain it back.*\n/, ""))}</div></details>
     ` : `<details><summary>Pattern: ${esc(p.pattern)}</summary><div class="md">${md(p.pattern_md)}</div></details>`}
@@ -275,7 +284,7 @@ function wireQuizzes(d){
 
 function render(d){
   const app = document.getElementById("app");
-  let html = `<header><h1>Coach</h1><span class="streak">${d.today} · streak ${d.streak}</span></header>`;
+  let html = `<header><h1>Coach</h1><span class="streak">${d.today} · streak ${d.streak} · ${d.active_7} of 7</span></header>`;
   if (d.counted_today) html += `<div class="counted">Today already counts. Everything below is bonus. Stopping is a fine choice.</div>`;
   if (!d.plan.length){
     html += `<section class="card done-state"><h2>Done for today.</h2><p class="dim">Nothing left. Tomorrow has its own.</p></section>`;
@@ -304,11 +313,15 @@ function render(d){
     if (d.recent.length) html += `<details><summary>Recent</summary><ul class="list">${d.recent.map(r=>`<li><span>${r.day} · ${esc(r.title||"")}</span><span class="dim">${r.kind}${r.rating?" · rated "+r.rating:""}${r.score!=null?" · "+r.score+"/"+r.total:""}${r.minutes!=null?" · "+r.minutes+" min":""}</span></li>`).join("")}</ul></details>`;
     html += `</section>`;
   }
+  const standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (ios && !standalone) html += `<div class="floor">Tip: tap the <b>Share</b> button, then <b>Add to Home Screen</b>, to open this like an app.</div>`;
   html += `<footer>as of ${d.generated_at.replace("T"," ")} · regenerates each morning and after each session</footer>`;
   app.innerHTML = html;
   wireQuizzes(d);
 }
 
+if ("serviceWorker" in navigator) { try { navigator.serviceWorker.register("sw.js"); } catch (e) {} }
 fetch("data.json", {cache: "no-store"}).then(r => r.json()).then(render).catch(e => {
   document.getElementById("app").innerHTML = `<div class="card">Couldn't load data.json. ${esc(String(e))}</div>`;
 });
