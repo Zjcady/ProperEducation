@@ -18,7 +18,7 @@ You write `color_mask` and `largest_blob`:
 
 **Where do the HSV numbers come from?** OpenCV's hue runs 0..179 (degrees divided by two), saturation and value 0..255. Thresholding in HSV instead of BGR works because lighting mostly moves V while the hue of an orange gecko stays near 15 whether the lamp is on or off. To find bounds for a real camera: convert one frame with `cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)`, print `hsv[y, x]` for a pixel you know is gecko and one you know is substrate, take about ±10 on H around the gecko's hue, and loosen S and V downward until the shadowed parts of the animal are in and the substrate is still out. Try it here: `hsv[60, 80]` on `make_frame()` is the gecko, `hsv[10, 10]` is the substrate. Say what each of the three numbers tells you before you move on.
 
-Try it: `python3 perception.py --frame` prints the mask as text, the blob, and how many pixels `annotate` touched (step 2; it will say the function is not implemented until then, which is fine). The mask should be one oval and nothing else; if you see stray `#`, the open is missing.
+Try it: `python3 perception.py --frame` prints the mask as text, the blob, and how many pixels `annotate` touched (step 2; until then it prints `annotate: not implemented yet (step 2)`, which is fine). The mask should be one oval and nothing else; if you see stray `#`, the open is missing.
 
 ## Step 2 · Track it across frames and annotate  (15 min)
 

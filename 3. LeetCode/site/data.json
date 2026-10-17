@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T03:31",
+ "generated_at": "2026-10-17T04:20",
  "today": "2026-10-17",
  "streak": 0,
  "counted_today": false,
@@ -870,6 +870,29 @@
     {
      "id": "D5",
      "title": "A tiny human-machine interface",
+     "status": "new",
+     "kind": "lab"
+    }
+   ]
+  },
+  {
+   "name": "Interview readiness",
+   "items": [
+    {
+     "id": "E1",
+     "title": "STAR stories from your own labs",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "E2",
+     "title": "Resume bullets, generated then edited",
+     "status": "new",
+     "kind": "lab"
+    },
+    {
+     "id": "E3",
+     "title": "Design talks: explain C3 and C5 in ten minutes",
      "status": "new",
      "kind": "lab"
     }

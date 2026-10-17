@@ -76,13 +76,16 @@ def test_step1_largest_blob_matches_the_drawn_gecko():
 
 
 def test_step1_largest_blob_picks_the_biggest_of_two():
+    # findContours lists the small bottom-right box first, so contours[0] is the wrong answer here
     mask = np.zeros((60, 80), np.uint8)
-    mask[10:20, 10:30] = 255                    # 20 x 10
-    mask[30:50, 40:70] = 255                    # 30 x 20, the winner
+    mask[10:40, 10:20] = 255                    # an L-shaped gecko: the upright ...
+    mask[30:40, 10:40] = 255                    # ... and its foot. 500 px inside a 30 x 30 box
+    mask[45:55, 50:70] = 255                    # a 20 x 10 speck, the loser
     blob = perception.largest_blob(mask)
-    assert blob.bbox == (40, 30, 30, 20)
-    assert dist(blob.centroid, (54.5, 39.5)) <= 1.0
-    assert 500 <= blob.area <= 600
+    assert blob.bbox == (10, 10, 30, 30)
+    assert 400 <= blob.area <= 520
+    # the L is heavy on its left and bottom, so its centroid is not the box center (25, 25)
+    assert dist(blob.centroid, (20.5, 28.5)) <= 1.0, "the centroid comes from the moments, not the box center"
 
 
 def test_step1_largest_blob_returns_none_on_an_empty_mask():

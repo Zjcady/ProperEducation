@@ -155,7 +155,11 @@ def _show_one_frame() -> None:
         return
     cx, cy = blob.centroid
     print(f"blob: bbox={blob.bbox} centroid=({cx:.1f}, {cy:.1f}) area={blob.area:.0f}")
-    out = annotate(frame, blob.bbox, blob.centroid)
+    try:
+        out = annotate(frame, blob.bbox, blob.centroid)
+    except NotImplementedError:
+        print("annotate: not implemented yet (step 2)")
+        return
     changed = int(np.count_nonzero(np.any(out != frame, axis=2)))
     print(f"annotate changed {changed} px; the original frame is untouched: {np.array_equal(frame, make_frame(gecko_center=center))}")
 

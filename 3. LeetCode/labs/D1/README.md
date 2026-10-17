@@ -11,7 +11,7 @@ Setup: `pip install -r requirements.txt` (only pytest). Pure Python, offline, no
 
 Read `mission.py` down to the step 2 marker. `State` (seven states), `TRANSITIONS` (the table; "abort" is allowed from every airborne state) and `IllegalTransition` are given. You write:
 
-- `Mission.fire(event)`: look up `(self.state, event)` in the table. Not there: raise `IllegalTransition` naming the state and the event, and change nothing. There: append `(old, event, new)` to `self.history`, set `self.state`, return the new state.
+- `Mission.fire(event)`: look up `(self.state, event)` in the table. Not there: raise `IllegalTransition` whose message names the state by its `.name` (like `IDLE`) and the event, and change nothing. There: append `(old, event, new)` to `self.history`, set `self.state`, return the new state.
 - `Mission.is_terminal()`: `True` once the mission is `LANDED` or `ABORTED`.
 - `can_fire(state, event)`: `True` when the table has that pair. Never raises.
 

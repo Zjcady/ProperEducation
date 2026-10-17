@@ -58,7 +58,7 @@ class Mission:
         """TODO(you): apply the transition for (self.state, event) and return the new state.
 
         Look the pair up in TRANSITIONS. If it is not there, raise IllegalTransition with a
-        message that names the state and the event, and change nothing. Otherwise append
+        message that names the state by its .name (e.g. IDLE) and the event, and change nothing. Otherwise append
         (old_state, event, new_state) to self.history, set self.state, and return it.
         """
         raise NotImplementedError
