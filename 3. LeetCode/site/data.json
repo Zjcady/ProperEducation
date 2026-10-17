@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T04:20",
+ "generated_at": "2026-10-17T12:00",
  "today": "2026-10-17",
  "streak": 0,
  "counted_today": false,
@@ -407,6 +407,53 @@
    ]
   },
   {
+   "name": "Graphs",
+   "problems": [
+    {
+     "id": "052",
+     "title": "Number of Islands",
+     "status": "new",
+     "url": "https://leetcode.com/problems/number-of-islands/"
+    },
+    {
+     "id": "053",
+     "title": "Max Area of Island",
+     "status": "new",
+     "url": "https://leetcode.com/problems/max-area-of-island/"
+    },
+    {
+     "id": "054",
+     "title": "Clone Graph",
+     "status": "new",
+     "url": "https://leetcode.com/problems/clone-graph/"
+    },
+    {
+     "id": "055",
+     "title": "Rotting Oranges",
+     "status": "new",
+     "url": "https://leetcode.com/problems/rotting-oranges/"
+    },
+    {
+     "id": "056",
+     "title": "Pacific Atlantic Water Flow",
+     "status": "new",
+     "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/"
+    },
+    {
+     "id": "057",
+     "title": "Course Schedule",
+     "status": "new",
+     "url": "https://leetcode.com/problems/course-schedule/"
+    },
+    {
+     "id": "058",
+     "title": "Network Delay Time",
+     "status": "new",
+     "url": "https://leetcode.com/problems/network-delay-time/"
+    }
+   ]
+  },
+  {
    "name": "Tries",
    "problems": [
     {
@@ -478,53 +525,6 @@
      "title": "Word Search",
      "status": "new",
      "url": "https://leetcode.com/problems/word-search/"
-    }
-   ]
-  },
-  {
-   "name": "Graphs",
-   "problems": [
-    {
-     "id": "052",
-     "title": "Number of Islands",
-     "status": "new",
-     "url": "https://leetcode.com/problems/number-of-islands/"
-    },
-    {
-     "id": "053",
-     "title": "Max Area of Island",
-     "status": "new",
-     "url": "https://leetcode.com/problems/max-area-of-island/"
-    },
-    {
-     "id": "054",
-     "title": "Clone Graph",
-     "status": "new",
-     "url": "https://leetcode.com/problems/clone-graph/"
-    },
-    {
-     "id": "055",
-     "title": "Rotting Oranges",
-     "status": "new",
-     "url": "https://leetcode.com/problems/rotting-oranges/"
-    },
-    {
-     "id": "056",
-     "title": "Pacific Atlantic Water Flow",
-     "status": "new",
-     "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/"
-    },
-    {
-     "id": "057",
-     "title": "Course Schedule",
-     "status": "new",
-     "url": "https://leetcode.com/problems/course-schedule/"
-    },
-    {
-     "id": "058",
-     "title": "Network Delay Time",
-     "status": "new",
-     "url": "https://leetcode.com/problems/network-delay-time/"
     }
    ]
   },

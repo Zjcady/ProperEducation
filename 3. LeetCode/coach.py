@@ -70,6 +70,12 @@ INTERVIEWS = ROOT / "interviews"
 FIRST_INTERVAL = 3
 GROWTH = 2.5
 MASTERED_AT_INTERVAL = 30
+HARD_GROWTH = 1.2                 # rating 2 still moves the interval forward
+FUZZ_FROM = 8                     # intervals this long get about +-10% jitter so reviews don't bunch up
+MASTERED_MIN_GAP = 14             # "mastered" needs a clean solve after a gap at least this long
+CONFIRM_AFTER_MASTERED = 90       # one confirmation re-solve, then it really leaves the rotation
+LEECH_AT = 3                      # lapses before a problem is flagged [LEECH]
+SIBLING_AT = 5                    # lapses before an easier problem of the same pattern is queued
 # Checks (quizzes): imperfect -> 3 days, perfect -> one pass at 7 days, then cleared.
 CHECKS_RETRY_DAYS = 3
 CHECKS_CONFIRM_DAYS = 7
@@ -216,7 +222,10 @@ def due_reviews(prog) -> list[dict]:
     out = []
     for p in curriculum()["problems"]:
         st = prog["problems"].get(p["id"])
-        if not st or st["status"] not in ("learning", "review"):
+        if not st:
+            continue
+        confirming = st["status"] == "mastered" and st.get("confirm_pending")
+        if st["status"] not in ("learning", "review") and not confirming:
             continue
         due = parse_day(st.get("due"))
         if due and due <= today():
@@ -238,10 +247,48 @@ def next_new_problem(prog) -> dict | None:
     for pid in prog.get("queue", []):                 # things you pulled in with `add` go first
         if pid in by_id and pid not in prog["problems"]:
             return by_id[pid]
-    for p in curriculum()["problems"]:                # then tier 1, then 2, then 3, in order
-        if p["id"] not in prog["problems"]:
-            return p
-    return None
+    return interleaved_next(prog)
+
+
+def interleaved_next(prog) -> dict | None:
+    """Next new problem from the lowest tier that still has unstarted problems.
+
+    Patterns open in curriculum order. A pattern's first two problems come back to back so the
+    idea lands. After that, new problems rotate across the opened patterns, never the same pattern
+    twice in a row, and the next pattern opens only when the rotation would otherwise repeat one.
+    Mixing patterns is what trains "which pattern is this?", the skill an interview actually tests.
+    """
+    cur = curriculum()
+    started = prog["problems"]
+    tiers = sorted({p.get("tier", 1) for p in cur["problems"] if p["id"] not in started and p.get("tier", 1) < 4})
+    if not tiers:
+        return next((p for p in cur["problems"] if p["id"] not in started), None)
+    tier = tiers[0]
+    order = [pat["id"] for pat in cur["patterns"]]
+    by_pat = {pid: [p for p in cur["problems"] if p["pattern"] == pid and p.get("tier", 1) == tier] for pid in order}
+    opened, remaining = [], {}
+    for pid in order:
+        n_started = sum(1 for p in by_pat[pid] if p["id"] in started)
+        remaining[pid] = [p for p in by_pat[pid] if p["id"] not in started]
+        if n_started and remaining[pid]:
+            if n_started < 2:
+                return remaining[pid][0]                  # finish the opening pair first
+            opened.append(pid)
+    last_new = next((h for h in reversed(prog["history"]) if h["kind"] == "new" and h.get("event") == "start"), None)
+    by_id = {p["id"]: p for p in cur["problems"]}
+    last_pat = by_id[last_new["id"]]["pattern"] if last_new and last_new["id"] in by_id else None
+    rotation = [pid for pid in opened if pid != last_pat]
+    if rotation:
+        if last_pat in order:                             # round robin: the next opened pattern after the last one
+            after = [pid for pid in rotation if order.index(pid) > order.index(last_pat)]
+            pick = (after or rotation)[0]
+        else:
+            pick = rotation[0]
+        return remaining[pick][0]
+    unopened = [pid for pid in order if remaining[pid] and not any(p["id"] in started for p in by_pat[pid])]
+    if unopened:
+        return remaining[unopened[0]][0]
+    return remaining[last_pat][0] if last_pat in remaining and remaining[last_pat] else None
 
 
 def solved_problems(prog) -> list[dict]:
@@ -253,6 +300,8 @@ def mock_pick(prog) -> dict | None:
     pool = solved_problems(prog)
     if len(pool) < MOCK_MIN_SOLVED:
         return None
+    # mastered problems count double: a mock is the best test of whether "mastered" is true
+    pool = pool + [p for p in pool if prog["problems"][p["id"]]["status"] == "mastered"]
     return random.Random(iso(today())).choice(pool)
 
 
@@ -371,6 +420,10 @@ def describe(entry: dict, prog) -> None:
     if entry["type"] == "problem":
         st = state_of(item, prog)
         label = {"continue": "IN PROGRESS", "review": "REVIEW (re-solve from blank)", "new": "NEW"}[kind]
+        if st.get("status") == "mastered" and kind == "review":
+            label = "CONFIRM MASTERED (90-day re-solve)"
+        if st.get("lapses", 0) >= LEECH_AT:
+            label = "LEECH · " + label
         lc = f"  LC #{item['lc']}" if item.get("lc") else ""
         print(f"[{label}]  {item['id']}  {item['title']}  ({item['difficulty']}){lc}")
         print(f"  pattern : {pattern_name(item['pattern'])}   ->  {pattern_file(item['pattern'])}")
@@ -771,17 +824,14 @@ def cmd_done(args) -> None:
     was_review = st.get("reps", 0) > 0
     hist_kind = "review" if was_review else "new"
 
-    interval = st.get("interval", 0)
-    if rating == 1:
-        interval, status = 1, "learning"
-    elif rating == 2:
-        interval, status = (max(FIRST_INTERVAL, interval) if interval else FIRST_INTERVAL), "review"
-    else:
-        interval = FIRST_INTERVAL if interval < FIRST_INTERVAL else round(interval * GROWTH)
-        status = "mastered" if interval > MASTERED_AT_INTERVAL and was_review else "review"
+    interval, status, note = schedule(st, rating, was_review, p["id"])
+    sibling = None
+    if rating == 1 and was_review and st.get("lapses", 0) == SIBLING_AT:
+        sibling = queue_sibling(prog, p)
 
     minutes = elapsed_minutes(st["started_at"]) if st.get("started_at") else None
-    st.update({"status": status, "interval": interval, "due": iso(today() + timedelta(days=interval)),
+    st.update({"status": status, "interval": interval,
+               "due": iso(today() + timedelta(days=CONFIRM_AFTER_MASTERED if status == "mastered" else interval)),
                "last_rating": rating, "last_done": iso(today()), "finished_today": True,
                "reps": st.get("reps", 0) + 1})
     st.pop("started_at", None)
@@ -792,13 +842,82 @@ def cmd_done(args) -> None:
     log_attempt(folder_for(p) / "NOTES.md", hist_kind, rating, minutes)
 
     banner(f"Logged {p['id']} {p['title']}: rating {rating}")
-    print({1: "Tomorrow you see it again. Struggle plus a retry is where memory forms.",
-           2: f"Good. Back in {interval} days to prove it stuck.",
-           3: ("Mastered. It leaves the review queue." if status == "mastered"
-               else f"Clean. Next review in {interval} days.")}[rating])
+    if note:
+        print(note)
+    elif rating == 1:
+        print("Tomorrow you see it again. Struggle plus a retry is where memory forms.")
+    elif status == "mastered":
+        print(f"Mastered. One confirmation re-solve in {CONFIRM_AFTER_MASTERED} days, then it's done for good.")
+    else:
+        print(f"{'Good' if rating == 2 else 'Clean'}. Next review in {interval} days.")
+    if sibling:
+        print(f"Queued an easier {pattern_name(p['pattern'])} problem next: {sibling['id']} {sibling['title']}. "
+              f"Build the idea there, then come back to this one.")
     if minutes is not None:
         print(f"Time on it: {minutes} min.")
     wrap_up(prog)
+
+
+def schedule(st: dict, rating: int, was_review: bool, pid: str) -> tuple[int, str, str | None]:
+    """Next interval for a problem. Mutates st's lapse bookkeeping. Returns (interval, status, note).
+
+    Modeled on Anki's rules: Hard (2) grows the interval a little, a late Good (3) gets credit
+    for the extra days it survived, a lapse (1) remembers where it was so recovery is quick,
+    long intervals get jitter, and "mastered" needs one confirmation 90 days later.
+    """
+    interval = st.get("interval", 0)
+    confirming = st.get("status") == "mastered" and st.get("confirm_pending")
+    last = parse_day(st.get("last_done"))
+    days_since = (today() - last).days if last else 0
+    note = None
+
+    if rating == 1:
+        if was_review:
+            st["lapses"] = st.get("lapses", 0) + 1
+            if interval >= FIRST_INTERVAL:
+                st["prev_interval"] = max(st.get("prev_interval", 0), interval)
+        st.pop("confirm_pending", None)
+        if st.get("lapses", 0) == LEECH_AT:
+            note = ("This one keeps slipping: it's now flagged [LEECH]. Next time, re-read the pattern card first "
+                    "and ask Claude for the worked example before you start. That's not cheating, it's the fix.")
+        return 1, "learning", note
+
+    if confirming and rating == 3:
+        st["confirm_pending"] = False
+        return interval, "mastered", "Confirmed after 90 days. That one is yours for good; it leaves the rotation."
+
+    base = 0
+    if rating == 2:
+        new = max(FIRST_INTERVAL, round(max(interval, 1) * HARD_GROWTH))
+    elif st.get("prev_interval"):
+        new = max(FIRST_INTERVAL, st.pop("prev_interval") // 2)           # recovering from a lapse
+        note = f"Back on track. Picking up near where it was: next review in {new} days."
+    else:
+        base = max(interval, days_since)                                  # credit for surviving a late review
+        new = FIRST_INTERVAL if base < FIRST_INTERVAL else round(base * GROWTH)
+    st.pop("confirm_pending", None)
+
+    if new >= FUZZ_FROM:
+        jitter = max(1, round(new * 0.1))
+        new += random.Random(f"{pid}:{iso(today())}").randint(-jitter, jitter)
+
+    if rating == 3 and was_review and new > MASTERED_AT_INTERVAL and base >= MASTERED_MIN_GAP and not confirming:
+        st["confirm_pending"] = True
+        return new, "mastered", None
+    return new, "review", note
+
+
+def queue_sibling(prog, p: dict) -> dict | None:
+    """After repeated lapses, queue an unstarted problem of the same pattern that is no harder."""
+    order = {"easy": 0, "medium": 1, "hard": 2}
+    cands = [q for q in curriculum()["problems"]
+             if q["pattern"] == p["pattern"] and q["id"] not in prog["problems"]
+             and q["id"] not in prog.get("queue", []) and order[q["difficulty"]] <= order[p["difficulty"]]]
+    if not cands:
+        return None
+    cands.sort(key=lambda q: (order[q["difficulty"]], q.get("tier", 1)))
+    prog.setdefault("queue", []).insert(0, cands[0]["id"])
+    return cands[0]
 
 
 def done_build(b: dict) -> None:

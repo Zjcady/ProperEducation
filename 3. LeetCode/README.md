@@ -59,9 +59,18 @@ New problems come in tier order; `add` jumps the queue. "All of LeetCode" means:
 
 | You rate it | Next time you see it |
 |-------------|----------------------|
-| 1 struggled / peeked at answer | tomorrow |
-| 2 solved with hints | 3 days |
-| 3 clean solve + explained | 3 days, then 8, then 19, then 47, then it's mastered |
+| 1 struggled, or peeked at the answer (**even if the tests pass**: peeking is a 1) | tomorrow |
+| 2 solved, needed hints | the interval grows a little (×1.2, at least 3 days) |
+| 3 clean solve + explained it back | 3 days, then about 8, 19, 47 (×2.5 each time) |
+
+The fine print, borrowed from Anki:
+- **Late is fine.** A clean solve 12 days after it was due counts for those 12 days, so the next gap is bigger.
+- **A slip isn't a restart.** After a 1, the next clean solve jumps back to half the gap you had.
+- **Long gaps wobble a day or two**, so reviews don't pile up on the same day.
+- **Mastered means twice.** A clean solve after a gap of two weeks or more, when it pushes the next gap past 30 days, marks it mastered, then one confirmation re-solve 90 days later. Pass that and it's done for good. Mastered problems also come up more in mocks.
+- **[LEECH]** marks a problem you've slipped on 3 times: read its pattern card first and ask for the worked example. At 5 slips an easier problem of the same pattern is queued next.
+
+New problems interleave: each pattern's first two come back to back, then new problems rotate across the patterns you've opened. That rotation is what trains "which pattern is this?", the question every interview actually asks.
 
 Problems move `new → learning → review → mastered`. Chapter checks come back in 3 days if you missed any, once at 7 days if perfect, then clear. `python3 coach.py status` shows the maps.
 

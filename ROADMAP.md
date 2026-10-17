@@ -109,6 +109,11 @@ project you actually want to use is the one you finish.
 ### Track D · Autonomy flavor (the responsibilities paragraph)
 Short, optional, differentiating for this specific employer.
 
+**No C++ in this plan, on purpose.** Autonomy teams use C++ heavily, but the
+basic qualifications say Python or TypeScript, and splitting attention across
+two languages costs more than it buys at this stage. Python first, all the way.
+Revisit C++ after an offer, or if a specific posting requires it.
+
 - D1 · State machines: a mission broken into tasks with transitions (their "break missions into tasks")
 - D2 · Path planning: BFS, then A*, on a grid with obstacles (reuses LeetCode graph patterns)
 - D3 · A PID controller on a simulated 1-D system, with a plot
@@ -123,30 +128,42 @@ Short, optional, differentiating for this specific employer.
 
 ## 4. The daily ritual, expanded
 
-Still one sitting. Two 25-minute blocks with a break, or one block on light days.
+Work-day shape: 15-minute blocks spread through the day. The first one counts; the rest are bonus.
 
 ```
-Block 1 (25 min)  LeetCode: review if due, else the next new problem
-Block 2 (25 min)  Build: the next step of the current foundations chapter or lab
+Block 1 (15, up to 30 min)  LeetCode: review if due, else the next new problem
+Block 2 (15 min)            Build: the next step of the current chapter or lab
+Floor   (5 min)             a checks review or a pattern card, on bad days
 ```
 
 `coach.py next` returns both. The phone page shows both. Reviews for
 foundations checks you got wrong come back on the same spaced schedule as
 LeetCode problems. Weekends: a lab block only, or nothing.
 
-Rough calendar at 50 minutes a day:
+Honest calendar, from the actual numbers: one new problem per weekday (5 a
+week) and one build step per weekday. Reviews and bonus blocks don't change
+these dates; missed days push them back, and that's fine.
 
-| Weeks | Block 1 | Block 2 |
+| Weeks | Block 1 (LeetCode) | Block 2 (build) |
 |---|---|---|
-| 1 to 4 | LeetCode tier 1, patterns 1 to 5 | Python foundations (skip what placement clears) |
-| 5 to 12 | Tier 1, patterns 6 to 17 | Labs C1 to C4 |
-| 13 to 20 | Tier 2 | Labs C5 to C8 |
-| 21 to 28 | Tier 3 and weekly mocks | Track D, Track E, apply |
-| after | Tier 4 drill on demand | Keep shipping |
+| 1 to 3 | Tier 1 begins: arrays, two pointers, sliding window | Python foundations A01 to A12 (skip what placement clears) |
+| 4 to 9 | Tier 1 continues; weekly mocks start after 5 solves | Labs C1 to C8 (27 steps) |
+| 10 to 12 | Tier 1 continues | Labs D1 to D5, then E1 to E3 |
+| **12** | **Apply.** | |
+| 13 to 17 | Tier 1 finishes (83 problems is about 17 weeks) | Re-do the lab you'd demo; keep rehearsing E1 and E3 |
+| 18 to 29 | Tier 2 (the 150 finishes around week 29) | Interviews |
+| after | Tier 3 and `add` drills for each company's list | |
 
-Around week 12 you have a credible application: tested Python, an MCP server,
-an agent, and a real pipeline. Around week 20 you have everything the posting
-asks for. Dates slip. That's fine. The system never builds a backlog.
+**Why apply at week 12, not when tier 1 is done.** By week 12 the build track
+is finished: tested Python, an MCP server, an agent, RAG, a deployed Lambda,
+the autonomy labs and rehearsed stories. That's the application. LeetCode keeps
+going during the hiring process, which takes weeks anyway. And for a cleared
+role the government's clock only starts after an offer: an initial Secret
+averages about 197 days (ClearanceJobs, Q3 FY2026). Every week of waiting to
+apply is a week added to that.
+
+The old version of this table assumed 3 to 5 new problems a day. It would have
+said "behind" by week 13, which is the thing this system promises never to do.
 
 ## 5. Build plan (what Claude builds, in order)
 

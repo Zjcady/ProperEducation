@@ -36,6 +36,11 @@
    "file": "patterns/07-trees.md"
   },
   {
+   "id": "graphs",
+   "name": "Graphs",
+   "file": "patterns/11-graphs.md"
+  },
+  {
    "id": "tries",
    "name": "Tries",
    "file": "patterns/08-tries.md"
@@ -49,11 +54,6 @@
    "id": "backtracking",
    "name": "Backtracking",
    "file": "patterns/10-backtracking.md"
-  },
-  {
-   "id": "graphs",
-   "name": "Graphs",
-   "file": "patterns/11-graphs.md"
   },
   {
    "id": "dp-1d",
@@ -498,6 +498,76 @@
    "lc": 297
   },
   {
+   "id": "052",
+   "slug": "number-of-islands",
+   "title": "Number of Islands",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/number-of-islands/",
+   "tier": 1,
+   "lc": 200
+  },
+  {
+   "id": "053",
+   "slug": "max-area-of-island",
+   "title": "Max Area of Island",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/max-area-of-island/",
+   "tier": 1,
+   "lc": 695
+  },
+  {
+   "id": "054",
+   "slug": "clone-graph",
+   "title": "Clone Graph",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/clone-graph/",
+   "tier": 1,
+   "lc": 133
+  },
+  {
+   "id": "055",
+   "slug": "rotting-oranges",
+   "title": "Rotting Oranges",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/rotting-oranges/",
+   "tier": 1,
+   "lc": 1036
+  },
+  {
+   "id": "056",
+   "slug": "pacific-atlantic-water-flow",
+   "title": "Pacific Atlantic Water Flow",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
+   "tier": 1,
+   "lc": 417
+  },
+  {
+   "id": "057",
+   "slug": "course-schedule",
+   "title": "Course Schedule",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/course-schedule/",
+   "tier": 1,
+   "lc": 207
+  },
+  {
+   "id": "058",
+   "slug": "network-delay-time",
+   "title": "Network Delay Time",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/network-delay-time/",
+   "tier": 1,
+   "lc": 744
+  },
+  {
    "id": "042",
    "slug": "implement-trie-prefix-tree",
    "title": "Implement Trie (Prefix Tree)",
@@ -596,76 +666,6 @@
    "url": "https://leetcode.com/problems/word-search/",
    "tier": 1,
    "lc": 79
-  },
-  {
-   "id": "052",
-   "slug": "number-of-islands",
-   "title": "Number of Islands",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/number-of-islands/",
-   "tier": 1,
-   "lc": 200
-  },
-  {
-   "id": "053",
-   "slug": "max-area-of-island",
-   "title": "Max Area of Island",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/max-area-of-island/",
-   "tier": 1,
-   "lc": 695
-  },
-  {
-   "id": "054",
-   "slug": "clone-graph",
-   "title": "Clone Graph",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/clone-graph/",
-   "tier": 1,
-   "lc": 133
-  },
-  {
-   "id": "055",
-   "slug": "rotting-oranges",
-   "title": "Rotting Oranges",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/rotting-oranges/",
-   "tier": 1,
-   "lc": 1036
-  },
-  {
-   "id": "056",
-   "slug": "pacific-atlantic-water-flow",
-   "title": "Pacific Atlantic Water Flow",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
-   "tier": 1,
-   "lc": 417
-  },
-  {
-   "id": "057",
-   "slug": "course-schedule",
-   "title": "Course Schedule",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/course-schedule/",
-   "tier": 1,
-   "lc": 207
-  },
-  {
-   "id": "058",
-   "slug": "network-delay-time",
-   "title": "Network Delay Time",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/network-delay-time/",
-   "tier": 1,
-   "lc": 744
   },
   {
    "id": "059",
@@ -1098,6 +1098,86 @@
    "lc": 1544
   },
   {
+   "id": "111",
+   "slug": "surrounded-regions",
+   "title": "Surrounded Regions",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/surrounded-regions/",
+   "tier": 2,
+   "lc": 130
+  },
+  {
+   "id": "112",
+   "slug": "course-schedule-ii",
+   "title": "Course Schedule II",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/course-schedule-ii/",
+   "tier": 2,
+   "lc": 210
+  },
+  {
+   "id": "113",
+   "slug": "redundant-connection",
+   "title": "Redundant Connection",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/redundant-connection/",
+   "tier": 2,
+   "lc": 684
+  },
+  {
+   "id": "114",
+   "slug": "word-ladder",
+   "title": "Word Ladder",
+   "difficulty": "hard",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/word-ladder/",
+   "tier": 2,
+   "lc": 127
+  },
+  {
+   "id": "115",
+   "slug": "reconstruct-itinerary",
+   "title": "Reconstruct Itinerary",
+   "difficulty": "hard",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/reconstruct-itinerary/",
+   "tier": 2,
+   "lc": 332
+  },
+  {
+   "id": "116",
+   "slug": "min-cost-to-connect-all-points",
+   "title": "Min Cost to Connect All Points",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+   "tier": 2,
+   "lc": 1706
+  },
+  {
+   "id": "117",
+   "slug": "swim-in-rising-water",
+   "title": "Swim in Rising Water",
+   "difficulty": "hard",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/swim-in-rising-water/",
+   "tier": 2,
+   "lc": 794
+  },
+  {
+   "id": "118",
+   "slug": "cheapest-flights-within-k-stops",
+   "title": "Cheapest Flights Within K Stops",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+   "tier": 2,
+   "lc": 803
+  },
+  {
    "id": "102",
    "slug": "last-stone-weight",
    "title": "Last Stone Weight",
@@ -1186,86 +1266,6 @@
    "url": "https://leetcode.com/problems/n-queens/",
    "tier": 2,
    "lc": 51
-  },
-  {
-   "id": "111",
-   "slug": "surrounded-regions",
-   "title": "Surrounded Regions",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/surrounded-regions/",
-   "tier": 2,
-   "lc": 130
-  },
-  {
-   "id": "112",
-   "slug": "course-schedule-ii",
-   "title": "Course Schedule II",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/course-schedule-ii/",
-   "tier": 2,
-   "lc": 210
-  },
-  {
-   "id": "113",
-   "slug": "redundant-connection",
-   "title": "Redundant Connection",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/redundant-connection/",
-   "tier": 2,
-   "lc": 684
-  },
-  {
-   "id": "114",
-   "slug": "word-ladder",
-   "title": "Word Ladder",
-   "difficulty": "hard",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/word-ladder/",
-   "tier": 2,
-   "lc": 127
-  },
-  {
-   "id": "115",
-   "slug": "reconstruct-itinerary",
-   "title": "Reconstruct Itinerary",
-   "difficulty": "hard",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/reconstruct-itinerary/",
-   "tier": 2,
-   "lc": 332
-  },
-  {
-   "id": "116",
-   "slug": "min-cost-to-connect-all-points",
-   "title": "Min Cost to Connect All Points",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
-   "tier": 2,
-   "lc": 1706
-  },
-  {
-   "id": "117",
-   "slug": "swim-in-rising-water",
-   "title": "Swim in Rising Water",
-   "difficulty": "hard",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/swim-in-rising-water/",
-   "tier": 2,
-   "lc": 794
-  },
-  {
-   "id": "118",
-   "slug": "cheapest-flights-within-k-stops",
-   "title": "Cheapest Flights Within K Stops",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
-   "tier": 2,
-   "lc": 803
   },
   {
    "id": "119",
@@ -2308,6 +2308,166 @@
    "lc": 116
   },
   {
+   "id": "247",
+   "slug": "flood-fill",
+   "title": "Flood Fill",
+   "difficulty": "easy",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/flood-fill/",
+   "tier": 3,
+   "lc": 733
+  },
+  {
+   "id": "248",
+   "slug": "number-of-provinces",
+   "title": "Number of Provinces",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/number-of-provinces/",
+   "tier": 3,
+   "lc": 547
+  },
+  {
+   "id": "249",
+   "slug": "find-if-path-exists-in-graph",
+   "title": "Find if Path Exists in Graph",
+   "difficulty": "easy",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/find-if-path-exists-in-graph/",
+   "tier": 3,
+   "lc": 2121
+  },
+  {
+   "id": "250",
+   "slug": "keys-and-rooms",
+   "title": "Keys and Rooms",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/keys-and-rooms/",
+   "tier": 3,
+   "lc": 871
+  },
+  {
+   "id": "251",
+   "slug": "is-graph-bipartite",
+   "title": "Is Graph Bipartite?",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/is-graph-bipartite/",
+   "tier": 3,
+   "lc": 801
+  },
+  {
+   "id": "252",
+   "slug": "shortest-path-in-binary-matrix",
+   "title": "Shortest Path in Binary Matrix",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
+   "tier": 3,
+   "lc": 1171
+  },
+  {
+   "id": "253",
+   "slug": "01-matrix",
+   "title": "01 Matrix",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/01-matrix/",
+   "tier": 3,
+   "lc": 542
+  },
+  {
+   "id": "254",
+   "slug": "accounts-merge",
+   "title": "Accounts Merge",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/accounts-merge/",
+   "tier": 3,
+   "lc": 721
+  },
+  {
+   "id": "255",
+   "slug": "evaluate-division",
+   "title": "Evaluate Division",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/evaluate-division/",
+   "tier": 3,
+   "lc": 399
+  },
+  {
+   "id": "256",
+   "slug": "minimum-height-trees",
+   "title": "Minimum Height Trees",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/minimum-height-trees/",
+   "tier": 3,
+   "lc": 310
+  },
+  {
+   "id": "257",
+   "slug": "path-with-minimum-effort",
+   "title": "Path With Minimum Effort",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/path-with-minimum-effort/",
+   "tier": 3,
+   "lc": 1753
+  },
+  {
+   "id": "258",
+   "slug": "number-of-enclaves",
+   "title": "Number of Enclaves",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/number-of-enclaves/",
+   "tier": 3,
+   "lc": 1073
+  },
+  {
+   "id": "259",
+   "slug": "find-eventual-safe-states",
+   "title": "Find Eventual Safe States",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/find-eventual-safe-states/",
+   "tier": 3,
+   "lc": 820
+  },
+  {
+   "id": "260",
+   "slug": "all-paths-from-source-to-target",
+   "title": "All Paths From Source to Target",
+   "difficulty": "medium",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/all-paths-from-source-to-target/",
+   "tier": 3,
+   "lc": 813
+  },
+  {
+   "id": "261",
+   "slug": "critical-connections-in-a-network",
+   "title": "Critical Connections in a Network",
+   "difficulty": "hard",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/critical-connections-in-a-network/",
+   "tier": 3,
+   "lc": 1300
+  },
+  {
+   "id": "262",
+   "slug": "bus-routes",
+   "title": "Bus Routes",
+   "difficulty": "hard",
+   "pattern": "graphs",
+   "url": "https://leetcode.com/problems/bus-routes/",
+   "tier": 3,
+   "lc": 833
+  },
+  {
    "id": "223",
    "slug": "replace-words",
    "title": "Replace Words",
@@ -2546,166 +2706,6 @@
    "url": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/",
    "tier": 3,
    "lc": 698
-  },
-  {
-   "id": "247",
-   "slug": "flood-fill",
-   "title": "Flood Fill",
-   "difficulty": "easy",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/flood-fill/",
-   "tier": 3,
-   "lc": 733
-  },
-  {
-   "id": "248",
-   "slug": "number-of-provinces",
-   "title": "Number of Provinces",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/number-of-provinces/",
-   "tier": 3,
-   "lc": 547
-  },
-  {
-   "id": "249",
-   "slug": "find-if-path-exists-in-graph",
-   "title": "Find if Path Exists in Graph",
-   "difficulty": "easy",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/find-if-path-exists-in-graph/",
-   "tier": 3,
-   "lc": 2121
-  },
-  {
-   "id": "250",
-   "slug": "keys-and-rooms",
-   "title": "Keys and Rooms",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/keys-and-rooms/",
-   "tier": 3,
-   "lc": 871
-  },
-  {
-   "id": "251",
-   "slug": "is-graph-bipartite",
-   "title": "Is Graph Bipartite?",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/is-graph-bipartite/",
-   "tier": 3,
-   "lc": 801
-  },
-  {
-   "id": "252",
-   "slug": "shortest-path-in-binary-matrix",
-   "title": "Shortest Path in Binary Matrix",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
-   "tier": 3,
-   "lc": 1171
-  },
-  {
-   "id": "253",
-   "slug": "01-matrix",
-   "title": "01 Matrix",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/01-matrix/",
-   "tier": 3,
-   "lc": 542
-  },
-  {
-   "id": "254",
-   "slug": "accounts-merge",
-   "title": "Accounts Merge",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/accounts-merge/",
-   "tier": 3,
-   "lc": 721
-  },
-  {
-   "id": "255",
-   "slug": "evaluate-division",
-   "title": "Evaluate Division",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/evaluate-division/",
-   "tier": 3,
-   "lc": 399
-  },
-  {
-   "id": "256",
-   "slug": "minimum-height-trees",
-   "title": "Minimum Height Trees",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/minimum-height-trees/",
-   "tier": 3,
-   "lc": 310
-  },
-  {
-   "id": "257",
-   "slug": "path-with-minimum-effort",
-   "title": "Path With Minimum Effort",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/path-with-minimum-effort/",
-   "tier": 3,
-   "lc": 1753
-  },
-  {
-   "id": "258",
-   "slug": "number-of-enclaves",
-   "title": "Number of Enclaves",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/number-of-enclaves/",
-   "tier": 3,
-   "lc": 1073
-  },
-  {
-   "id": "259",
-   "slug": "find-eventual-safe-states",
-   "title": "Find Eventual Safe States",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/find-eventual-safe-states/",
-   "tier": 3,
-   "lc": 820
-  },
-  {
-   "id": "260",
-   "slug": "all-paths-from-source-to-target",
-   "title": "All Paths From Source to Target",
-   "difficulty": "medium",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/all-paths-from-source-to-target/",
-   "tier": 3,
-   "lc": 813
-  },
-  {
-   "id": "261",
-   "slug": "critical-connections-in-a-network",
-   "title": "Critical Connections in a Network",
-   "difficulty": "hard",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/critical-connections-in-a-network/",
-   "tier": 3,
-   "lc": 1300
-  },
-  {
-   "id": "262",
-   "slug": "bus-routes",
-   "title": "Bus Routes",
-   "difficulty": "hard",
-   "pattern": "graphs",
-   "url": "https://leetcode.com/problems/bus-routes/",
-   "tier": 3,
-   "lc": 833
   },
   {
    "id": "263",

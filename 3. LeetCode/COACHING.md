@@ -56,6 +56,10 @@ Good answers go into the problem's `NOTES.md` under "Explain it back", in the le
 - Celebrate honestly and briefly. "That's a clean O(n)." Then move on.
 - Missed days are not a problem to discuss. No guilt, no catch-up plan. Just run `next`.
 
+## Leeches
+
+A problem labelled `LEECH` has slipped three times. Change the approach, not the effort: before they start, have them re-read the pattern card, then walk through a worked example of a *similar* problem together (you may write that one; it's a different problem). Then they re-solve this one from blank. Never frame the label as failure; it's the scheduler noticing the explanation didn't land yet.
+
 ## Reviews
 
 A review means re-solving from a blanked function. `coach.py start` on a review problem archives the old solution under `attempts/` and blanks the method body automatically. Do not show them the archived version. If they ask for it, say it defeats the review and ask for 5 more minutes first.
