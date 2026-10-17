@@ -25,6 +25,7 @@ python3 coach.py skip A03         # placement: already know a chapter? skip it.
 python3 coach.py add valid-palindrome-iii --pattern two-pointers   # any LeetCode slug, queued as next
 python3 coach.py mock             # Saturdays, after 5 solves: a 30-minute mock with Claude as interviewer
 python3 coach.py list tier 2      # see the other tiers
+python3 coach.py resume           # resume bullets and numbers from what you've actually finished
 ```
 
 Block 1 done means today counts. Stopping there is correct. Tomorrow has its own.
@@ -85,7 +86,8 @@ curriculum.json     331 problems in 4 tiers, plus build items (A01..A12 chapters
 interviews/         one file per mock interview
 foundations/NN-Axx/ a chapter: read.md, checks.json, CHALLENGE.md, challenge.py, NOTES.md
 labs/C1..C8         GenAI labs: README.md (one step per block), starter with TODO(you) functions, tests/, RUBRIC.md
-labs/D1..D5         autonomy labs (not written yet)
+labs/D1..D5         autonomy labs: state machine, BFS and A*, PID, OpenCV tracking, an operator console
+career/E1..E3       interview readiness: STAR stories, resume bullets (coach.py resume), design talks
 _chapter_template/  what a fresh chapter starts from
 progress.json       your spaced-repetition state (coach.py owns this)
 patterns/           one 2-minute explainer per pattern

@@ -32,6 +32,7 @@ Commands:
                                     pull any LeetCode problem into the queue (tier 4, next up)
   python3 coach.py mock             this week's mock interview (Saturdays, once you've solved 5)
   python3 coach.py mock done <id> <score 0-12> [note]
+  python3 coach.py resume [--write] resume bullets and stats from what you've actually finished
   python3 coach.py status           streak, maps, what is due
   python3 coach.py list [track|tier N]   the curriculum
 """
@@ -925,6 +926,53 @@ def title_from_slug(slug: str) -> str:
     return " ".join(words)
 
 
+def cmd_resume(args) -> None:
+    """Resume material generated from progress: stats plus one bullet per finished lab."""
+    prog = progress()
+    cur = curriculum()
+    bullets_file = ROOT / "career" / "E2-resume" / "bullets.json"
+    templates = load_json(bullets_file, {})
+    solved = solved_problems(prog)
+    patterns_hit = {p["pattern"] for p in solved}
+    mastered = [p for p in solved if prog["problems"][p["id"]]["status"] == "mastered"]
+    tier_reached = max([p.get("tier", 1) for p in solved], default=0)
+    mocks = [h for h in prog["history"] if h["kind"] == "mock" and h.get("event") == "done"]
+    mock_avg = (sum(h["score"] for h in mocks) / len(mocks)) if mocks else None
+    chapters_done = [b for b in cur["build"] if b["track"] == "foundations"
+                     and build_state(b, prog)["status"] in ("done", "skipped")]
+    labs_done = [b for b in cur["build"] if b["kind"] == "lab" and build_state(b, prog)["status"] == "done"]
+    stats = {"n_problems": len(solved), "n_patterns": len(patterns_hit), "n_mastered": len(mastered),
+             "tier": tier_reached, "n_mocks": len(mocks), "mock_avg": f"{mock_avg:.1f}" if mock_avg is not None else "n/a",
+             "n_chapters": len(chapters_done), "n_labs": len(labs_done), "streak": prog["streak"]["count"]}
+    lines = [f"# Resume material · generated {iso(today())} by coach.py resume", "",
+             "Everything below is backed by this repo's history. Edit the wording; don't inflate the numbers.", "",
+             "## Numbers you can defend",
+             f"- {stats['n_problems']} LeetCode problems solved from a blank function across {stats['n_patterns']} patterns, "
+             f"{stats['n_mastered']} re-solved on a spaced schedule until mastered (tier {stats['tier']} reached)",
+             f"- {stats['n_chapters']} of 12 Python foundations chapters, {stats['n_labs']} hands-on labs completed",
+             f"- {stats['n_mocks']} timed mock interviews, average {stats['mock_avg']}/12", ""]
+    lines.append("## Bullets from finished labs")
+    if not labs_done:
+        lines.append("- (none yet: finish a lab and its bullet appears here)")
+    for b in labs_done:
+        tpl = templates.get(b["id"])
+        if tpl:
+            lines.append("- " + tpl.format(**stats))
+        else:
+            lines.append(f"- {b['title']} (no bullet template for {b['id']} in bullets.json yet)")
+    skills = [k for k, v in templates.get("_skills", {}).items() if any(b["id"] in v for b in labs_done)]
+    lines += ["", "## Skills line", "Skills: " + (", ".join(skills) if skills else "(appears as labs are finished)")]
+    text = "\n".join(lines) + "\n"
+    out = ROOT / "career" / "E2-resume" / "RESUME.md"
+    if "--write" in args:
+        if out.exists() and "--force" not in args:
+            sys.exit(f"{out.relative_to(ROOT)} exists. Edit it, or pass --force to regenerate (your edits would be lost).")
+        out.write_text(text)
+        print(f"wrote {out.relative_to(ROOT)}")
+    else:
+        print(text)
+
+
 def cmd_mock(args) -> None:
     prog = progress()
     if args and args[0] == "done":
@@ -1051,7 +1099,7 @@ def cmd_list(args) -> None:
 
 COMMANDS = {"next": cmd_next, "floor": cmd_floor, "start": cmd_start, "check": cmd_check, "hint": cmd_hint,
             "checks": cmd_checks, "done": cmd_done, "touch": cmd_touch, "more": cmd_more, "skip": cmd_skip,
-            "add": cmd_add, "mock": cmd_mock, "status": cmd_status, "list": cmd_list}
+            "add": cmd_add, "mock": cmd_mock, "resume": cmd_resume, "status": cmd_status, "list": cmd_list}
 
 
 def main(argv: list[str]) -> None:

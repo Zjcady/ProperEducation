@@ -1,0 +1,82 @@
+{
+ "_note": "One template per lab id. Fields in braces come from coach.py resume: n_problems, n_patterns, n_mastered, tier, n_mocks, mock_avg, n_chapters, n_labs, streak.",
+ "C1": "Built a Python CLI on the Anthropic API with validated JSON output, retry with backoff, and per-request cost reporting",
+ "C2": "Wrote an LLM document pipeline that chunks, summarizes and classifies a folder of notes and reports tokens and cost per file",
+ "C3": "Designed an MCP server exposing an internal tool API to AI assistants, with scoped tokens and constant-time credential checks",
+ "C4": "Implemented an agent loop from scratch over sandboxed tools, then rebuilt it on the SDK tool runner and documented the trade-offs",
+ "C5": "Built a RAG question answerer with heading-aware chunking, tf-idf embeddings, cited answers and a measured retrieval hit rate",
+ "C6": "Shipped a meeting-summarizer pipeline: structured summaries, action items, SRT subtitles and social captions from transcripts",
+ "C7": "Configured AI dev accelerators for a repo: project instructions, a reusable skill, a policy hook, a scheduled task; compared with Cursor",
+ "C8": "Deployed the summarizer as an S3-triggered AWS Lambda with SAM, behind a storage interface that keeps the handler testable offline",
+ "D1": "Modeled an autonomous mission as a finite state machine with guarded transitions, task planning under a battery budget, and abort handling",
+ "D2": "Implemented BFS and A* grid path planners with path validation and expansion-count comparison",
+ "D3": "Implemented a PID controller with anti-windup against a simulated first-order plant and measured overshoot, settling time and steady-state error",
+ "D4": "Built an OpenCV color-segmentation pipeline (HSV masking, morphology, contours) and tracked a moving target across frames",
+ "D5": "Built a human-in-the-loop operator console (HTTP API plus a polling web UI) for approving and aborting mission tasks",
+ "E1": "Prepared and rehearsed STAR stories tied to each requirement of the target role",
+ "E3": "Can present the MCP and RAG designs on a whiteboard in ten minutes with trade-offs and scaling changes",
+ "_skills": {
+  "Python": [
+   "C1",
+   "C2",
+   "C3",
+   "C4",
+   "C5",
+   "C6",
+   "C8",
+   "D1",
+   "D2",
+   "D3",
+   "D4",
+   "D5"
+  ],
+  "Anthropic API": [
+   "C1",
+   "C2",
+   "C4",
+   "C5",
+   "C6"
+  ],
+  "MCP": [
+   "C3"
+  ],
+  "agents and tool use": [
+   "C4"
+  ],
+  "RAG and embeddings": [
+   "C5"
+  ],
+  "AWS Lambda and S3": [
+   "C8"
+  ],
+  "OpenCV": [
+   "D4"
+  ],
+  "control systems basics": [
+   "D3"
+  ],
+  "path planning": [
+   "D2"
+  ],
+  "state machines": [
+   "D1"
+  ],
+  "pytest": [
+   "C1",
+   "C2",
+   "C3",
+   "C4",
+   "C5",
+   "C6",
+   "C8",
+   "D1",
+   "D2",
+   "D3",
+   "D4",
+   "D5"
+  ],
+  "Claude Code and Cursor": [
+   "C7"
+  ]
+ }
+}

@@ -3414,6 +3414,10 @@
   {
    "id": "autonomy",
    "name": "Autonomy"
+  },
+  {
+   "id": "career",
+   "name": "Interview readiness"
   }
  ],
  "build": [
@@ -3615,6 +3619,30 @@
    "kind": "lab",
    "title": "A tiny human-machine interface",
    "folder": "labs/D5",
+   "steps": 2
+  },
+  {
+   "id": "E1",
+   "track": "career",
+   "kind": "lab",
+   "title": "STAR stories from your own labs",
+   "folder": "career/E1-star",
+   "steps": 3
+  },
+  {
+   "id": "E2",
+   "track": "career",
+   "kind": "lab",
+   "title": "Resume bullets, generated then edited",
+   "folder": "career/E2-resume",
+   "steps": 2
+  },
+  {
+   "id": "E3",
+   "track": "career",
+   "kind": "lab",
+   "title": "Design talks: explain C3 and C5 in ten minutes",
+   "folder": "career/E3-design",
    "steps": 2
   }
  ],

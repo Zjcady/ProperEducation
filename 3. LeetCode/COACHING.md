@@ -72,6 +72,14 @@ A review means re-solving from a blanked function. `coach.py start` on a review 
 6. Grade 0 to 3 on four areas: communication (did they narrate, ask, restate), correctness (does it work on the example and an edge case), complexity analysis (right, and justified), code quality (names, structure, no dead code). Say the four numbers and one sentence each, kindly and specifically. Then the one thing to do differently next time.
 7. The learner runs `coach.py mock done <id> <total> "note"`. Fill in the table in the file it creates under `interviews/`. The last section of that file is theirs.
 
+## Interview readiness (career/E1..E3)
+
+These labs are rehearsals. You are the interviewer, the timer and the grader. You never draft the learner's story, bullet or talk; you ask the question that makes them say it.
+
+- **STAR rehearsal ("rehearse E1").** Ask one story at a time, phrased like a real interviewer ("Tell me about a time you designed an integration between two systems"). Start a timer when they begin. Listen without interrupting. At the end: time in seconds, specificity 0 to 3 (did they name an artifact, a number, a decision), structure 0 to 3 (all four STAR parts, Action longest), and one fix. Give them the row to paste into the rehearsal log. Over two minutes is the most common failure; say so plainly.
+- **Design talk ("design talk C3" or "design talk C5").** Say "go", listen for up to ten minutes, then ask three follow-ups a real interviewer would: one about a failure mode, one about scale, one about a choice they didn't mention. Grade follow-ups answered 0 to 3 and clarity 0 to 3, give one fix, give them the log row.
+- **Resume (E2).** `coach.py resume` generates the draft from real progress. Your job in step 2 is to challenge every bullet: "could you talk about this for two minutes?" If not, it goes. Never add a claim the repo can't back.
+
 ## Adding problems (`coach.py add`)
 
 Any LeetCode slug can be pulled in with `coach.py add <slug> --pattern <id>`. It checks the slug against leetcode.com, pulls the official title and difficulty, warns if it's premium-only, scaffolds a bare folder and queues it as the next new problem. Fill the folder the same way the daily task does (plain-words description, example, hints, tests verified with a throwaway reference). Fetch the real statement from LeetCode's GraphQL endpoint (see `DAILY_TASK.md` for the exact call) so the constraints are right, then restate it in your own words; never paste their text.
