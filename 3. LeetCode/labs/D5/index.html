@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D5 · Operator console</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 40rem; padding: 0 1rem;
+         background: #14171c; color: #e8e8e8; }
+  h1 { font-size: 1.2rem; display: flex; align-items: center; gap: .8rem; }
+  #state { display: inline-block; padding: .2rem .7rem; border-radius: .4rem; background: #3a4250;
+           font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; }
+  #state.complete { background: #2a8a5a; }
+  #state.aborted  { background: #b8322d; }
+  ol#tasks { padding-left: 2rem; line-height: 1.8; }
+  ol#tasks li.done    { color: #7a8290; text-decoration: line-through; }
+  ol#tasks li.current { background: #2b4a6f; font-weight: bold; padding: 0 .4rem; border-radius: .3rem; }
+  button { font-size: 1rem; padding: .5rem 1.1rem; margin-right: .6rem; border: 0; border-radius: .4rem;
+           cursor: pointer; }
+  #approve { background: #2a8a5a; color: white; }
+  #abort   { background: #b8322d; color: white; }
+  button:disabled { opacity: .35; cursor: default; }
+  pre#log { background: #000; color: #9fe39f; padding: .7rem; border-radius: .4rem;
+            max-height: 12rem; overflow: auto; font-size: .85rem; }
+</style>
+</head>
+<body>
+<h1>Survey drone · operator console <span id="state">…</span></h1>
+<ol id="tasks"></ol>
+<p>
+  <button id="approve" disabled>Approve next task</button>
+  <button id="abort">Abort</button>
+</p>
+<pre id="log"></pre>
+<script>
+// TODO(you): step 2. This page is a thin mirror of /state. README step 2 has the full list.
+//
+// 1. Look up the five elements by id: state, tasks, approve, abort, log.
+// 2. render(s): badge text and class from s.state; rebuild the task list with "done" and
+//    "current" classes; the Approve button is disabled unless the mission is awaiting approval;
+//    the log is the lines joined with newlines.
+// 3. poll(): GET /state, parse the JSON, render it. Once at load, then every 1000 ms.
+// 4. Approve click: POST /approve and render the reply. Abort click: POST /abort and render the reply.
+</script>
+</body>
+</html>
