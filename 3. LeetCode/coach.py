@@ -183,7 +183,8 @@ def is_scaffolded(kind: str, item: dict) -> bool:
     if item["kind"] == "chapter":
         read = folder / "read.md"
         return read.exists() and "{{" not in read.read_text() and "_(Claude fills" not in read.read_text()
-    return (folder / "README.md").exists()
+    readme = folder / "README.md"
+    return readme.exists() and "_(Lab not written yet" not in readme.read_text()
 
 
 # ---------------------------------------------------------------- today
@@ -507,8 +508,9 @@ def start_build(b: dict) -> None:
         print(f"  6. Done    python3 coach.py done {b['id']}")
     else:
         print(f"  1. Read    {b['folder']}/README.md   step {st.get('step', 0) + 1} of {b['steps']}")
-        print(f"  2. Build   follow that step. Ask Claude to review against RUBRIC.md.")
-        print(f"  3. Done    python3 coach.py done {b['id']}    (advances one step)")
+        print(f"  2. Build   the functions marked TODO(you) for that step. Claude pairs, you type.")
+        print(f"  3. Test    python3 coach.py check {b['id']}     (runs that step's tests)")
+        print(f"  4. Done    python3 coach.py done {b['id']}      (advances one step; last step: rubric review first)")
 
 
 def scaffold_problem(p: dict, folder: Path) -> None:
@@ -570,6 +572,8 @@ def cmd_check(args) -> None:
     if not args:
         sys.exit("usage: python3 coach.py check <id>")
     kind, item = find_item(args[0])
+    if kind == "build" and item["kind"] == "lab":
+        return check_lab(item)
     if kind == "problem":
         script, st, bell = folder_for(item) / "solution.py", state_of(item), LEETCODE_BELL_MINUTES
     else:
@@ -579,6 +583,26 @@ def cmd_check(args) -> None:
     if st.get("started_at"):
         print(f"timer: {timer_text(st['started_at'], bell)}\n")
     sys.exit(subprocess.run([sys.executable, str(script)]).returncode)
+
+
+def check_lab(b: dict) -> None:
+    """Run the pytest tests for the lab's current step (test names start with test_step<N>_)."""
+    st = build_state(b)
+    step = st.get("step", 0) + 1
+    folder = build_folder(b)
+    if not (folder / "tests").exists():
+        sys.exit(f"{b['folder']}/ has no tests yet.")
+    if st.get("started_at"):
+        print(f"timer: {timer_text(st['started_at'], BLOCK_MINUTES)}")
+    print(f"step {step} of {b['steps']}:  python3 -m pytest tests -q -k step{step}   (in {b['folder']}/)\n")
+    try:
+        import pytest  # noqa: F401
+    except ImportError:
+        sys.exit(f"pytest is not installed. Run:  pip install -r {b['folder']}/requirements.txt")
+    proc = subprocess.run([sys.executable, "-m", "pytest", "tests", "-q", "-k", f"step{step}"], cwd=folder)
+    if proc.returncode == 0:
+        print(f"\nStep {step} green. Record it:  python3 coach.py done {b['id']}")
+    sys.exit(proc.returncode)
 
 
 def cmd_hint(args) -> None:

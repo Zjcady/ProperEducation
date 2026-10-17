@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Meeting summarizer. A transcript lands in S3, a Lambda writes the summary next to it.
+
+Parameters:
+  AnthropicApiKey:
+    Type: String
+    NoEcho: true
+
+Resources:
+  TranscriptBucket:
+    Type: AWS::S3::Bucket
+
+  SummarizerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: handler.handler
+      Runtime: python3.12
+      Timeout: 120
+      MemorySize: 512
+      Environment:
+        Variables:
+          ANTHROPIC_API_KEY: !Ref AnthropicApiKey
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref TranscriptBucket
+      Events:
+        TranscriptUploaded:
+          Type: S3
+          Properties:
+            Bucket: !Ref TranscriptBucket
+            Events: s3:ObjectCreated:*
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: incoming/
+                  - Name: suffix
+                    Value: .txt
+
+Outputs:
+  BucketName:
+    Value: !Ref TranscriptBucket
+  FunctionName:
+    Value: !Ref SummarizerFunction

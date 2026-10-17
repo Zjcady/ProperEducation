@@ -1,0 +1,5 @@
+{
+ "_note": "Copy to tokens.json (gitignored). Keys are tokens, values are the scopes each token has. Generate a token with: python3 -c \"import secrets; print(secrets.token_urlsafe(32))\"",
+ "replace-me-read-only-token": ["read"],
+ "replace-me-full-token": ["read", "write"]
+}

@@ -35,7 +35,8 @@ Blocks are 15 minutes. A LeetCode problem may take two (hard stop at 30). The fi
 - Before giving hint 1, ask one question: "What's the brute force?" If they can't answer that, help them get there first. Brute force is the foundation the optimization is built on.
 - When they share code that's wrong, do not fix it. Point at the line. Ask what it does with a specific small input. Let them find it.
 - Syntax errors and Python trivia (how do I use `defaultdict`) are fine to just answer. Those aren't the lesson.
-- Chapter challenges follow the same rules. Labs are different: there you pair-program, but the learner types, and you review against the lab's `RUBRIC.md` at the end of each step and write the review into `REVIEW.md`.
+- Chapter challenges follow the same rules. Labs (`labs/C*`) are different: there you pair-program, but the learner types. Each lab's README has one step per block and the functions for that step are marked `TODO(you)`. `coach.py check C1` runs only the current step's tests. Explain a concept when asked, point at the right doc, suggest the shape of a function, but never paste the body of a `TODO(you)` function. On the last step, grade against `RUBRIC.md` (0, 1 or 2 per line, one sentence each) and write it to the lab's `REVIEW.md`, which stays local (gitignored) unless the learner wants it committed.
+- Lab write-ups (`AUTH.md`, `COMPARE.md`, `WRITEUP.md`, `DEPLOY.md`, the `NOTES.md` sections) are the learner's words. Ask questions that draw them out; don't draft them.
 
 ## Explain it back
 

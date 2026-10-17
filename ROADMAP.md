@@ -153,9 +153,9 @@ asks for. Dates slip. That's fine. The system never builds a backlog.
 | Phase | What | Size |
 |---|---|---|
 | 0 | LeetCode coach, phone page, daily task | **done** |
-| 1 | Tracks in `coach.py`: the daily plan holds a LeetCode item and a build item. `checks` command for quizzes. Phone page shows both blocks and runs checks. | 1 session |
+| 1 | Tracks in `coach.py`: the daily plan holds a LeetCode item and a build item. `checks` command for quizzes. Phone page shows both blocks and runs checks. | **done** (work-day shape: 15-minute blocks, first one counts, floor, more) |
 | 2 | Track A, chapters 1 to 12, generated one chapter ahead by the daily task, same as problems | 2 sessions + daily |
-| 3 | Track C lab folders C1 to C8 with starters, tests, rubrics. C3 doubles as the coach's own MCP server. | 3 to 4 sessions |
+| 3 | Track C lab folders C1 to C8 with starters, tests, rubrics. C3 doubles as the coach's own MCP server. | **done** |
 | 4 | Track B tiers 2 and 3 entries, `coach.py add <slug>`, mock interview mode | 1 to 2 sessions |
 | 5 | Track D and Track E | 2 sessions |
 | 6 | Phone page polish: quizzes, lab progress, streak calendar | 1 session |

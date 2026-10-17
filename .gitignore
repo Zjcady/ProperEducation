@@ -1,2 +1,9 @@
 __pycache__/
 *.pyc
+.pytest_cache/
+3. LeetCode/labs/*/out/
+3. LeetCode/labs/C8/local-bucket/
+3. LeetCode/labs/C4/transcript.jsonl
+3. LeetCode/labs/C3/tokens.json
+3. LeetCode/labs/*/REVIEW.md
+.aws-sam/

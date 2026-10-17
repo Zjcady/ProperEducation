@@ -1,0 +1,12 @@
+{
+ "Records": [
+  {
+   "eventSource": "aws:s3",
+   "eventName": "ObjectCreated:Put",
+   "s3": {
+    "bucket": {"name": "my-transcripts-bucket"},
+    "object": {"key": "incoming/standup+2026-09.txt", "size": 812}
+   }
+  }
+ ]
+}

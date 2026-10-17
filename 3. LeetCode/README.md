@@ -68,7 +68,8 @@ coach.py            the brain: next / floor / start / check / hint / checks / do
 harness.py          tiny test runner + ListNode/TreeNode helpers + run_levels for chapters
 curriculum.json     83 problems pattern-ordered, plus build items (A01..A12 chapters, C1..C8 and D1..D5 labs)
 foundations/NN-Axx/ a chapter: read.md, checks.json, CHALLENGE.md, challenge.py, NOTES.md
-labs/Cx, labs/Dx    a lab: README.md with steps, starter/, tests/, RUBRIC.md (built in phase 3)
+labs/C1..C8         GenAI labs: README.md (one step per block), starter with TODO(you) functions, tests/, RUBRIC.md
+labs/D1..D5         autonomy labs (not written yet)
 _chapter_template/  what a fresh chapter starts from
 progress.json       your spaced-repetition state (coach.py owns this)
 patterns/           one 2-minute explainer per pattern

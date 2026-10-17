@@ -1,0 +1,3 @@
+anthropic>=1.0
+pytest>=8
+# optional, for real audio: faster-whisper   (pip install faster-whisper)

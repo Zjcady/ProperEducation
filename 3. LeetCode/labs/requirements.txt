@@ -1,0 +1,5 @@
+anthropic>=1.0
+pytest>=8
+mcp>=2.0
+boto3>=1.34
+# optional, C6 audio: faster-whisper

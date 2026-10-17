@@ -1,0 +1,14 @@
+[
+ {"q": "How do I find the next greater element for each item in an array?", "expect_source": "04-stack.md"},
+ {"q": "Longest substring without repeating characters, what approach?", "expect_source": "03-sliding-window.md"},
+ {"q": "How do I get the k largest elements as values keep arriving?", "expect_source": "09-heap.md"},
+ {"q": "Autocomplete and prefix search for many words", "expect_source": "08-tries.md"},
+ {"q": "Merge overlapping intervals after sorting by start", "expect_source": "15-intervals.md"},
+ {"q": "Rotate a matrix 90 degrees in place", "expect_source": "16-math-geometry.md"},
+ {"q": "Count the number of 1 bits in an integer", "expect_source": "17-bits.md"},
+ {"q": "Reverse a linked list with prev and cur pointers", "expect_source": "06-linked-list.md"},
+ {"q": "Count the number of islands in a grid", "expect_source": "11-graphs.md"},
+ {"q": "Generate all subsets and permutations with choose explore un-choose", "expect_source": "10-backtracking.md"},
+ {"q": "Minimum number of coins to make an amount", "expect_source": "12-dp-1d.md"},
+ {"q": "Binary search on a sorted array in log n time", "expect_source": "05-binary-search.md"}
+]
