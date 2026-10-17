@@ -78,6 +78,10 @@ Problems move `new → learning → review → mastered`. Chapter checks come ba
 
 `site/` is a static page that shows today's problem, its hints (collapsed, one at a time), the pattern card and your progress map. It's deployed on Vercel from this repo and refreshes every morning and after each session. The page is read-only on purpose: you solve in a Claude session, the page tells you what and why.
 
+## One tap from your home screen
+
+`PHONE.md` walks through a Shortcut that starts the timer, opens a session, and has block 1 waiting. Set it up once, about 20 minutes.
+
 ## Every morning, automatically
 
 A scheduled task (`DAILY_TASK.md`) runs at 7:54 Eastern, scaffolds the next problem's folder if it's still a bare template, rebuilds the page, and pushes. You wake up to a ready problem.

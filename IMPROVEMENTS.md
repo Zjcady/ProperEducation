@@ -1,6 +1,6 @@
 # Improvements backlog
 
-Researched 2026-10-17 by six parallel researchers (ADHD learning science, interview prep, the target role, GenAI skills, competitor platforms, tooling), merged, then put through three adversarial critics (is the evidence real, is it already built, is it worth its cost) and ranked by impact over effort. 46 raw findings, 18 shortlisted, 14 survived, 4 rejected. Built on 2026-10-17: rank 1 (scheduler), rank 3's four roadmap edits, rank 5's interleaving reorder. Everything else is still open.
+Researched 2026-10-17 by six parallel researchers (ADHD learning science, interview prep, the target role, GenAI skills, competitor platforms, tooling), merged, then put through three adversarial critics (is the evidence real, is it already built, is it worth its cost) and ranked by impact over effort. 46 raw findings, 18 shortlisted, 14 survived, 4 rejected. Built on 2026-10-17: rank 1 (scheduler), rank 2 (routine + PHONE.md; the Shortcut is yours to build), rank 3's four roadmap edits, rank 4 (hooks, LEARNER.md), rank 5's interleaving reorder. Everything else is still open.
 
 # What to build next
 

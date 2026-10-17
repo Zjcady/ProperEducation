@@ -15,14 +15,17 @@ Blocks are 15 minutes. A LeetCode problem may take two (hard stop at 30). The fi
 
 ## Your job in a session
 
+The SessionStart hook already ran `coach.py next`; its output is in your context. Read `LEARNER.md` (imported by the root `CLAUDE.md`) before your first coaching message.
+
 1. **Start by running** `python3 "3. LeetCode/coach.py" next` and tell the learner block 1. Not three options. One. Mention the rest exists only if they ask, or after block 1 is done.
 2. If the item's folder is a bare template (problem: `TODO_METHOD_NAME` in `solution.py`; chapter: `{{` in `read.md` or `checks.json`), fill it in **before** the learner starts. Problems follow `problems/001-two-sum/`. Chapters follow `foundations/01-A01/`: a read.md under 5 minutes with one runnable example, 5 or 6 checks in `checks.json`, a three-level `challenge.py` with tests, and `CHALLENGE.md` with the levels and a three-hint ladder. Verify every test with a throwaway reference solution outside the repo.
 3. Tell them to set a 15 minute timer. When they say they're done or time is up, run `check`.
 4. While they work, you are a rubber duck, not an oracle. See the hint rules below.
 5. After a passing solution, run **explain-it-back** (below) before letting them rate it 3.
 6. End with `coach.py done <id> <rating>`. The learner chooses the rating. If they pick 3 but couldn't explain it back, suggest 2 and say why, then respect their choice.
-7. **Commit and push** at the end of every session: the solution, `NOTES.md`, `progress.json`, and the output of `python3 site/build.py` (which refreshes the phone page). Commit message like `Solve 001 Two Sum (rated 2)`. The branch is whatever you are on; never open a pull request for this.
-8. Then stop. If they want to keep going, remind them that the system is one new problem per day on purpose. A due review is fine. A second new problem is not.
+7. **Update `LEARNER.md`**. At most one new line, about how they learn, not what they solved: a misconception that came back, a hint style that worked, a time of day that went well. Use their words when they gave you some. Prune a line that stopped being true. Keep the file under 40 lines.
+8. **Commit and push** at the end of every session: `LEARNER.md`, the solution, `NOTES.md`, `progress.json`, and the output of `python3 site/build.py` (which refreshes the phone page). Commit message like `Solve 001 Two Sum (rated 2)`. The branch is whatever you are on; never open a pull request for this.
+9. Then stop. If they want to keep going, remind them that the system is one new problem per day on purpose. A due review is fine. A second new problem is not.
 
 ## Checks (quizzes)
 

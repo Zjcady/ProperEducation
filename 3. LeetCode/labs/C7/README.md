@@ -18,6 +18,6 @@ A hook is a command Claude Code runs around tool calls. Write `.claude/hooks/pro
 - exits `2` with a one-line reason on stderr when the path is a learner file: `problems/*/solution.py` or `foundations/*/challenge.py`. Exit 2 blocks the tool call and shows the reason to Claude.
 - exits `0` otherwise, **and** when the learner file is still the untouched template (it contains `TODO_METHOD_NAME` or `TODO_ARGS`). That exemption is what lets the morning scheduled task fill in a fresh stub. Think about why the check has to read the file, not just the path.
 
-Register it in `.claude/settings.json` at the repo root (the exact JSON is in `starter/settings.json`). Now the coaching rule "never type their answer" is enforced by the harness, not by good intentions.
+Register it in `.claude/settings.json` at the repo root. That file already exists and holds three hooks the coach uses (session start, page rebuild, stop guard); read them, they're worked examples. Add a `"PreToolUse"` key under `"hooks"` with the entry from `starter/settings.json`, and keep the JSON valid (`python3 -m json.tool .claude/settings.json`). Now the coaching rule "never type their answer" is enforced by the harness, not by good intentions.
 
 Then fill in `WRITEUP.md`: the five features this repo uses, what each does, and the Cursor equivalent (rules files, `.cursorrules` or `.cursor/rules`, and its agent mode). One page. Then rubric review and `python3 coach.py done C7`.

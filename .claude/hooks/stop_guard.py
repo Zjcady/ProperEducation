@@ -43,6 +43,6 @@ if dirty or ahead:
     if ahead:
         why.append(f"{ahead} commit(s) not pushed")
     print("Before stopping: " + " and ".join(why) + ". Run `python3 \"3. LeetCode/site/build.py\"`, commit, "
-          "and push so the phone page shows today's work (COACHING.md step 7).", file=sys.stderr)
+          "and push so the phone page shows today's work (COACHING.md step 8).", file=sys.stderr)
     sys.exit(2)
 sys.exit(0)
