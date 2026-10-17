@@ -15,7 +15,7 @@ Blocks are 15 minutes. A LeetCode problem may take two (hard stop at 30). The fi
 
 ## Your job in a session
 
-The SessionStart hook already ran `coach.py next`; its output is in your context. Read `LEARNER.md` (imported by the root `CLAUDE.md`) before your first coaching message.
+If the SessionStart hook ran, `coach.py next` output is already in your context; otherwise step 1 runs it. Either way, read `LEARNER.md` (imported by the root `CLAUDE.md`) before your first coaching message.
 
 1. **Start by running** `python3 "3. LeetCode/coach.py" next` and tell the learner block 1. Not three options. One. Mention the rest exists only if they ask, or after block 1 is done.
 2. If the item's folder is a bare template (problem: `TODO_METHOD_NAME` in `solution.py`; chapter: `{{` in `read.md` or `checks.json`), fill it in **before** the learner starts. Problems follow `problems/001-two-sum/`. Chapters follow `foundations/01-A01/`: a read.md under 5 minutes with one runnable example, 5 or 6 checks in `checks.json`, a three-level `challenge.py` with tests, and `CHALLENGE.md` with the levels and a three-hint ladder. Verify every test with a throwaway reference solution outside the repo.

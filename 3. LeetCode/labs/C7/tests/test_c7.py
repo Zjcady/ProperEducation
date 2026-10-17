@@ -65,7 +65,12 @@ def test_step2_hook_allows_everything_else():
 def test_step2_settings_register_the_hook():
     assert SETTINGS.exists()
     data = json.loads(SETTINGS.read_text())
-    pre = data["hooks"]["PreToolUse"]
+    hooks = data.get("hooks", {})
+    for kept in ("SessionStart", "PostToolUse", "Stop"):
+        assert kept in hooks, f"the coach's {kept} hook went missing: add PreToolUse to the file, don't replace it"
+    assert data.get("autoMemoryEnabled") is False, "keep autoMemoryEnabled: false"
+    pre = hooks.get("PreToolUse")
+    assert pre, 'add a "PreToolUse" entry under "hooks" (see starter/settings.json)'
     commands = [h["command"] for entry in pre for h in entry["hooks"]]
     assert any("protect_solutions.py" in c for c in commands)
     assert any("Edit" in entry["matcher"] for entry in pre)

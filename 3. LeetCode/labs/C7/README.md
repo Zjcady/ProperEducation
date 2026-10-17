@@ -3,7 +3,7 @@
 **Maps to:** "Configures and uses AI-enabled development accelerators (Cursor, Devin, Cline...) to automate tasks, generate code, or improve workflows; has applied them to small projects."
 **You'll have at the end:** a Claude Code skill and a hook in this repo that you wrote, plus a one-page write-up comparing Claude Code and Cursor configuration. This is the lab where you turn "I used Claude" into something an interviewer can look at.
 
-This repo already uses three accelerator features: `CLAUDE.md` (project instructions), a scheduled task (`DAILY_TASK.md`), and the coaching protocol. You add two more.
+This repo already uses several accelerator features: `CLAUDE.md` (project instructions, which imports `LEARNER.md`), a scheduled task (`DAILY_TASK.md`), a phone-fired routine (`PHONE.md`), the coaching protocol, and three hooks in `.claude/settings.json`. You add a skill and a fourth hook.
 
 ## Step 1 · A skill  (15 min)
 

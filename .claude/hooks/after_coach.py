@@ -11,13 +11,16 @@ import subprocess
 import sys
 from pathlib import Path
 
-WRITES = re.compile(r"coach\.py\s+(done|checks|touch|more|skip|add|mock\s+done)\b")
+WRITES = re.compile(r"coach\.py[\"']?\s+(start|done|checks|touch|more|skip|add|mock\s+done)\b")
 
 try:
     payload = json.load(sys.stdin)
 except Exception:
     sys.exit(0)
-command = (payload.get("tool_input") or {}).get("command", "")
+tool_input = payload.get("tool_input") if isinstance(payload, dict) else None
+command = tool_input.get("command") if isinstance(tool_input, dict) else None
+if not isinstance(command, str):
+    sys.exit(0)
 if not WRITES.search(command):
     sys.exit(0)
 root = Path(os.environ.get("CLAUDE_PROJECT_DIR", Path(__file__).resolve().parents[2]))

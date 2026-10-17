@@ -26,8 +26,8 @@ your phone, **Regenerate** it there and the old one stops working.
 
 Shortcuts app, **+**, name it **Start block**. Add these actions in order:
 
-1. **Start Timer**: 15 minutes.
-2. *(optional)* **Set Focus**: turn Do Not Disturb on, until timer ends.
+1. **Start Timer**: 17 minutes. The session takes a minute or two to get ready; the extra two cover that.
+2. *(optional)* **Set Focus**: turn Do Not Disturb on, *Until Turned Off* (or *Until Time*, 20 minutes from now).
 3. **Get Contents of URL**
    - URL: the `/fire` URL you copied
    - Method: **POST**
@@ -41,16 +41,23 @@ Shortcuts app, **+**, name it **Start block**. Add these actions in order:
 
    - Request Body: **JSON**, add one Text field: key `text`, value `start block`
 4. **Get Dictionary Value**: key `claude_code_session_url` from *Contents of URL*.
-5. **Open URLs**: *Dictionary Value*.
+5. **If** *Dictionary Value* *has any value*:
+   - **Open URLs**: *Dictionary Value*
+   - **Otherwise**: **Show Alert** "Couldn't start. Open the Claude app and say leetcode."
+   - **End If**
+
+   This catches a revoked token or a rate limit with a plain message instead of a cryptic failure.
 
 Then **Share > Add to Home Screen**. Delete the note with the token.
+
+**Never share this Shortcut.** The token sits inside it in plain text. If you ever do, regenerate the token on the web.
 
 ## 2b. Android instead
 
 Install **HTTP Shortcuts** (free, open source). New shortcut: method POST,
 the `/fire` URL, the same three headers, body `{"text": "start block"}` as
-JSON. Under *Response handling*, set it to open the URL found at
-`claude_code_session_url`. Add a second home-screen shortcut for a 15-minute
+JSON. Under *Scripting > Run on success*, add:
+`openUrl(JSON.parse(response.body).claude_code_session_url);` Add a second home-screen shortcut for a 15-minute
 Clock timer, or chain one with a scripting action. Put the widget on your
 home screen.
 
@@ -58,7 +65,7 @@ home screen.
 
 Tap it. The timer starts, a session opens, and in about a minute Claude says
 what block 1 is and which file to open. Do the block. When you're done, say
-so in that session; the coach rates it, commits, and the phone page updates.
+so in that session. You pick the rating; the coach commits it and the phone page updates.
 
 ## Limits worth knowing
 
