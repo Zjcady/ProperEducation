@@ -9,10 +9,10 @@ the task; ask Claude to update the scheduled task's prompt.
 
 You are preparing today's LeetCode problem in the repository zjcady/ProperEducation.
 
-Branch: `claude/cloud-remote-work-setup-qklwnn`. If that branch has been merged and `3. LeetCode/` exists on `main`, use `main` instead.
+Branch: `main`.
 
 0. If the repository is not already checked out in your working directory, call the `add_repo` tool for owner `zjcady`, repo `ProperEducation` with push access, then run the clone command it gives you and work inside that clone.
-1. Fetch and check out the branch, then pull so you have the latest progress.
+1. Fetch and check out `main`, then pull so you have the latest progress.
 2. Read `3. LeetCode/COACHING.md`. You are scaffolding, not coaching, but its rules on never writing solutions still apply.
 3. In `3. LeetCode/`, run `python3 coach.py next`.
 4. For each problem in today's plan whose folder under `problems/` is missing, or is a bare template (its `solution.py` contains `TODO_METHOD_NAME`, or its `PROBLEM.md` contains `_(Claude fills this in`):
@@ -21,5 +21,5 @@ Branch: `claude/cloud-remote-work-setup-qklwnn`. If that branch has been merged 
    - Verify the tests: write a reference solution in a scratch file outside the repository, run it against the TESTS the same way `harness.run` does, fix any wrong test, delete the scratch file. The reference solution must never be committed or pasted into the repository.
 5. Never edit `progress.json` by hand. Never run `coach.py start` on a problem whose folder already exists (that starts the learner's timer). Never run `coach.py done`.
 6. Run `python3 site/build.py`.
-7. Commit everything with a message like `Daily: scaffold 009 Valid Palindrome` (or `Daily: refresh site data` if nothing needed scaffolding) and push with `git push -u origin <branch>`. Do not create a pull request.
+7. Commit everything with a message like `Daily: scaffold 009 Valid Palindrome` (or `Daily: refresh site data` if nothing needed scaffolding) and push with `git push -u origin main`. Do not create a pull request.
 8. Reply with one line: which problem is up today and whether you scaffolded it.
