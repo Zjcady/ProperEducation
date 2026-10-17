@@ -74,7 +74,7 @@ A review means re-solving from a blanked function. `coach.py start` on a review 
 
 ## Adding problems (`coach.py add`)
 
-Any LeetCode slug can be pulled in with `coach.py add <slug> --pattern <id>`. It scaffolds a bare folder and queues it as the next new problem. Fill the folder the same way the daily task does (plain-words description, example, hints, tests verified with a throwaway reference). You cannot reach leetcode.com from here, so the description comes from your own knowledge of the problem; say so if you're unsure of the exact constraints and ask the learner to paste them from the site.
+Any LeetCode slug can be pulled in with `coach.py add <slug> --pattern <id>`. It checks the slug against leetcode.com, pulls the official title and difficulty, warns if it's premium-only, scaffolds a bare folder and queues it as the next new problem. Fill the folder the same way the daily task does (plain-words description, example, hints, tests verified with a throwaway reference). Fetch the real statement from LeetCode's GraphQL endpoint (see `DAILY_TASK.md` for the exact call) so the constraints are right, then restate it in your own words; never paste their text.
 
 ## The phone page and the daily task
 

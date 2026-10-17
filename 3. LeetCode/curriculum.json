@@ -94,7 +94,8 @@
    "difficulty": "easy",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/two-sum/",
-   "tier": 1
+   "tier": 1,
+   "lc": 1
   },
   {
    "id": "002",
@@ -103,7 +104,8 @@
    "difficulty": "easy",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/contains-duplicate/",
-   "tier": 1
+   "tier": 1,
+   "lc": 217
   },
   {
    "id": "003",
@@ -112,7 +114,8 @@
    "difficulty": "easy",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/valid-anagram/",
-   "tier": 1
+   "tier": 1,
+   "lc": 242
   },
   {
    "id": "004",
@@ -121,7 +124,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/group-anagrams/",
-   "tier": 1
+   "tier": 1,
+   "lc": 49
   },
   {
    "id": "005",
@@ -130,7 +134,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/top-k-frequent-elements/",
-   "tier": 1
+   "tier": 1,
+   "lc": 347
   },
   {
    "id": "006",
@@ -139,7 +144,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/product-of-array-except-self/",
-   "tier": 1
+   "tier": 1,
+   "lc": 238
   },
   {
    "id": "007",
@@ -148,7 +154,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/valid-sudoku/",
-   "tier": 1
+   "tier": 1,
+   "lc": 36
   },
   {
    "id": "008",
@@ -157,7 +164,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/longest-consecutive-sequence/",
-   "tier": 1
+   "tier": 1,
+   "lc": 128
   },
   {
    "id": "009",
@@ -166,7 +174,8 @@
    "difficulty": "easy",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/valid-palindrome/",
-   "tier": 1
+   "tier": 1,
+   "lc": 125
   },
   {
    "id": "010",
@@ -175,7 +184,8 @@
    "difficulty": "medium",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
-   "tier": 1
+   "tier": 1,
+   "lc": 167
   },
   {
    "id": "011",
@@ -184,7 +194,8 @@
    "difficulty": "medium",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/3sum/",
-   "tier": 1
+   "tier": 1,
+   "lc": 15
   },
   {
    "id": "012",
@@ -193,7 +204,8 @@
    "difficulty": "medium",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/container-with-most-water/",
-   "tier": 1
+   "tier": 1,
+   "lc": 11
   },
   {
    "id": "013",
@@ -202,7 +214,8 @@
    "difficulty": "easy",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
-   "tier": 1
+   "tier": 1,
+   "lc": 121
   },
   {
    "id": "014",
@@ -211,7 +224,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
-   "tier": 1
+   "tier": 1,
+   "lc": 3
   },
   {
    "id": "015",
@@ -220,7 +234,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/longest-repeating-character-replacement/",
-   "tier": 1
+   "tier": 1,
+   "lc": 424
   },
   {
    "id": "016",
@@ -229,7 +244,8 @@
    "difficulty": "hard",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/minimum-window-substring/",
-   "tier": 1
+   "tier": 1,
+   "lc": 76
   },
   {
    "id": "017",
@@ -238,7 +254,8 @@
    "difficulty": "easy",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/valid-parentheses/",
-   "tier": 1
+   "tier": 1,
+   "lc": 20
   },
   {
    "id": "018",
@@ -247,7 +264,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/min-stack/",
-   "tier": 1
+   "tier": 1,
+   "lc": 155
   },
   {
    "id": "019",
@@ -256,7 +274,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
-   "tier": 1
+   "tier": 1,
+   "lc": 150
   },
   {
    "id": "020",
@@ -265,7 +284,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/daily-temperatures/",
-   "tier": 1
+   "tier": 1,
+   "lc": 739
   },
   {
    "id": "021",
@@ -274,7 +294,8 @@
    "difficulty": "easy",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/binary-search/",
-   "tier": 1
+   "tier": 1,
+   "lc": 792
   },
   {
    "id": "022",
@@ -283,7 +304,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/koko-eating-bananas/",
-   "tier": 1
+   "tier": 1,
+   "lc": 907
   },
   {
    "id": "023",
@@ -292,7 +314,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
-   "tier": 1
+   "tier": 1,
+   "lc": 153
   },
   {
    "id": "024",
@@ -301,7 +324,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
-   "tier": 1
+   "tier": 1,
+   "lc": 33
   },
   {
    "id": "025",
@@ -310,7 +334,8 @@
    "difficulty": "easy",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/reverse-linked-list/",
-   "tier": 1
+   "tier": 1,
+   "lc": 206
   },
   {
    "id": "026",
@@ -319,7 +344,8 @@
    "difficulty": "easy",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
-   "tier": 1
+   "tier": 1,
+   "lc": 21
   },
   {
    "id": "027",
@@ -328,7 +354,8 @@
    "difficulty": "easy",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/linked-list-cycle/",
-   "tier": 1
+   "tier": 1,
+   "lc": 141
   },
   {
    "id": "028",
@@ -337,7 +364,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/reorder-list/",
-   "tier": 1
+   "tier": 1,
+   "lc": 143
   },
   {
    "id": "029",
@@ -346,7 +374,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
-   "tier": 1
+   "tier": 1,
+   "lc": 19
   },
   {
    "id": "030",
@@ -355,7 +384,8 @@
    "difficulty": "hard",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
-   "tier": 1
+   "tier": 1,
+   "lc": 23
   },
   {
    "id": "031",
@@ -364,7 +394,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/invert-binary-tree/",
-   "tier": 1
+   "tier": 1,
+   "lc": 226
   },
   {
    "id": "032",
@@ -373,7 +404,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
-   "tier": 1
+   "tier": 1,
+   "lc": 104
   },
   {
    "id": "033",
@@ -382,7 +414,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/same-tree/",
-   "tier": 1
+   "tier": 1,
+   "lc": 100
   },
   {
    "id": "034",
@@ -391,16 +424,18 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/subtree-of-another-tree/",
-   "tier": 1
+   "tier": 1,
+   "lc": 572
   },
   {
    "id": "035",
    "slug": "lowest-common-ancestor-of-a-binary-search-tree",
-   "title": "Lowest Common Ancestor of a BST",
+   "title": "Lowest Common Ancestor of a Binary Search Tree",
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
-   "tier": 1
+   "tier": 1,
+   "lc": 235
   },
   {
    "id": "036",
@@ -409,7 +444,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
-   "tier": 1
+   "tier": 1,
+   "lc": 102
   },
   {
    "id": "037",
@@ -418,7 +454,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/validate-binary-search-tree/",
-   "tier": 1
+   "tier": 1,
+   "lc": 98
   },
   {
    "id": "038",
@@ -427,16 +464,18 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
-   "tier": 1
+   "tier": 1,
+   "lc": 230
   },
   {
    "id": "039",
    "slug": "construct-binary-tree-from-preorder-and-inorder-traversal",
-   "title": "Construct Binary Tree from Preorder and Inorder",
+   "title": "Construct Binary Tree from Preorder and Inorder Traversal",
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
-   "tier": 1
+   "tier": 1,
+   "lc": 105
   },
   {
    "id": "040",
@@ -445,7 +484,8 @@
    "difficulty": "hard",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
-   "tier": 1
+   "tier": 1,
+   "lc": 124
   },
   {
    "id": "041",
@@ -454,7 +494,8 @@
    "difficulty": "hard",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
-   "tier": 1
+   "tier": 1,
+   "lc": 297
   },
   {
    "id": "042",
@@ -463,16 +504,18 @@
    "difficulty": "medium",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
-   "tier": 1
+   "tier": 1,
+   "lc": 208
   },
   {
    "id": "043",
    "slug": "design-add-and-search-words-data-structure",
-   "title": "Design Add and Search Words",
+   "title": "Design Add and Search Words Data Structure",
    "difficulty": "medium",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
-   "tier": 1
+   "tier": 1,
+   "lc": 211
   },
   {
    "id": "044",
@@ -481,7 +524,8 @@
    "difficulty": "hard",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/word-search-ii/",
-   "tier": 1
+   "tier": 1,
+   "lc": 212
   },
   {
    "id": "045",
@@ -490,7 +534,8 @@
    "difficulty": "easy",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
-   "tier": 1
+   "tier": 1,
+   "lc": 789
   },
   {
    "id": "046",
@@ -499,7 +544,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/k-closest-points-to-origin/",
-   "tier": 1
+   "tier": 1,
+   "lc": 1014
   },
   {
    "id": "047",
@@ -508,7 +554,8 @@
    "difficulty": "hard",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/find-median-from-data-stream/",
-   "tier": 1
+   "tier": 1,
+   "lc": 295
   },
   {
    "id": "048",
@@ -517,7 +564,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/subsets/",
-   "tier": 1
+   "tier": 1,
+   "lc": 78
   },
   {
    "id": "049",
@@ -526,7 +574,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/permutations/",
-   "tier": 1
+   "tier": 1,
+   "lc": 46
   },
   {
    "id": "050",
@@ -535,7 +584,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/combination-sum/",
-   "tier": 1
+   "tier": 1,
+   "lc": 39
   },
   {
    "id": "051",
@@ -544,7 +594,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/word-search/",
-   "tier": 1
+   "tier": 1,
+   "lc": 79
   },
   {
    "id": "052",
@@ -553,7 +604,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/number-of-islands/",
-   "tier": 1
+   "tier": 1,
+   "lc": 200
   },
   {
    "id": "053",
@@ -562,7 +614,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/max-area-of-island/",
-   "tier": 1
+   "tier": 1,
+   "lc": 695
   },
   {
    "id": "054",
@@ -571,7 +624,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/clone-graph/",
-   "tier": 1
+   "tier": 1,
+   "lc": 133
   },
   {
    "id": "055",
@@ -580,7 +634,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/rotting-oranges/",
-   "tier": 1
+   "tier": 1,
+   "lc": 1036
   },
   {
    "id": "056",
@@ -589,7 +644,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
-   "tier": 1
+   "tier": 1,
+   "lc": 417
   },
   {
    "id": "057",
@@ -598,7 +654,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/course-schedule/",
-   "tier": 1
+   "tier": 1,
+   "lc": 207
   },
   {
    "id": "058",
@@ -607,7 +664,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/network-delay-time/",
-   "tier": 1
+   "tier": 1,
+   "lc": 744
   },
   {
    "id": "059",
@@ -616,7 +674,8 @@
    "difficulty": "easy",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/climbing-stairs/",
-   "tier": 1
+   "tier": 1,
+   "lc": 70
   },
   {
    "id": "060",
@@ -625,7 +684,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/house-robber/",
-   "tier": 1
+   "tier": 1,
+   "lc": 198
   },
   {
    "id": "061",
@@ -634,7 +694,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/house-robber-ii/",
-   "tier": 1
+   "tier": 1,
+   "lc": 213
   },
   {
    "id": "062",
@@ -643,7 +704,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/longest-palindromic-substring/",
-   "tier": 1
+   "tier": 1,
+   "lc": 5
   },
   {
    "id": "063",
@@ -652,7 +714,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/palindromic-substrings/",
-   "tier": 1
+   "tier": 1,
+   "lc": 647
   },
   {
    "id": "064",
@@ -661,7 +724,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/decode-ways/",
-   "tier": 1
+   "tier": 1,
+   "lc": 91
   },
   {
    "id": "065",
@@ -670,7 +734,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/coin-change/",
-   "tier": 1
+   "tier": 1,
+   "lc": 322
   },
   {
    "id": "066",
@@ -679,7 +744,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/maximum-product-subarray/",
-   "tier": 1
+   "tier": 1,
+   "lc": 152
   },
   {
    "id": "067",
@@ -688,7 +754,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/word-break/",
-   "tier": 1
+   "tier": 1,
+   "lc": 139
   },
   {
    "id": "068",
@@ -697,7 +764,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/longest-increasing-subsequence/",
-   "tier": 1
+   "tier": 1,
+   "lc": 300
   },
   {
    "id": "069",
@@ -706,7 +774,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/unique-paths/",
-   "tier": 1
+   "tier": 1,
+   "lc": 62
   },
   {
    "id": "070",
@@ -715,7 +784,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/longest-common-subsequence/",
-   "tier": 1
+   "tier": 1,
+   "lc": 1250
   },
   {
    "id": "071",
@@ -724,7 +794,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/maximum-subarray/",
-   "tier": 1
+   "tier": 1,
+   "lc": 53
   },
   {
    "id": "072",
@@ -733,7 +804,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/jump-game/",
-   "tier": 1
+   "tier": 1,
+   "lc": 55
   },
   {
    "id": "073",
@@ -742,7 +814,8 @@
    "difficulty": "medium",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/insert-interval/",
-   "tier": 1
+   "tier": 1,
+   "lc": 57
   },
   {
    "id": "074",
@@ -751,7 +824,8 @@
    "difficulty": "medium",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/merge-intervals/",
-   "tier": 1
+   "tier": 1,
+   "lc": 56
   },
   {
    "id": "075",
@@ -760,7 +834,8 @@
    "difficulty": "medium",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/non-overlapping-intervals/",
-   "tier": 1
+   "tier": 1,
+   "lc": 435
   },
   {
    "id": "076",
@@ -769,7 +844,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/rotate-image/",
-   "tier": 1
+   "tier": 1,
+   "lc": 48
   },
   {
    "id": "077",
@@ -778,7 +854,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/spiral-matrix/",
-   "tier": 1
+   "tier": 1,
+   "lc": 54
   },
   {
    "id": "078",
@@ -787,7 +864,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/set-matrix-zeroes/",
-   "tier": 1
+   "tier": 1,
+   "lc": 73
   },
   {
    "id": "079",
@@ -796,7 +874,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/number-of-1-bits/",
-   "tier": 1
+   "tier": 1,
+   "lc": 191
   },
   {
    "id": "080",
@@ -805,7 +884,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/counting-bits/",
-   "tier": 1
+   "tier": 1,
+   "lc": 338
   },
   {
    "id": "081",
@@ -814,7 +894,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/reverse-bits/",
-   "tier": 1
+   "tier": 1,
+   "lc": 190
   },
   {
    "id": "082",
@@ -823,7 +904,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/missing-number/",
-   "tier": 1
+   "tier": 1,
+   "lc": 268
   },
   {
    "id": "083",
@@ -832,7 +914,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/sum-of-two-integers/",
-   "tier": 1
+   "tier": 1,
+   "lc": 371
   },
   {
    "id": "084",
@@ -841,7 +924,8 @@
    "difficulty": "hard",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/trapping-rain-water/",
-   "tier": 2
+   "tier": 2,
+   "lc": 42
   },
   {
    "id": "085",
@@ -850,7 +934,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/permutation-in-string/",
-   "tier": 2
+   "tier": 2,
+   "lc": 567
   },
   {
    "id": "086",
@@ -859,7 +944,8 @@
    "difficulty": "hard",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/sliding-window-maximum/",
-   "tier": 2
+   "tier": 2,
+   "lc": 239
   },
   {
    "id": "087",
@@ -868,7 +954,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/generate-parentheses/",
-   "tier": 2
+   "tier": 2,
+   "lc": 22
   },
   {
    "id": "088",
@@ -877,7 +964,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/car-fleet/",
-   "tier": 2
+   "tier": 2,
+   "lc": 883
   },
   {
    "id": "089",
@@ -886,7 +974,8 @@
    "difficulty": "hard",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
-   "tier": 2
+   "tier": 2,
+   "lc": 84
   },
   {
    "id": "090",
@@ -895,7 +984,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/search-a-2d-matrix/",
-   "tier": 2
+   "tier": 2,
+   "lc": 74
   },
   {
    "id": "091",
@@ -904,7 +994,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/time-based-key-value-store/",
-   "tier": 2
+   "tier": 2,
+   "lc": 1023
   },
   {
    "id": "092",
@@ -913,7 +1004,8 @@
    "difficulty": "hard",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
-   "tier": 2
+   "tier": 2,
+   "lc": 4
   },
   {
    "id": "093",
@@ -922,7 +1014,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
-   "tier": 2
+   "tier": 2,
+   "lc": 138
   },
   {
    "id": "094",
@@ -931,7 +1024,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/add-two-numbers/",
-   "tier": 2
+   "tier": 2,
+   "lc": 2
   },
   {
    "id": "095",
@@ -940,7 +1034,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/find-the-duplicate-number/",
-   "tier": 2
+   "tier": 2,
+   "lc": 287
   },
   {
    "id": "096",
@@ -949,7 +1044,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/lru-cache/",
-   "tier": 2
+   "tier": 2,
+   "lc": 146
   },
   {
    "id": "097",
@@ -958,7 +1054,8 @@
    "difficulty": "hard",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
-   "tier": 2
+   "tier": 2,
+   "lc": 25
   },
   {
    "id": "098",
@@ -967,7 +1064,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/diameter-of-binary-tree/",
-   "tier": 2
+   "tier": 2,
+   "lc": 543
   },
   {
    "id": "099",
@@ -976,7 +1074,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/balanced-binary-tree/",
-   "tier": 2
+   "tier": 2,
+   "lc": 110
   },
   {
    "id": "100",
@@ -985,7 +1084,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
-   "tier": 2
+   "tier": 2,
+   "lc": 199
   },
   {
    "id": "101",
@@ -994,7 +1094,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
-   "tier": 2
+   "tier": 2,
+   "lc": 1544
   },
   {
    "id": "102",
@@ -1003,7 +1104,8 @@
    "difficulty": "easy",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/last-stone-weight/",
-   "tier": 2
+   "tier": 2,
+   "lc": 1127
   },
   {
    "id": "103",
@@ -1012,7 +1114,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
-   "tier": 2
+   "tier": 2,
+   "lc": 215
   },
   {
    "id": "104",
@@ -1021,7 +1124,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/task-scheduler/",
-   "tier": 2
+   "tier": 2,
+   "lc": 621
   },
   {
    "id": "105",
@@ -1030,7 +1134,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/design-twitter/",
-   "tier": 2
+   "tier": 2,
+   "lc": 355
   },
   {
    "id": "106",
@@ -1039,7 +1144,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/subsets-ii/",
-   "tier": 2
+   "tier": 2,
+   "lc": 90
   },
   {
    "id": "107",
@@ -1048,7 +1154,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/combination-sum-ii/",
-   "tier": 2
+   "tier": 2,
+   "lc": 40
   },
   {
    "id": "108",
@@ -1057,7 +1164,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/palindrome-partitioning/",
-   "tier": 2
+   "tier": 2,
+   "lc": 131
   },
   {
    "id": "109",
@@ -1066,7 +1174,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
-   "tier": 2
+   "tier": 2,
+   "lc": 17
   },
   {
    "id": "110",
@@ -1075,7 +1184,8 @@
    "difficulty": "hard",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/n-queens/",
-   "tier": 2
+   "tier": 2,
+   "lc": 51
   },
   {
    "id": "111",
@@ -1084,7 +1194,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/surrounded-regions/",
-   "tier": 2
+   "tier": 2,
+   "lc": 130
   },
   {
    "id": "112",
@@ -1093,7 +1204,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/course-schedule-ii/",
-   "tier": 2
+   "tier": 2,
+   "lc": 210
   },
   {
    "id": "113",
@@ -1102,7 +1214,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/redundant-connection/",
-   "tier": 2
+   "tier": 2,
+   "lc": 684
   },
   {
    "id": "114",
@@ -1111,7 +1224,8 @@
    "difficulty": "hard",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/word-ladder/",
-   "tier": 2
+   "tier": 2,
+   "lc": 127
   },
   {
    "id": "115",
@@ -1120,7 +1234,8 @@
    "difficulty": "hard",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/reconstruct-itinerary/",
-   "tier": 2
+   "tier": 2,
+   "lc": 332
   },
   {
    "id": "116",
@@ -1129,7 +1244,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
-   "tier": 2
+   "tier": 2,
+   "lc": 1706
   },
   {
    "id": "117",
@@ -1138,7 +1254,8 @@
    "difficulty": "hard",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/swim-in-rising-water/",
-   "tier": 2
+   "tier": 2,
+   "lc": 794
   },
   {
    "id": "118",
@@ -1147,7 +1264,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
-   "tier": 2
+   "tier": 2,
+   "lc": 803
   },
   {
    "id": "119",
@@ -1156,7 +1274,8 @@
    "difficulty": "easy",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/min-cost-climbing-stairs/",
-   "tier": 2
+   "tier": 2,
+   "lc": 747
   },
   {
    "id": "120",
@@ -1165,7 +1284,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/partition-equal-subset-sum/",
-   "tier": 2
+   "tier": 2,
+   "lc": 416
   },
   {
    "id": "121",
@@ -1174,7 +1294,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
-   "tier": 2
+   "tier": 2,
+   "lc": 309
   },
   {
    "id": "122",
@@ -1183,7 +1304,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/coin-change-ii/",
-   "tier": 2
+   "tier": 2,
+   "lc": 518
   },
   {
    "id": "123",
@@ -1192,7 +1314,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/target-sum/",
-   "tier": 2
+   "tier": 2,
+   "lc": 494
   },
   {
    "id": "124",
@@ -1201,7 +1324,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/interleaving-string/",
-   "tier": 2
+   "tier": 2,
+   "lc": 97
   },
   {
    "id": "125",
@@ -1210,7 +1334,8 @@
    "difficulty": "hard",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
-   "tier": 2
+   "tier": 2,
+   "lc": 329
   },
   {
    "id": "126",
@@ -1219,7 +1344,8 @@
    "difficulty": "hard",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/distinct-subsequences/",
-   "tier": 2
+   "tier": 2,
+   "lc": 115
   },
   {
    "id": "127",
@@ -1228,7 +1354,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/edit-distance/",
-   "tier": 2
+   "tier": 2,
+   "lc": 72
   },
   {
    "id": "128",
@@ -1237,7 +1364,8 @@
    "difficulty": "hard",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/burst-balloons/",
-   "tier": 2
+   "tier": 2,
+   "lc": 312
   },
   {
    "id": "129",
@@ -1246,7 +1374,8 @@
    "difficulty": "hard",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/regular-expression-matching/",
-   "tier": 2
+   "tier": 2,
+   "lc": 10
   },
   {
    "id": "130",
@@ -1255,7 +1384,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/jump-game-ii/",
-   "tier": 2
+   "tier": 2,
+   "lc": 45
   },
   {
    "id": "131",
@@ -1264,7 +1394,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/gas-station/",
-   "tier": 2
+   "tier": 2,
+   "lc": 134
   },
   {
    "id": "132",
@@ -1273,7 +1404,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/hand-of-straights/",
-   "tier": 2
+   "tier": 2,
+   "lc": 876
   },
   {
    "id": "133",
@@ -1282,7 +1414,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
-   "tier": 2
+   "tier": 2,
+   "lc": 2026
   },
   {
    "id": "134",
@@ -1291,7 +1424,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/partition-labels/",
-   "tier": 2
+   "tier": 2,
+   "lc": 768
   },
   {
    "id": "135",
@@ -1300,7 +1434,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/valid-parenthesis-string/",
-   "tier": 2
+   "tier": 2,
+   "lc": 678
   },
   {
    "id": "136",
@@ -1309,7 +1444,8 @@
    "difficulty": "hard",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
-   "tier": 2
+   "tier": 2,
+   "lc": 1977
   },
   {
    "id": "137",
@@ -1318,7 +1454,8 @@
    "difficulty": "easy",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/happy-number/",
-   "tier": 2
+   "tier": 2,
+   "lc": 202
   },
   {
    "id": "138",
@@ -1327,7 +1464,8 @@
    "difficulty": "easy",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/plus-one/",
-   "tier": 2
+   "tier": 2,
+   "lc": 66
   },
   {
    "id": "139",
@@ -1336,7 +1474,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/powx-n/",
-   "tier": 2
+   "tier": 2,
+   "lc": 50
   },
   {
    "id": "140",
@@ -1345,7 +1484,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/multiply-strings/",
-   "tier": 2
+   "tier": 2,
+   "lc": 43
   },
   {
    "id": "141",
@@ -1354,7 +1494,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/detect-squares/",
-   "tier": 2
+   "tier": 2,
+   "lc": 2139
   },
   {
    "id": "142",
@@ -1363,7 +1504,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/single-number/",
-   "tier": 2
+   "tier": 2,
+   "lc": 136
   },
   {
    "id": "143",
@@ -1372,7 +1514,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/reverse-integer/",
-   "tier": 2
+   "tier": 2,
+   "lc": 7
   },
   {
    "id": "144",
@@ -1381,7 +1524,8 @@
    "difficulty": "easy",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/majority-element/",
-   "tier": 3
+   "tier": 3,
+   "lc": 169
   },
   {
    "id": "145",
@@ -1390,7 +1534,8 @@
    "difficulty": "easy",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 448
   },
   {
    "id": "146",
@@ -1399,7 +1544,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/subarray-sum-equals-k/",
-   "tier": 3
+   "tier": 3,
+   "lc": 560
   },
   {
    "id": "147",
@@ -1408,7 +1554,8 @@
    "difficulty": "hard",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/first-missing-positive/",
-   "tier": 3
+   "tier": 3,
+   "lc": 41
   },
   {
    "id": "148",
@@ -1417,7 +1564,8 @@
    "difficulty": "easy",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/longest-common-prefix/",
-   "tier": 3
+   "tier": 3,
+   "lc": 14
   },
   {
    "id": "149",
@@ -1426,7 +1574,8 @@
    "difficulty": "easy",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/merge-sorted-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 88
   },
   {
    "id": "150",
@@ -1435,7 +1584,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/sort-colors/",
-   "tier": 3
+   "tier": 3,
+   "lc": 75
   },
   {
    "id": "151",
@@ -1444,7 +1594,8 @@
    "difficulty": "easy",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/range-sum-query-immutable/",
-   "tier": 3
+   "tier": 3,
+   "lc": 303
   },
   {
    "id": "152",
@@ -1453,7 +1604,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/contiguous-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 525
   },
   {
    "id": "153",
@@ -1462,7 +1614,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/next-permutation/",
-   "tier": 3
+   "tier": 3,
+   "lc": 31
   },
   {
    "id": "154",
@@ -1471,7 +1624,8 @@
    "difficulty": "medium",
    "pattern": "arrays-hashing",
    "url": "https://leetcode.com/problems/insert-delete-getrandom-o1/",
-   "tier": 3
+   "tier": 3,
+   "lc": 380
   },
   {
    "id": "155",
@@ -1480,7 +1634,8 @@
    "difficulty": "easy",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/move-zeroes/",
-   "tier": 3
+   "tier": 3,
+   "lc": 283
   },
   {
    "id": "156",
@@ -1489,7 +1644,8 @@
    "difficulty": "easy",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 26
   },
   {
    "id": "157",
@@ -1498,7 +1654,8 @@
    "difficulty": "easy",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/squares-of-a-sorted-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1019
   },
   {
    "id": "158",
@@ -1507,7 +1664,8 @@
    "difficulty": "medium",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/4sum/",
-   "tier": 3
+   "tier": 3,
+   "lc": 18
   },
   {
    "id": "159",
@@ -1516,7 +1674,8 @@
    "difficulty": "medium",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/3sum-closest/",
-   "tier": 3
+   "tier": 3,
+   "lc": 16
   },
   {
    "id": "160",
@@ -1525,7 +1684,8 @@
    "difficulty": "medium",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/boats-to-save-people/",
-   "tier": 3
+   "tier": 3,
+   "lc": 917
   },
   {
    "id": "161",
@@ -1534,7 +1694,8 @@
    "difficulty": "easy",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/backspace-string-compare/",
-   "tier": 3
+   "tier": 3,
+   "lc": 874
   },
   {
    "id": "162",
@@ -1543,7 +1704,8 @@
    "difficulty": "easy",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/valid-palindrome-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 680
   },
   {
    "id": "163",
@@ -1552,7 +1714,8 @@
    "difficulty": "medium",
    "pattern": "two-pointers",
    "url": "https://leetcode.com/problems/rotate-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 189
   },
   {
    "id": "164",
@@ -1561,7 +1724,8 @@
    "difficulty": "easy",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/maximum-average-subarray-i/",
-   "tier": 3
+   "tier": 3,
+   "lc": 643
   },
   {
    "id": "165",
@@ -1570,7 +1734,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/minimum-size-subarray-sum/",
-   "tier": 3
+   "tier": 3,
+   "lc": 209
   },
   {
    "id": "166",
@@ -1579,7 +1744,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/fruit-into-baskets/",
-   "tier": 3
+   "tier": 3,
+   "lc": 940
   },
   {
    "id": "167",
@@ -1588,7 +1754,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/max-consecutive-ones-iii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1046
   },
   {
    "id": "168",
@@ -1597,7 +1764,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/find-all-anagrams-in-a-string/",
-   "tier": 3
+   "tier": 3,
+   "lc": 438
   },
   {
    "id": "169",
@@ -1606,7 +1774,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/subarray-product-less-than-k/",
-   "tier": 3
+   "tier": 3,
+   "lc": 713
   },
   {
    "id": "170",
@@ -1615,7 +1784,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1586
   },
   {
    "id": "171",
@@ -1624,7 +1794,8 @@
    "difficulty": "medium",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/count-number-of-nice-subarrays/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1370
   },
   {
    "id": "172",
@@ -1633,7 +1804,8 @@
    "difficulty": "easy",
    "pattern": "sliding-window",
    "url": "https://leetcode.com/problems/contains-duplicate-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 219
   },
   {
    "id": "173",
@@ -1642,7 +1814,8 @@
    "difficulty": "easy",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/next-greater-element-i/",
-   "tier": 3
+   "tier": 3,
+   "lc": 496
   },
   {
    "id": "174",
@@ -1651,7 +1824,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/next-greater-element-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 503
   },
   {
    "id": "175",
@@ -1660,7 +1834,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/remove-k-digits/",
-   "tier": 3
+   "tier": 3,
+   "lc": 402
   },
   {
    "id": "176",
@@ -1669,7 +1844,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/asteroid-collision/",
-   "tier": 3
+   "tier": 3,
+   "lc": 735
   },
   {
    "id": "177",
@@ -1678,7 +1854,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/decode-string/",
-   "tier": 3
+   "tier": 3,
+   "lc": 394
   },
   {
    "id": "178",
@@ -1687,7 +1864,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/simplify-path/",
-   "tier": 3
+   "tier": 3,
+   "lc": 71
   },
   {
    "id": "179",
@@ -1696,7 +1874,8 @@
    "difficulty": "easy",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/baseball-game/",
-   "tier": 3
+   "tier": 3,
+   "lc": 682
   },
   {
    "id": "180",
@@ -1705,7 +1884,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/online-stock-span/",
-   "tier": 3
+   "tier": 3,
+   "lc": 937
   },
   {
    "id": "181",
@@ -1714,7 +1894,8 @@
    "difficulty": "easy",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1128
   },
   {
    "id": "182",
@@ -1723,7 +1904,8 @@
    "difficulty": "medium",
    "pattern": "stack",
    "url": "https://leetcode.com/problems/basic-calculator-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 227
   },
   {
    "id": "183",
@@ -1732,7 +1914,8 @@
    "difficulty": "easy",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/first-bad-version/",
-   "tier": 3
+   "tier": 3,
+   "lc": 278
   },
   {
    "id": "184",
@@ -1741,7 +1924,8 @@
    "difficulty": "easy",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/sqrtx/",
-   "tier": 3
+   "tier": 3,
+   "lc": 69
   },
   {
    "id": "185",
@@ -1750,7 +1934,8 @@
    "difficulty": "easy",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/search-insert-position/",
-   "tier": 3
+   "tier": 3,
+   "lc": 35
   },
   {
    "id": "186",
@@ -1759,7 +1944,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 34
   },
   {
    "id": "187",
@@ -1768,7 +1954,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/find-peak-element/",
-   "tier": 3
+   "tier": 3,
+   "lc": 162
   },
   {
    "id": "188",
@@ -1777,7 +1964,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1056
   },
   {
    "id": "189",
@@ -1786,7 +1974,8 @@
    "difficulty": "hard",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/split-array-largest-sum/",
-   "tier": 3
+   "tier": 3,
+   "lc": 410
   },
   {
    "id": "190",
@@ -1795,7 +1984,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1605
   },
   {
    "id": "191",
@@ -1804,7 +1994,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/",
-   "tier": 3
+   "tier": 3,
+   "lc": 378
   },
   {
    "id": "192",
@@ -1813,7 +2004,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/find-k-closest-elements/",
-   "tier": 3
+   "tier": 3,
+   "lc": 658
   },
   {
    "id": "193",
@@ -1822,7 +2014,8 @@
    "difficulty": "medium",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/single-element-in-a-sorted-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 540
   },
   {
    "id": "194",
@@ -1831,7 +2024,8 @@
    "difficulty": "easy",
    "pattern": "binary-search",
    "url": "https://leetcode.com/problems/valid-perfect-square/",
-   "tier": 3
+   "tier": 3,
+   "lc": 367
   },
   {
    "id": "195",
@@ -1840,7 +2034,8 @@
    "difficulty": "easy",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/middle-of-the-linked-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 908
   },
   {
    "id": "196",
@@ -1849,7 +2044,8 @@
    "difficulty": "easy",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/palindrome-linked-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 234
   },
   {
    "id": "197",
@@ -1858,7 +2054,8 @@
    "difficulty": "easy",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/remove-linked-list-elements/",
-   "tier": 3
+   "tier": 3,
+   "lc": 203
   },
   {
    "id": "198",
@@ -1867,7 +2064,8 @@
    "difficulty": "easy",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
-   "tier": 3
+   "tier": 3,
+   "lc": 160
   },
   {
    "id": "199",
@@ -1876,7 +2074,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/linked-list-cycle-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 142
   },
   {
    "id": "200",
@@ -1885,7 +2084,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/swap-nodes-in-pairs/",
-   "tier": 3
+   "tier": 3,
+   "lc": 24
   },
   {
    "id": "201",
@@ -1894,7 +2094,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/rotate-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 61
   },
   {
    "id": "202",
@@ -1903,7 +2104,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/partition-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 86
   },
   {
    "id": "203",
@@ -1912,7 +2114,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/sort-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 148
   },
   {
    "id": "204",
@@ -1921,7 +2124,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/odd-even-linked-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 328
   },
   {
    "id": "205",
@@ -1930,7 +2134,8 @@
    "difficulty": "easy",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 83
   },
   {
    "id": "206",
@@ -1939,7 +2144,8 @@
    "difficulty": "medium",
    "pattern": "linked-list",
    "url": "https://leetcode.com/problems/design-linked-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 838
   },
   {
    "id": "207",
@@ -1948,7 +2154,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/symmetric-tree/",
-   "tier": 3
+   "tier": 3,
+   "lc": 101
   },
   {
    "id": "208",
@@ -1957,7 +2164,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/path-sum/",
-   "tier": 3
+   "tier": 3,
+   "lc": 112
   },
   {
    "id": "209",
@@ -1966,7 +2174,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/path-sum-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 113
   },
   {
    "id": "210",
@@ -1975,7 +2184,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/minimum-depth-of-binary-tree/",
-   "tier": 3
+   "tier": 3,
+   "lc": 111
   },
   {
    "id": "211",
@@ -1984,7 +2194,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
-   "tier": 3
+   "tier": 3,
+   "lc": 94
   },
   {
    "id": "212",
@@ -1993,7 +2204,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
-   "tier": 3
+   "tier": 3,
+   "lc": 103
   },
   {
    "id": "213",
@@ -2002,7 +2214,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
-   "tier": 3
+   "tier": 3,
+   "lc": 236
   },
   {
    "id": "214",
@@ -2011,7 +2224,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
-   "tier": 3
+   "tier": 3,
+   "lc": 114
   },
   {
    "id": "215",
@@ -2020,7 +2234,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/",
-   "tier": 3
+   "tier": 3,
+   "lc": 108
   },
   {
    "id": "216",
@@ -2029,7 +2244,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/delete-node-in-a-bst/",
-   "tier": 3
+   "tier": 3,
+   "lc": 450
   },
   {
    "id": "217",
@@ -2038,7 +2254,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
-   "tier": 3
+   "tier": 3,
+   "lc": 784
   },
   {
    "id": "218",
@@ -2047,7 +2264,8 @@
    "difficulty": "easy",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/binary-tree-paths/",
-   "tier": 3
+   "tier": 3,
+   "lc": 257
   },
   {
    "id": "219",
@@ -2056,7 +2274,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/sum-root-to-leaf-numbers/",
-   "tier": 3
+   "tier": 3,
+   "lc": 129
   },
   {
    "id": "220",
@@ -2065,7 +2284,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/house-robber-iii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 337
   },
   {
    "id": "221",
@@ -2074,7 +2294,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/",
-   "tier": 3
+   "tier": 3,
+   "lc": 893
   },
   {
    "id": "222",
@@ -2083,7 +2304,8 @@
    "difficulty": "medium",
    "pattern": "trees",
    "url": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node/",
-   "tier": 3
+   "tier": 3,
+   "lc": 116
   },
   {
    "id": "223",
@@ -2092,7 +2314,8 @@
    "difficulty": "medium",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/replace-words/",
-   "tier": 3
+   "tier": 3,
+   "lc": 648
   },
   {
    "id": "224",
@@ -2101,7 +2324,8 @@
    "difficulty": "medium",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/longest-word-in-dictionary/",
-   "tier": 3
+   "tier": 3,
+   "lc": 720
   },
   {
    "id": "225",
@@ -2110,7 +2334,8 @@
    "difficulty": "medium",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/map-sum-pairs/",
-   "tier": 3
+   "tier": 3,
+   "lc": 677
   },
   {
    "id": "226",
@@ -2119,7 +2344,8 @@
    "difficulty": "medium",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/search-suggestions-system/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1397
   },
   {
    "id": "227",
@@ -2128,7 +2354,8 @@
    "difficulty": "medium",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/",
-   "tier": 3
+   "tier": 3,
+   "lc": 421
   },
   {
    "id": "228",
@@ -2137,7 +2364,8 @@
    "difficulty": "medium",
    "pattern": "tries",
    "url": "https://leetcode.com/problems/implement-magic-dictionary/",
-   "tier": 3
+   "tier": 3,
+   "lc": 676
   },
   {
    "id": "229",
@@ -2146,7 +2374,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/top-k-frequent-words/",
-   "tier": 3
+   "tier": 3,
+   "lc": 692
   },
   {
    "id": "230",
@@ -2155,7 +2384,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/reorganize-string/",
-   "tier": 3
+   "tier": 3,
+   "lc": 778
   },
   {
    "id": "231",
@@ -2164,7 +2394,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/ugly-number-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 264
   },
   {
    "id": "232",
@@ -2173,7 +2404,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/sort-characters-by-frequency/",
-   "tier": 3
+   "tier": 3,
+   "lc": 451
   },
   {
    "id": "233",
@@ -2182,7 +2414,8 @@
    "difficulty": "medium",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/furthest-building-you-can-reach/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1762
   },
   {
    "id": "234",
@@ -2191,7 +2424,8 @@
    "difficulty": "hard",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/ipo/",
-   "tier": 3
+   "tier": 3,
+   "lc": 502
   },
   {
    "id": "235",
@@ -2200,7 +2434,8 @@
    "difficulty": "hard",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/",
-   "tier": 3
+   "tier": 3,
+   "lc": 632
   },
   {
    "id": "236",
@@ -2209,7 +2444,8 @@
    "difficulty": "hard",
    "pattern": "heap",
    "url": "https://leetcode.com/problems/minimum-cost-to-hire-k-workers/",
-   "tier": 3
+   "tier": 3,
+   "lc": 887
   },
   {
    "id": "237",
@@ -2218,7 +2454,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/combinations/",
-   "tier": 3
+   "tier": 3,
+   "lc": 77
   },
   {
    "id": "238",
@@ -2227,7 +2464,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/restore-ip-addresses/",
-   "tier": 3
+   "tier": 3,
+   "lc": 93
   },
   {
    "id": "239",
@@ -2236,7 +2474,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/permutations-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 47
   },
   {
    "id": "240",
@@ -2245,7 +2484,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/combination-sum-iii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 216
   },
   {
    "id": "241",
@@ -2254,7 +2494,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/letter-case-permutation/",
-   "tier": 3
+   "tier": 3,
+   "lc": 800
   },
   {
    "id": "242",
@@ -2263,7 +2504,8 @@
    "difficulty": "hard",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/word-break-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 140
   },
   {
    "id": "243",
@@ -2272,7 +2514,8 @@
    "difficulty": "hard",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/n-queens-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 52
   },
   {
    "id": "244",
@@ -2281,7 +2524,8 @@
    "difficulty": "hard",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/sudoku-solver/",
-   "tier": 3
+   "tier": 3,
+   "lc": 37
   },
   {
    "id": "245",
@@ -2290,7 +2534,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/matchsticks-to-square/",
-   "tier": 3
+   "tier": 3,
+   "lc": 473
   },
   {
    "id": "246",
@@ -2299,7 +2544,8 @@
    "difficulty": "medium",
    "pattern": "backtracking",
    "url": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/",
-   "tier": 3
+   "tier": 3,
+   "lc": 698
   },
   {
    "id": "247",
@@ -2308,7 +2554,8 @@
    "difficulty": "easy",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/flood-fill/",
-   "tier": 3
+   "tier": 3,
+   "lc": 733
   },
   {
    "id": "248",
@@ -2317,7 +2564,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/number-of-provinces/",
-   "tier": 3
+   "tier": 3,
+   "lc": 547
   },
   {
    "id": "249",
@@ -2326,7 +2574,8 @@
    "difficulty": "easy",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/find-if-path-exists-in-graph/",
-   "tier": 3
+   "tier": 3,
+   "lc": 2121
   },
   {
    "id": "250",
@@ -2335,7 +2584,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/keys-and-rooms/",
-   "tier": 3
+   "tier": 3,
+   "lc": 871
   },
   {
    "id": "251",
@@ -2344,7 +2594,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/is-graph-bipartite/",
-   "tier": 3
+   "tier": 3,
+   "lc": 801
   },
   {
    "id": "252",
@@ -2353,7 +2604,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1171
   },
   {
    "id": "253",
@@ -2362,7 +2614,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/01-matrix/",
-   "tier": 3
+   "tier": 3,
+   "lc": 542
   },
   {
    "id": "254",
@@ -2371,7 +2624,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/accounts-merge/",
-   "tier": 3
+   "tier": 3,
+   "lc": 721
   },
   {
    "id": "255",
@@ -2380,7 +2634,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/evaluate-division/",
-   "tier": 3
+   "tier": 3,
+   "lc": 399
   },
   {
    "id": "256",
@@ -2389,7 +2644,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/minimum-height-trees/",
-   "tier": 3
+   "tier": 3,
+   "lc": 310
   },
   {
    "id": "257",
@@ -2398,7 +2654,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/path-with-minimum-effort/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1753
   },
   {
    "id": "258",
@@ -2407,7 +2664,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/number-of-enclaves/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1073
   },
   {
    "id": "259",
@@ -2416,7 +2674,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/find-eventual-safe-states/",
-   "tier": 3
+   "tier": 3,
+   "lc": 820
   },
   {
    "id": "260",
@@ -2425,7 +2684,8 @@
    "difficulty": "medium",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/all-paths-from-source-to-target/",
-   "tier": 3
+   "tier": 3,
+   "lc": 813
   },
   {
    "id": "261",
@@ -2434,7 +2694,8 @@
    "difficulty": "hard",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/critical-connections-in-a-network/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1300
   },
   {
    "id": "262",
@@ -2443,7 +2704,8 @@
    "difficulty": "hard",
    "pattern": "graphs",
    "url": "https://leetcode.com/problems/bus-routes/",
-   "tier": 3
+   "tier": 3,
+   "lc": 833
   },
   {
    "id": "263",
@@ -2452,7 +2714,8 @@
    "difficulty": "easy",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/fibonacci-number/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1013
   },
   {
    "id": "264",
@@ -2461,7 +2724,8 @@
    "difficulty": "easy",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/n-th-tribonacci-number/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1236
   },
   {
    "id": "265",
@@ -2470,7 +2734,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/delete-and-earn/",
-   "tier": 3
+   "tier": 3,
+   "lc": 740
   },
   {
    "id": "266",
@@ -2479,7 +2744,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/perfect-squares/",
-   "tier": 3
+   "tier": 3,
+   "lc": 279
   },
   {
    "id": "267",
@@ -2488,7 +2754,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/integer-break/",
-   "tier": 3
+   "tier": 3,
+   "lc": 343
   },
   {
    "id": "268",
@@ -2497,7 +2764,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/maximum-sum-circular-subarray/",
-   "tier": 3
+   "tier": 3,
+   "lc": 954
   },
   {
    "id": "269",
@@ -2506,7 +2774,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 122
   },
   {
    "id": "270",
@@ -2515,7 +2784,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/last-stone-weight-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1130
   },
   {
    "id": "271",
@@ -2524,7 +2794,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/combination-sum-iv/",
-   "tier": 3
+   "tier": 3,
+   "lc": 377
   },
   {
    "id": "272",
@@ -2533,7 +2804,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
-   "tier": 3
+   "tier": 3,
+   "lc": 673
   },
   {
    "id": "273",
@@ -2542,7 +2814,8 @@
    "difficulty": "medium",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/maximum-length-of-pair-chain/",
-   "tier": 3
+   "tier": 3,
+   "lc": 646
   },
   {
    "id": "274",
@@ -2551,7 +2824,8 @@
    "difficulty": "hard",
    "pattern": "dp-1d",
    "url": "https://leetcode.com/problems/russian-doll-envelopes/",
-   "tier": 3
+   "tier": 3,
+   "lc": 354
   },
   {
    "id": "275",
@@ -2560,7 +2834,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/minimum-path-sum/",
-   "tier": 3
+   "tier": 3,
+   "lc": 64
   },
   {
    "id": "276",
@@ -2569,7 +2844,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/unique-paths-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 63
   },
   {
    "id": "277",
@@ -2578,7 +2854,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/triangle/",
-   "tier": 3
+   "tier": 3,
+   "lc": 120
   },
   {
    "id": "278",
@@ -2587,7 +2864,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/minimum-falling-path-sum/",
-   "tier": 3
+   "tier": 3,
+   "lc": 967
   },
   {
    "id": "279",
@@ -2596,7 +2874,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/maximal-square/",
-   "tier": 3
+   "tier": 3,
+   "lc": 221
   },
   {
    "id": "280",
@@ -2605,7 +2884,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/longest-palindromic-subsequence/",
-   "tier": 3
+   "tier": 3,
+   "lc": 516
   },
   {
    "id": "281",
@@ -2614,7 +2894,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/ones-and-zeroes/",
-   "tier": 3
+   "tier": 3,
+   "lc": 474
   },
   {
    "id": "282",
@@ -2623,7 +2904,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/out-of-boundary-paths/",
-   "tier": 3
+   "tier": 3,
+   "lc": 576
   },
   {
    "id": "283",
@@ -2632,7 +2914,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/knight-probability-in-chessboard/",
-   "tier": 3
+   "tier": 3,
+   "lc": 688
   },
   {
    "id": "284",
@@ -2641,7 +2924,8 @@
    "difficulty": "hard",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/wildcard-matching/",
-   "tier": 3
+   "tier": 3,
+   "lc": 44
   },
   {
    "id": "285",
@@ -2650,7 +2934,8 @@
    "difficulty": "hard",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/dungeon-game/",
-   "tier": 3
+   "tier": 3,
+   "lc": 174
   },
   {
    "id": "286",
@@ -2659,7 +2944,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/stone-game/",
-   "tier": 3
+   "tier": 3,
+   "lc": 909
   },
   {
    "id": "287",
@@ -2668,7 +2954,8 @@
    "difficulty": "medium",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/predict-the-winner/",
-   "tier": 3
+   "tier": 3,
+   "lc": 486
   },
   {
    "id": "288",
@@ -2677,7 +2964,8 @@
    "difficulty": "hard",
    "pattern": "dp-2d",
    "url": "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1437
   },
   {
    "id": "289",
@@ -2686,7 +2974,8 @@
    "difficulty": "easy",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/assign-cookies/",
-   "tier": 3
+   "tier": 3,
+   "lc": 455
   },
   {
    "id": "290",
@@ -2695,7 +2984,8 @@
    "difficulty": "easy",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/lemonade-change/",
-   "tier": 3
+   "tier": 3,
+   "lc": 890
   },
   {
    "id": "291",
@@ -2704,7 +2994,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/",
-   "tier": 3
+   "tier": 3,
+   "lc": 452
   },
   {
    "id": "292",
@@ -2713,7 +3004,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/queue-reconstruction-by-height/",
-   "tier": 3
+   "tier": 3,
+   "lc": 406
   },
   {
    "id": "293",
@@ -2722,7 +3014,8 @@
    "difficulty": "hard",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/candy/",
-   "tier": 3
+   "tier": 3,
+   "lc": 135
   },
   {
    "id": "294",
@@ -2731,7 +3024,8 @@
    "difficulty": "easy",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/maximum-units-on-a-truck/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1829
   },
   {
    "id": "295",
@@ -2740,7 +3034,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/two-city-scheduling/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1095
   },
   {
    "id": "296",
@@ -2749,7 +3044,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/bag-of-tokens/",
-   "tier": 3
+   "tier": 3,
+   "lc": 985
   },
   {
    "id": "297",
@@ -2758,7 +3054,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/remove-duplicate-letters/",
-   "tier": 3
+   "tier": 3,
+   "lc": 316
   },
   {
    "id": "298",
@@ -2767,7 +3064,8 @@
    "difficulty": "medium",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/maximum-swap/",
-   "tier": 3
+   "tier": 3,
+   "lc": 670
   },
   {
    "id": "299",
@@ -2776,7 +3074,8 @@
    "difficulty": "easy",
    "pattern": "greedy",
    "url": "https://leetcode.com/problems/split-a-string-in-balanced-strings/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1341
   },
   {
    "id": "300",
@@ -2785,7 +3084,8 @@
    "difficulty": "medium",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/interval-list-intersections/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1028
   },
   {
    "id": "301",
@@ -2794,7 +3094,8 @@
    "difficulty": "medium",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/my-calendar-i/",
-   "tier": 3
+   "tier": 3,
+   "lc": 729
   },
   {
    "id": "302",
@@ -2803,7 +3104,8 @@
    "difficulty": "easy",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/summary-ranges/",
-   "tier": 3
+   "tier": 3,
+   "lc": 228
   },
   {
    "id": "303",
@@ -2812,7 +3114,8 @@
    "difficulty": "medium",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/car-pooling/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1184
   },
   {
    "id": "304",
@@ -2821,7 +3124,8 @@
    "difficulty": "medium",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/remove-covered-intervals/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1222
   },
   {
    "id": "305",
@@ -2830,7 +3134,8 @@
    "difficulty": "easy",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/teemo-attacking/",
-   "tier": 3
+   "tier": 3,
+   "lc": 495
   },
   {
    "id": "306",
@@ -2839,7 +3144,8 @@
    "difficulty": "hard",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/data-stream-as-disjoint-intervals/",
-   "tier": 3
+   "tier": 3,
+   "lc": 352
   },
   {
    "id": "307",
@@ -2848,7 +3154,8 @@
    "difficulty": "hard",
    "pattern": "intervals",
    "url": "https://leetcode.com/problems/the-skyline-problem/",
-   "tier": 3
+   "tier": 3,
+   "lc": 218
   },
   {
    "id": "308",
@@ -2857,7 +3164,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/spiral-matrix-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 59
   },
   {
    "id": "309",
@@ -2866,7 +3174,8 @@
    "difficulty": "easy",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/transpose-matrix/",
-   "tier": 3
+   "tier": 3,
+   "lc": 898
   },
   {
    "id": "310",
@@ -2875,7 +3184,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/diagonal-traverse/",
-   "tier": 3
+   "tier": 3,
+   "lc": 498
   },
   {
    "id": "311",
@@ -2884,7 +3194,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/game-of-life/",
-   "tier": 3
+   "tier": 3,
+   "lc": 289
   },
   {
    "id": "312",
@@ -2893,7 +3204,8 @@
    "difficulty": "easy",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/excel-sheet-column-number/",
-   "tier": 3
+   "tier": 3,
+   "lc": 171
   },
   {
    "id": "313",
@@ -2902,7 +3214,8 @@
    "difficulty": "easy",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/roman-to-integer/",
-   "tier": 3
+   "tier": 3,
+   "lc": 13
   },
   {
    "id": "314",
@@ -2911,7 +3224,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/integer-to-roman/",
-   "tier": 3
+   "tier": 3,
+   "lc": 12
   },
   {
    "id": "315",
@@ -2920,7 +3234,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/string-to-integer-atoi/",
-   "tier": 3
+   "tier": 3,
+   "lc": 8
   },
   {
    "id": "316",
@@ -2929,7 +3244,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/count-primes/",
-   "tier": 3
+   "tier": 3,
+   "lc": 204
   },
   {
    "id": "317",
@@ -2938,7 +3254,8 @@
    "difficulty": "medium",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/factorial-trailing-zeroes/",
-   "tier": 3
+   "tier": 3,
+   "lc": 172
   },
   {
    "id": "318",
@@ -2947,7 +3264,8 @@
    "difficulty": "hard",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/max-points-on-a-line/",
-   "tier": 3
+   "tier": 3,
+   "lc": 149
   },
   {
    "id": "319",
@@ -2956,7 +3274,8 @@
    "difficulty": "easy",
    "pattern": "math-geometry",
    "url": "https://leetcode.com/problems/add-binary/",
-   "tier": 3
+   "tier": 3,
+   "lc": 67
   },
   {
    "id": "320",
@@ -2965,7 +3284,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/power-of-two/",
-   "tier": 3
+   "tier": 3,
+   "lc": 231
   },
   {
    "id": "321",
@@ -2974,7 +3294,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/hamming-distance/",
-   "tier": 3
+   "tier": 3,
+   "lc": 461
   },
   {
    "id": "322",
@@ -2983,7 +3304,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/single-number-ii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 137
   },
   {
    "id": "323",
@@ -2992,7 +3314,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/single-number-iii/",
-   "tier": 3
+   "tier": 3,
+   "lc": 260
   },
   {
    "id": "324",
@@ -3001,7 +3324,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/bitwise-and-of-numbers-range/",
-   "tier": 3
+   "tier": 3,
+   "lc": 201
   },
   {
    "id": "325",
@@ -3010,7 +3334,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/gray-code/",
-   "tier": 3
+   "tier": 3,
+   "lc": 89
   },
   {
    "id": "326",
@@ -3019,7 +3344,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/total-hamming-distance/",
-   "tier": 3
+   "tier": 3,
+   "lc": 477
   },
   {
    "id": "327",
@@ -3028,7 +3354,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/number-complement/",
-   "tier": 3
+   "tier": 3,
+   "lc": 476
   },
   {
    "id": "328",
@@ -3037,7 +3364,8 @@
    "difficulty": "easy",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/binary-number-with-alternating-bits/",
-   "tier": 3
+   "tier": 3,
+   "lc": 693
   },
   {
    "id": "329",
@@ -3046,7 +3374,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/divide-two-integers/",
-   "tier": 3
+   "tier": 3,
+   "lc": 29
   },
   {
    "id": "330",
@@ -3055,7 +3384,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1441
   },
   {
    "id": "331",
@@ -3064,7 +3394,8 @@
    "difficulty": "medium",
    "pattern": "bits",
    "url": "https://leetcode.com/problems/xor-queries-of-a-subarray/",
-   "tier": 3
+   "tier": 3,
+   "lc": 1435
   }
  ],
  "tracks": [

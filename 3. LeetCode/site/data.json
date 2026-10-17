@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T02:25",
+ "generated_at": "2026-10-17T03:31",
  "today": "2026-10-17",
  "streak": 0,
  "counted_today": false,
@@ -364,7 +364,7 @@
     },
     {
      "id": "035",
-     "title": "Lowest Common Ancestor of a BST",
+     "title": "Lowest Common Ancestor of a Binary Search Tree",
      "status": "new",
      "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
     },
@@ -388,7 +388,7 @@
     },
     {
      "id": "039",
-     "title": "Construct Binary Tree from Preorder and Inorder",
+     "title": "Construct Binary Tree from Preorder and Inorder Traversal",
      "status": "new",
      "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
     },
@@ -417,7 +417,7 @@
     },
     {
      "id": "043",
-     "title": "Design Add and Search Words",
+     "title": "Design Add and Search Words Data Structure",
      "status": "new",
      "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/"
     },

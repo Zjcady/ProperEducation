@@ -370,7 +370,8 @@ def describe(entry: dict, prog) -> None:
     if entry["type"] == "problem":
         st = state_of(item, prog)
         label = {"continue": "IN PROGRESS", "review": "REVIEW (re-solve from blank)", "new": "NEW"}[kind]
-        print(f"[{label}]  {item['id']}  {item['title']}  ({item['difficulty']})")
+        lc = f"  LC #{item['lc']}" if item.get("lc") else ""
+        print(f"[{label}]  {item['id']}  {item['title']}  ({item['difficulty']}){lc}")
         print(f"  pattern : {pattern_name(item['pattern'])}   ->  {pattern_file(item['pattern'])}")
         print(f"  folder  : problems/{item['id']}-{item['slug']}/")
         print(f"  leetcode: {item['url']}")
@@ -870,14 +871,24 @@ def cmd_add(args) -> None:
         pattern = opts.get("pattern", "")
         if pattern and pattern not in pattern_ids:
             sys.exit(f"unknown pattern {pattern!r}. One of: {', '.join(sorted(pattern_ids))}")
+        info = lookup_leetcode(slug)
+        if info is None:
+            print("(couldn't reach leetcode.com; using the slug as-is. Pass --title and --difficulty if they matter.)")
+        elif not info["exists"]:
+            sys.exit(f"leetcode.com has no problem with slug {slug!r}. Check the URL: the slug is the part after /problems/.")
+        elif info["paid"]:
+            print(f"Note: LeetCode #{info['lc']} {info['title']} is premium-only. Added anyway; you'll need a subscription to run it there.")
         p = {"id": f"{len(cur['problems']) + 1:03d}", "slug": slug,
-             "title": opts.get("title") or title_from_slug(slug),
-             "difficulty": opts.get("difficulty", "medium"), "pattern": pattern or "drill",
+             "title": opts.get("title") or (info["title"] if info and info.get("exists") else title_from_slug(slug)),
+             "difficulty": opts.get("difficulty") or (info["difficulty"] if info and info.get("exists") else "medium"),
+             "pattern": pattern or "drill",
              "url": f"https://leetcode.com/problems/{slug}/", "tier": 4}
+        if info and info.get("exists"):
+            p["lc"] = info["lc"]
         cur["problems"].append(p)
         save_json(CURRICULUM, cur)
-        print(f"Added {p['id']} {p['title']} ({p['difficulty']}, tier 4 drill"
-              + (f", pattern {pattern_name(pattern)}" if pattern else ", no pattern yet") + ").")
+        print(f"Added {p['id']} {p['title']}" + (f" (LeetCode #{p['lc']})" if p.get("lc") else "")
+              + f" ({p['difficulty']}, tier 4 drill" + (f", pattern {pattern_name(pattern)}" if pattern else ", no pattern yet") + ").")
     prog["queue"] = [q for q in prog.get("queue", []) if q != p["id"]] + [p["id"]]
     save_json(PROGRESS, prog)
     folder = folder_for(p)
@@ -886,6 +897,25 @@ def cmd_add(args) -> None:
     print(f"Queued as your next new problem. Folder: problems/{folder.name}/")
     if not pattern_file(p["pattern"]):
         print("Tip: pass --pattern so the pattern card shows up, e.g. --pattern stack")
+
+
+def lookup_leetcode(slug: str, timeout: float = 10.0) -> dict | None:
+    """Ask leetcode.com about a slug. Returns {title, difficulty, paid, lc} or None when offline/unknown."""
+    import urllib.request
+    body = json.dumps({"query": 'query($s: String!) { question(titleSlug: $s) { questionId title difficulty isPaidOnly } }',
+                       "variables": {"s": slug}}).encode()
+    req = urllib.request.Request("https://leetcode.com/graphql", data=body,
+                                 headers={"Content-Type": "application/json", "Referer": "https://leetcode.com/problemset/",
+                                          "User-Agent": "Mozilla/5.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            q = (json.load(r).get("data") or {}).get("question")
+    except Exception:
+        return None
+    if not q:
+        return {"exists": False}
+    return {"exists": True, "title": q["title"], "difficulty": q["difficulty"].lower(),
+            "paid": bool(q["isPaidOnly"]), "lc": int(q["questionId"])}
 
 
 def title_from_slug(slug: str) -> str:
