@@ -30,6 +30,7 @@ Real systems call an embedding model (Anthropic recommends Voyage AI's). Here yo
 ## Step 3 · Answer with citations  (15 min)
 
 - `build_prompt(question, chunks)`: number the chunks `[1]`, `[2]`, ... with their source and heading, then the question, then "cite sources as [n]; if the sources don't contain the answer, say so".
+- Retrieved text is data, not instructions. Each chunk stays inside its numbered source and your "use only the sources" and "cite as [n]" rules sit outside them. `tests/fixtures/poisoned.md` is a chunk that tries to give the model orders (OWASP LLM01, indirect injection); the step 3 tests check it stays a quoted source.
 - `answer(client, question, store, embedder, k=3)`: embed, search, prompt, ask. Return `{"answer", "sources": [chunks]}`.
 
 Try live: `python3 rag.py "How do I find the next greater element for each item?"`.

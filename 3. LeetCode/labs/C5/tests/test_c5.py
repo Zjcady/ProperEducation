@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -105,3 +106,22 @@ def test_step4_evaluate_empty_and_perfect():
     store = rag.VectorStore(); store.add(chunks, [emb.embed(c["text"]) for c in chunks])
     assert rag.evaluate(store, emb, [], 3) == 0.0
     assert rag.evaluate(store, emb, [{"q": "zebra", "expect_source": "x.md"}], 1) == 1.0
+
+
+def test_step3_poisoned_chunk_stays_data_inside_its_source():
+    """OWASP LLM01 scenario 4: a document in the corpus was edited to give the model orders.
+    The prompt must present it as numbered source text, with your instructions outside the sources."""
+    raw = (LAB / "tests" / "fixtures" / "poisoned.md").read_text()
+    heading, body = raw.split("\n", 1)
+    poison = body.strip()
+    chunks = [{"source": "stack.md", "heading": "Stack", "text": "Use a monotonic stack for next greater element."},
+              {"source": "poisoned.md", "heading": heading.lstrip("# "), "text": poison}]
+    p = rag.build_prompt("How do I find the next greater element?", chunks)
+    first, second = p.index("[1]"), p.index("[2]")
+    at = p.index(poison)
+    assert p.count(poison) == 1, "the chunk appears once, word for word"
+    assert first < second < at and "poisoned.md" in p[second:at], "it sits under its own [2] label"
+    assert "[3]" not in p[at:], "nothing after it is labelled as another source"
+    outside = p[:first] + p[at + len(poison):]
+    assert re.search(r"only[^\n]*sources", outside, re.I), "'use only the sources' is your instruction, outside them"
+    assert "[n]" in outside, "the citation rule is outside the sources too"

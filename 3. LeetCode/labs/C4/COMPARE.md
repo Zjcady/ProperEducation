@@ -8,6 +8,3 @@ _(you)_
 
 ## When I'd pick each
 _(you)_
-
-## One thing that surprised me running both
-_(you)_
