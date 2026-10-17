@@ -147,7 +147,7 @@ these dates; missed days push them back, and that's fine.
 | Weeks | Block 1 (LeetCode) | Block 2 (build) |
 |---|---|---|
 | 1 to 3 | Tier 1 begins: arrays, two pointers, sliding window | Python foundations A01 to A12 (skip what placement clears) |
-| 4 to 9 | Tier 1 continues; weekly mocks start after 5 solves | Labs C1 to C8 (27 steps) |
+| 4 to 9 | Tier 1 continues; weekly mocks start after 5 solves | Labs C1 to C9 (30 steps) |
 | 10 to 12 | Tier 1 continues | Labs D1 to D5, then E1 to E3 |
 | **12** | **Apply.** | |
 | 13 to 17 | Tier 1 finishes (83 problems is about 17 weeks) | Re-do the lab you'd demo; keep rehearsing E1 and E3 |

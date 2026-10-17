@@ -77,6 +77,10 @@
   ],
   "Claude Code and Cursor": [
    "C7"
+  ],
+  "evals and observability": [
+   "C9"
   ]
- }
+ },
+ "C9": "Built an eval harness for an LLM pipeline: OpenTelemetry-style gen_ai traces, an LLM judge checked against seeded failures, pass@k vs pass^k"
 }

@@ -17,7 +17,7 @@ _(you)_
 _(you)_
 
 ### Questions I expect, with answers (1 min)
-_(you: include "how is this like Genesis?", Lockheed's no-code agent builder with AD-group access control, and your answer.)_
+_(you: include "how is this like Genesis?", Lockheed's no-code agent builder with AD-group access control, and your answer. And: "how would you know it got worse after a change?" Lab C9's eval and pass^k answer it.)_
 
 ### Rehearsal log
 | date | time (min) | follow-ups answered 0-3 | clarity 0-3 | one fix |

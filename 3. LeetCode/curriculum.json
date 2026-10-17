@@ -3599,6 +3599,14 @@
    "steps": 3
   },
   {
+   "id": "C9",
+   "track": "genai",
+   "kind": "lab",
+   "title": "Evals and traces",
+   "folder": "labs/C9",
+   "steps": 3
+  },
+  {
    "id": "D1",
    "track": "autonomy",
    "kind": "lab",

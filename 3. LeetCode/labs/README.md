@@ -14,6 +14,7 @@ Every function you write has a test that was verified against a working implemen
 | C6 | Meeting summarizer, SRT subtitles, gecko content pack | Meeting summarizers | 4 |
 | C7 | A Claude Code skill and hook for this repo, plus a write-up | AI dev accelerators | 2 |
 | C8 | C6 as an S3-triggered Lambda, tested locally, deployed once | AWS | 3 |
+| C9 | Evals and traces: gen_ai spans, an LLM-as-judge with seeded failures, pass@k vs pass^k | Review test outcomes; evals | 3 |
 | D1 | A survey-drone mission as a state machine with guarded transitions, task planning under a battery budget, abort | "breaking missions into tasks" | 2 |
 | D2 | BFS then A* on grid maps, with path validation and expansion counts | "motion/mission planning" | 2 |
 | D3 | A PID controller with anti-windup against a simulated plant, with overshoot and settling-time metrics | "controls" | 2 |
