@@ -28,6 +28,12 @@ PRICES = {
     "claude-haiku-5-5": (0.10, 0.50),
 }
 
+# Prompt caching, as multipliers of the input price. Writing a prefix into the
+# 5-minute cache costs 1.25x; reading it back costs 0.1x on most models, but the
+# price list gives some models a cheaper read rate. Check it, don't assume.
+CACHE_WRITE_MULTIPLIER = 1.25
+CACHE_READ_MULTIPLIER = {"claude-opus-5-5": 0.05}   # Opus 5.5 reads are $0.20 on $4 input; others 0.1
+
 
 def get_client(fake: bool = False, responses: list | None = None):
     """Real client unless asked for the fake one. The real one reads credentials
@@ -50,7 +56,7 @@ def text_of(response) -> str:
     raise NotImplementedError
 
 
-def ask(client, prompt: str, system: str | None = None, model: str = MODEL,
+def ask(client, prompt: str, system: str | list[dict] | None = None, model: str = MODEL,
         max_tokens: int = MAX_TOKENS) -> str:
     """TODO(you): one request, return the reply text. Pass `system` only when given."""
     raise NotImplementedError
@@ -75,7 +81,9 @@ def ask_json(client, prompt: str, required_keys: list[str], retries: int = 1, **
 # ------------------------------------------------------------------ step 3
 
 def estimate_cost(usage, model: str = MODEL) -> float:
-    """TODO(you): dollars for this response. PRICES are per million tokens."""
+    """TODO(you): dollars for this response. PRICES are per million tokens.
+    Cache writes cost CACHE_WRITE_MULTIPLIER x the input price, cache reads
+    CACHE_READ_MULTIPLIER (default 0.1) x. A missing usage field counts as 0."""
     raise NotImplementedError
 
 

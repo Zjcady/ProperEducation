@@ -5,6 +5,7 @@
 - why not truncate:
 - few-shot observation:
 - what 1,000 files would cost and how I'd cut it:
+- what would break your cache hit rate?
 
 ## What tripped me up
 -

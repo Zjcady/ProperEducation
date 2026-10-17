@@ -9,3 +9,4 @@
 | 5 | Learner tried a few-shot prompt and wrote one observation in NOTES.md. |
 | 6 | Token totals in the report add up across all calls, not just the last one. |
 | 7 | Learner can estimate what running this over 1,000 files would cost, and say one way to cut it. |
+| 8 | `classify` puts the breakpoint on the last system block with the file text after it; learner can say what the cached input % means and why a short prefix shows 0 cached live. |

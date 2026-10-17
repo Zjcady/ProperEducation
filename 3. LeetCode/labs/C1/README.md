@@ -32,9 +32,11 @@ Concept: the real API has a `output_config.format` option that guarantees JSON. 
 
 You write:
 
-- `estimate_cost(usage, model)`: dollars from `usage.input_tokens`, `usage.output_tokens` and the `PRICES` table. Prices are per million tokens.
+- `estimate_cost(usage, model)`: dollars from `usage.input_tokens`, `usage.output_tokens` and the `PRICES` table. Prices are per million tokens. Also price the two prompt-caching fields: `usage.cache_creation_input_tokens` at `CACHE_WRITE_MULTIPLIER` (1.25x) the input price and `usage.cache_read_input_tokens` at `CACHE_READ_MULTIPLIER` (0.1x, but 0.05x on Opus 5.5). A missing field counts as 0 (`getattr(usage, name, 0)`).
 - `with_retry(fn, attempts=3, base_delay=1.0, retry_on=None, sleep=time.sleep)`: call `fn()`. On a retryable exception, wait `base_delay * 2**attempt` and try again. Non-retryable exceptions propagate immediately. After `attempts` failures, re-raise the last one.
 
-Concepts: 429 (rate limit), 500 and 529 (server) are retryable. 400 and 401 are your bug, never retry those. The SDK already retries for you (`max_retries`); you build it once to know what it does, then you use the SDK's.
+Concepts: **prompt caching** is the biggest cost lever. Mark the end of a prompt prefix that repeats on every call (`cache_control: {"type": "ephemeral"}`), and later calls with the identical prefix pay a tenth (or less) for it. `input_tokens` is then only the uncached part; total input is all three fields added. You use it for real in C2.
+
+429 (rate limit), 500 and 529 (server) are retryable. 400 and 401 are your bug, never retry those. The SDK already retries for you (`max_retries`); you build it once to know what it does, then you use the SDK's.
 
 Finish: run all tests, then ask Claude to review you against `RUBRIC.md` and write the result into `REVIEW.md`. Then `python3 coach.py done C1`.

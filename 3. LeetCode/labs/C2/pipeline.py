@@ -17,6 +17,30 @@ from ask import MODEL, ask, estimate_cost, get_client  # noqa: E402
 
 LABELS = ["care-sheet", "health", "build", "shopping", "other"]
 
+# Step 2 scaffolding: what each label means, and two worked examples. These are
+# the same on every classify call, which is exactly what prompt caching is for.
+LABEL_DEFINITIONS = {
+    "care-sheet": "how to keep a species: temperatures, humidity, feeding, substrate, lighting",
+    "health": "one animal's condition: vet visits, weight, shedding, illness, medication",
+    "build": "making or changing an enclosure: plans, materials, measurements, steps",
+    "shopping": "things to buy, prices, where to buy them",
+    "other": "anything that fits none of the above",
+}
+
+FEW_SHOT = """Examples:
+
+Text: Ordered 2 cork rounds and a 40 W basking bulb, $38 total. Still need a digital thermometer.
+Label: shopping
+
+Text: Mochi refused food twice this week and has a retained shed on her tail tip. Booked the vet for Friday.
+Label: health"""
+
+
+def describe_labels(labels: list[str]) -> str:
+    """One line per label: "- name: definition" (name alone when we have no definition)."""
+    return "\n".join(f"- {l}: {LABEL_DEFINITIONS[l]}" if l in LABEL_DEFINITIONS else f"- {l}"
+                     for l in labels)
+
 
 # ------------------------------------------------------------------ step 1
 
@@ -52,7 +76,10 @@ def summarize(client, text: str, max_chars: int = 6000) -> str:
 # ------------------------------------------------------------------ step 2
 
 def classify(client, text: str, labels: list[str]) -> str:
-    """TODO(you): exactly one of labels, else "unknown". One stricter retry."""
+    """TODO(you): exactly one of labels, else "unknown". One stricter retry.
+    The label list (describe_labels) and FEW_SHOT go in `system` as a list of
+    text blocks; the last one carries cache_control {"type": "ephemeral"}.
+    Only the file's text goes in the user message."""
     raise NotImplementedError
 
 
@@ -64,9 +91,11 @@ def run(client, folder: str | Path, labels: list[str] = LABELS) -> list[dict]:
 
 
 class _UsageTap:
-    """Wraps client.messages.create to add up usage for the calls made inside the block."""
+    """Wraps client.messages.create to add up usage for the calls made inside the block.
+    input_tokens is only the uncached part; the two cache counts are kept separately."""
     def __init__(self, client):
         self.client, self.input_tokens, self.output_tokens = client, 0, 0
+        self.cache_creation_input_tokens = self.cache_read_input_tokens = 0
 
     def __enter__(self):
         self._orig = self.client.messages.create
@@ -74,6 +103,8 @@ class _UsageTap:
             resp = self._orig(**kwargs)
             self.input_tokens += resp.usage.input_tokens
             self.output_tokens += resp.usage.output_tokens
+            self.cache_creation_input_tokens += getattr(resp.usage, "cache_creation_input_tokens", 0) or 0
+            self.cache_read_input_tokens += getattr(resp.usage, "cache_read_input_tokens", 0) or 0
             return resp
         self.client.messages.create = create
         return self
@@ -83,7 +114,8 @@ class _UsageTap:
 
 
 def render_report(rows: list[dict], model: str = MODEL) -> str:
-    """TODO(you): markdown table + totals + estimated cost."""
+    """TODO(you): markdown table + totals + estimated cost, plus a
+    "cached input: N%" line (cache reads / all input). Rows may lack the cache keys."""
     raise NotImplementedError
 
 
